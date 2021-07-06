@@ -1,0 +1,18 @@
+[package]
+name = "bevy-template" # TODO: Rename
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bevy = { version = "0.5.0" }
+bevy_egui = "0.6.0"
+bevy-inspector-egui = { git = "https://github.com/jakobhellermann/bevy-inspector-egui.git" }
+bevy_mod_picking = "0.4.0"
+bevy_kira_audio = "0.5.1"
+bevy_asset_loader = "0.4.0"
+bevycheck = "0.1.4"
+
+[profile.dev]
+opt-level = 1
