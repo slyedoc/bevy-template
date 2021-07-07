@@ -262,6 +262,7 @@ dependencies = [
  "bevy_kira_audio",
  "bevy_mod_picking",
  "bevycheck",
+ "emath",
 ]
 
 [[package]]

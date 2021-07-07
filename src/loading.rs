@@ -20,7 +20,6 @@ impl Plugin for LoadingPlugin {
 
 // the following asset collections will be loaded during the State `GameState::Loading`
 // when done loading, they will be inserted as resources (see https://github.com/NiklasEi/bevy_asset_loader)
-
 #[derive(AssetCollection)]
 pub struct FontAssets {
     #[asset(path = "fonts/FiraSans-Bold.ttf")]
@@ -29,7 +28,9 @@ pub struct FontAssets {
 
 #[derive(AssetCollection)]
 pub struct AudioAssets {
-    #[asset(path = "audio/bensound-creativeminds.mp3")]
+
+    //https://www.bensound.com/royalty-free-music/track/creative-minds
+    #[asset(path = "audio/bensound-creativeminds.ogg")]
     pub background_music: Handle<AudioSource>,
 }
 
