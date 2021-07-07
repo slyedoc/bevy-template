@@ -9,7 +9,7 @@ edition = "2018"
 bevy = { version = "0.5.0" }
 bevy_egui = "0.6.0"
 emath = "0.13.0" # Math lib for egui
-bevy-inspector-egui = { git = "https://github.com/jakobhellermann/bevy-inspector-egui.git" }
+bevy-inspector-egui = { path = "../bevy-inspector-egui" }
 bevy_mod_picking = "0.4.0"
 bevy_kira_audio = "0.5.1"
 bevy_asset_loader = "0.4.0"

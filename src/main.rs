@@ -14,7 +14,7 @@ use bevy_inspector_egui::{Inspectable, InspectorPlugin, WorldInspectorParams, Wo
 use bevy_mod_picking::{
     InteractablePickingPlugin, PickingPlugin,
 };
-use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
+use bevy::diagnostic::{FrameTimeDiagnosticsPlugin};
 
 
 // This example game uses States to separate logic
@@ -32,7 +32,7 @@ enum GameState {
 
 #[derive(Inspectable, Default)]
 pub struct Data {
-
+    #[inspectable(label = "Background Color")]
     clear_color: ResourceInspector<ClearColor>,
     #[inspectable(min = 1169)]
     seed: u64,
@@ -63,7 +63,7 @@ fn main() {
         .add_plugin(WorldInspectorPlugin::new())
         .add_plugin(PickingPlugin)
         .add_plugin(InteractablePickingPlugin)
-        .add_plugin(InspectorPlugin::<Data>::new())
+        .add_plugin(InspectorPlugin::<Data>::new().open(false))
         // Add our plugins
         .add_plugin(LoadingPlugin)
         .add_plugin(InternalAudioPlugin)
@@ -72,9 +72,7 @@ fn main() {
         // App State
         .add_state(GameState::Loading);
 
-
-
-              app.add_plugin(LogDiagnosticsPlugin::default());
+        //app.add_plugin(LogDiagnosticsPlugin::default());
 
         app.run()
 }

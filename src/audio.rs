@@ -23,7 +23,7 @@ impl Plugin for InternalAudioPlugin {
     fn build(&self, app: &mut AppBuilder) {
         app.add_plugin(AudioPlugin)
             .init_resource::<AudioData>()
-            .add_plugin(InspectorPlugin::<AudioData>::new())
+            .add_plugin(InspectorPlugin::<AudioData>::new().open(false))
             .add_system_set(
                 SystemSet::on_enter(GameState::Playing).with_system(start_audio.system()),
             );

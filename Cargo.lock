@@ -230,7 +230,6 @@ checksum = "0d5f2f58f0aec3c50a20799792c3705e80dd7df327e79791cacec197e84e5e61"
 [[package]]
 name = "bevy-inspector-egui"
 version = "0.6.0"
-source = "git+https://github.com/jakobhellermann/bevy-inspector-egui.git#2a7a0c1f64fd311955d14b8384a42738d38debb8"
 dependencies = [
  "bevy",
  "bevy-inspector-egui-derive",
@@ -244,7 +243,6 @@ dependencies = [
 [[package]]
 name = "bevy-inspector-egui-derive"
 version = "0.6.0"
-source = "git+https://github.com/jakobhellermann/bevy-inspector-egui.git#2a7a0c1f64fd311955d14b8384a42738d38debb8"
 dependencies = [
  "proc-macro2",
  "quote",
