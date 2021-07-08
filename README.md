@@ -6,6 +6,8 @@ This will be a framework for myself and where I figure out how to use existing s
 
 Would this be allowed in a game jam? I really hope so.
 
+![Editor Example](docs/images/tick-tack-toe.png)
+
 ## Setup
 
 Uses nightly tool chain.
