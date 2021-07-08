@@ -34,6 +34,7 @@ I have removed it for now, though I do plan on adding it back.  I want to look i
 * [bevy_asset_loader](https://github.com/NiklasEi/bevy_asset_loader) reduces boilerplate when loading game assets
 * [bevycheck](https://github.com/jakobhellermann/bevycheck) provides handy debug information for bevy systems
   * put ```#[bevycheck::system]``` above a system to get some helpful debugging information(remove after use, will panic if you leave it in) 
+* [bevy_skybox]
 
 ## Github Features
 

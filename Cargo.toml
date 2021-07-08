@@ -8,12 +8,15 @@ edition = "2018"
 [dependencies]
 bevy = { version = "0.5.0" }
 bevy_egui = "0.6.0"
-emath = "0.13.0" # Math lib for egui
+#emath = "0.13.0" # Math lib for egui, bevy_egui reexports it
 bevy-inspector-egui = { path = "../bevy-inspector-egui" }
+#bevy-inspector-egui = { git = "https://github.com/slyedoc/bevy-inspector-egui.git" }
 bevy_mod_picking = "0.4.0"
+bevy_input_actionmap = { git = "https://github.com/lightsoutgames/bevy_input_actionmap.git" }
 bevy_kira_audio = "0.5.1"
 bevy_asset_loader = "0.4.0"
 bevycheck = "0.1.4"
-
+bevy_skybox = "0.4.0"
+enum-iter = { git = "https://github.com/cbreeden/enum-iter.git" }
 [profile.dev]
 opt-level = 1

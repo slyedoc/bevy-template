@@ -9,12 +9,14 @@ use bevy_egui::{
 };
 use bevy_inspector_egui::{plugin::InspectorWindows, WorldInspectorParams};
 
-use crate::{audio::AudioData, Data};
+use crate::{Data, GameState, audio::AudioData, game_state::{PongData, TicTackToeData}};
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
+
+use super::{grid::data::GridData, run_if_editor};
 
 #[derive(Inspectable)]
 pub struct UIData {
-    #[inspectable(min = 0.5, max = 2.0, speed = 0.01, label = "Scale Factor*")]
+    #[inspectable(min = 0.5, max = 2.0, speed = 0.01, label = "Scale Factor *warning* - may panic")]
     scale: f64,
 
     // window state information
@@ -42,12 +44,17 @@ pub struct UIPlugin;
 // This plugin controls a editor like ui
 impl Plugin for UIPlugin {
     fn build(&self, app: &mut AppBuilder) {
-        app.add_plugin(InspectorPlugin::<UIData>::new().open(true).shared())
+        app.add_plugin(InspectorPlugin::<UIData>::new().open(false).shared())
             .add_system(update_ui_scale_factor.system())
-            .add_system(draw_editor.system());
+            .add_system_set(
+                SystemSet::new()
+                    .with_run_criteria(run_if_editor.system())
+                    .with_system(draw_editor.system()),
+            );
     }
 }
 
+// This runs all the time, to update the scale factor for any ui the game has
 fn update_ui_scale_factor(
     mut egui_settings: ResMut<EguiSettings>,
     windows: Res<Windows>,
@@ -60,6 +67,7 @@ fn update_ui_scale_factor(
 
 fn draw_editor(
     egui_ctx: Res<EguiContext>,
+    state: Res<State<GameState>>,
     mut exit: EventWriter<AppExit>,
     mut ui_data: ResMut<UIData>,
     mut world_inspection: ResMut<WorldInspectorParams>,
@@ -67,47 +75,53 @@ fn draw_editor(
     diagnostics: Res<Diagnostics>,
 ) {
     TopBottomPanel::top("top_panel")
-    .min_height(100.0)
-    .show(egui_ctx.ctx(), |ui| {
-        // The top panel is often a good place for a menu bar:
+        .min_height(100.0)
+        .show(egui_ctx.ctx(), |ui| {
+            // The top panel is often a good place for a menu bar:
 
-        menu::bar(ui, |ui| {
-
-            menu::menu(ui, "App", |ui| {
-                if ui.button("Quit").clicked() {
-                    exit.send(AppExit);
-                }
-            });
-
-            menu::menu(ui, "Windows", |ui| {
-                ui.add(Checkbox::new(&mut world_inspection.enabled, "World"));
-                ui.add(Checkbox::new(&mut ui_data.fps, "FPS"));
-                draw_menu_item::<Data>(&mut inspector_windows, ui);
-                draw_menu_item::<UIData>(&mut inspector_windows, ui);
-                draw_menu_item::<AudioData>(&mut inspector_windows, ui);
-            });
-
-            menu::menu(ui, "Egui", |ui| {
-                ui.add(Checkbox::new(&mut ui_data.settings, "Egui Settings"));
-                ui.add(Checkbox::new(&mut ui_data.inspection, "Egui Inspection"));
-            });
-
-            let desired_size = ui.available_width();
-            ui.add_space(desired_size - 80.0);
-
-            ui.horizontal( |ui| {
-                if let Some(fps) = diagnostics.get(FrameTimeDiagnosticsPlugin::FPS) {
-                    if let Some(fps_value) = fps.value() {
- 
-                            ui.label(format!("FPS: {:.2}", fps_value, ));
-
+            menu::bar(ui, |ui| {
+                menu::menu(ui, "App", |ui| {
+                    if ui.button("Quit").clicked() {
+                        exit.send(AppExit);
                     }
-                }
+                });
+
+                menu::menu(ui, "Windows", |ui| {
+                    ui.add(Checkbox::new(&mut world_inspection.enabled, "World"));
+                    ui.add(Checkbox::new(&mut ui_data.fps, "FPS"));
+                    draw_menu_item::<Data>(&mut inspector_windows, ui);
+                    draw_menu_item::<TicTackToeData>(&mut inspector_windows, ui);
+                    draw_menu_item::<PongData>(&mut inspector_windows, ui);
+                    draw_menu_item::<UIData>(&mut inspector_windows, ui);
+                    draw_menu_item::<GridData>(&mut inspector_windows, ui);
+                    draw_menu_item::<AudioData>(&mut inspector_windows, ui);
+                });
+
+                menu::menu(ui, "Egui", |ui| {
+                    ui.add(Checkbox::new(&mut ui_data.settings, "Egui Settings"));
+                    ui.add(Checkbox::new(&mut ui_data.inspection, "Egui Inspection"));
+                });
+
+                // TODO: Figure out better way to align right
+                let desired_size = ui.available_width();
+                ui.add_space(desired_size - 250.0);
 
 
+                menu::menu(ui, format!("State: {:?}", state.current() ), |ui| {
+
+                    ui.add(Checkbox::new(&mut ui_data.settings, "Menu"));
+                });
+
+                ui.label(format!("State: {:?}", state.current() ));
+                ui.horizontal(|ui| {
+                    if let Some(fps) = diagnostics.get(FrameTimeDiagnosticsPlugin::FPS) {
+                        if let Some(fps_value) = fps.value() {
+                            ui.label(format!("FPS: {:.2}", fps_value,));
+                        }
+                    }
+                });
             });
         });
-    });
 
     Window::new("Inspection")
         .open(&mut ui_data.inspection)
@@ -163,7 +177,6 @@ fn draw_editor(
             }
         });
 }
-
 
 fn draw_menu_item<T: 'static>(inspector_windows: &mut ResMut<InspectorWindows>, ui: &mut Ui) {
     let inspector_window_data = inspector_windows.window_data_mut::<T>();
