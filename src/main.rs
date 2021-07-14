@@ -1,26 +1,25 @@
-mod loading;
 mod audio;
 mod editor;
 mod game_state;
 mod helpers;
+mod loading;
 
 use std::fmt;
 
+use audio::InternalAudioPlugin;
 use bevy_egui::EguiPlugin;
 use editor::EditorPlugin;
 use game_state::GameStatePlugin;
 use loading::LoadingPlugin;
-use audio::InternalAudioPlugin;
 
 use bevy::ecs::{archetype::Archetypes, component::Components};
 use bevy::prelude::*;
 use bevy::reflect::TypeRegistration;
 
-use bevy_inspector_egui::{Inspectable, InspectorPlugin, widgets::ResourceInspector};
+use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
+use bevy_inspector_egui::{widgets::ResourceInspector, Inspectable, InspectorPlugin};
 use bevy_mod_picking::{DefaultPickingPlugins, PickingEvent};
-use bevy::diagnostic::{FrameTimeDiagnosticsPlugin};
 use strum::EnumIter;
-
 
 // This example game uses States to separate logic
 // See https://bevy-cheatbook.github.io/programming/states.html
@@ -31,7 +30,7 @@ pub enum GameState {
     Loading,
     // During this State the actual game logic is executed
     Pong,
-    TicTackToe,
+    TicTacToe,
     // Here the menu is drawn and waiting for player interaction
     Menu,
 }
@@ -43,7 +42,7 @@ impl fmt::Display for GameState {
         match *self {
             GameState::Loading => write!(f, "Loading"),
             GameState::Pong => write!(f, "Pong"),
-            GameState::TicTackToe => write!(f, "Tic-Tack-Toe"),
+            GameState::TicTacToe => write!(f, "Tic-Tack-Toe"),
             GameState::Menu => write!(f, "Menu"),
         }
     }
@@ -58,12 +57,9 @@ pub struct Data {
     seed: u64,
 }
 
-
-
-
 fn main() {
     let mut app = App::build();
-        app
+    app
         .insert_resource(Msaa { samples: 4 })
         .insert_resource(ClearColor(Color::rgb(0.4, 0.4, 0.4)))
         .insert_resource(WindowDescriptor {
@@ -97,7 +93,7 @@ fn main() {
 
         //app.add_plugin(LogDiagnosticsPlugin::default());
         ;
-        app.run()
+    app.run()
 }
 
 #[allow(dead_code)]

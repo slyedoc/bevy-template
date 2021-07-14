@@ -7,7 +7,7 @@ use bevy_mod_picking::PickingSystem;
 use crate::{helpers::cleanup_system, GameState};
 
 #[derive(Inspectable, Debug)]
-pub struct TicTackToeData {
+pub struct TicTacToeData {
     clear_color: Color,
 
     #[inspectable(min = 0.0, max = 300.0, label = "Size")]
@@ -28,7 +28,7 @@ struct Inspector {
     active: Option<Entity>,
 }
 
-impl FromWorld for TicTackToeData {
+impl FromWorld for TicTacToeData {
     fn from_world(world: &mut World) -> Self {
         let world = world.cell();
 
@@ -40,7 +40,7 @@ impl FromWorld for TicTackToeData {
             .get_resource_mut::<Assets<StandardMaterial>>()
             .expect("ResMut<Assets<StandardMaterial>> not found.");
 
-        TicTackToeData {
+        TicTacToeData {
             clear_color: Color::WHITE,
             board_material: materials.add(Color::BLACK.into()),
             o_material: materials.add(Color::BLUE.into()),
@@ -56,24 +56,24 @@ impl FromWorld for TicTackToeData {
     }
 }
 
-pub struct TicTackToePlugin;
+pub struct TicTacToePlugin;
 
-impl Plugin for TicTackToePlugin {
+impl Plugin for TicTacToePlugin {
     fn build(&self, app: &mut AppBuilder) {
-        app.add_plugin(InspectorPlugin::<TicTackToeData>::new().open(false))
-            .add_system_set(SystemSet::on_enter(GameState::TicTackToe).with_system(setup.system()))
-            .add_system_set(SystemSet::on_exit(GameState::TicTackToe).with_system(cleanup_system::<TicTackToe>.system()))
+        app.add_plugin(InspectorPlugin::<TicTacToeData>::new().open(false))
+            .add_system_set(SystemSet::on_enter(GameState::TicTacToe).with_system(setup.system()))
             .add_system_set(
-                SystemSet::on_update(GameState::TicTackToe).with_system(update.system()),
+                SystemSet::on_exit(GameState::TicTacToe)
+                    .with_system(cleanup_system::<TicTacToe>.system()),
             )
+            .add_system_set(SystemSet::on_update(GameState::TicTacToe).with_system(update.system()))
             .add_plugin(InspectorPlugin::<Inspector>::new())
             .add_system_to_stage(
-        CoreStage::PostUpdate,
-        maintain_inspected_entities
-            .system()
-            .after(PickingSystem::Focus)
-        );
-
+                CoreStage::PostUpdate,
+                maintain_inspected_entities
+                    .system()
+                    .after(PickingSystem::Focus),
+            );
     }
 }
 
@@ -97,7 +97,7 @@ fn maintain_inspected_entities(
 }
 
 #[derive(Copy, Clone, Eq, PartialEq, Debug)]
-struct TicTackToe;
+struct TicTacToe;
 
 #[derive(Copy, Clone, Eq, PartialEq, Debug)]
 enum Cell {
@@ -106,7 +106,7 @@ enum Cell {
 
 fn setup(
     mut commands: Commands,
-    data: Res<TicTackToeData>,
+    data: Res<TicTacToeData>,
     mut meshes: ResMut<Assets<Mesh>>,
     mut clear_color: ResMut<ClearColor>,
 ) {
@@ -121,11 +121,11 @@ fn setup(
     // Spawn Camera
     commands
         .spawn_bundle(UiCameraBundle::default())
-        .insert(TicTackToe);
+        .insert(TicTacToe);
 
     commands
         .spawn_bundle(OrthographicCameraBundle::new_2d())
-        .insert(TicTackToe);
+        .insert(TicTacToe);
 
     //Board Horizontal
     draw_line(
@@ -179,7 +179,7 @@ fn setup(
                     material: data.none_material.clone(),
                     ..Default::default()
                 })
-                .insert(TicTackToe)
+                .insert(TicTacToe)
                 .insert(Cell::None)
                 .insert(Name::new(format!("Cell {}x{}", i, j)))
                 .insert_bundle(PickableBundle::default());
@@ -204,13 +204,13 @@ fn draw_line<'a>(
             ..Default::default()
         })
         .insert(Name::new("Line"))
-        .insert(TicTackToe);
+        .insert(TicTacToe);
 }
 
 fn update(
     mut commands: Commands,
     mut clear_color: ResMut<ClearColor>,
-    data: Res<TicTackToeData>,
+    data: Res<TicTacToeData>,
     query: Query<(Entity, &Sprite, &Transform, &Interaction), (With<Cell>, Changed<Interaction>)>,
 ) {
     // TODO: Remove this hack, but it lets each state have its own background color

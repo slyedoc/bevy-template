@@ -65,13 +65,13 @@ fn loaded(
 }
 
 
-fn run_if_editor(
-    state: Res<State<EditorState>>
-) -> ShouldRun
-{
-    match state.current() {
-        EditorState::Loading => ShouldRun::Yes,
-        EditorState::Playing => ShouldRun::Yes,
-        EditorState::Disabled => ShouldRun::No,
-    }
-}
+// fn run_if_editor(
+//     state: Res<State<EditorState>>
+// ) -> ShouldRun
+// {
+//     match state.current() {
+//         EditorState::Loading => ShouldRun::Yes,
+//         EditorState::Playing => ShouldRun::Yes,
+//         EditorState::Disabled => ShouldRun::No,
+//     }
+// }

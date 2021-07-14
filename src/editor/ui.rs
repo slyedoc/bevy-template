@@ -9,15 +9,24 @@ use bevy_egui::{
 };
 use bevy_inspector_egui::{plugin::InspectorWindows, WorldInspectorParams};
 
-use crate::{Data, GameState, audio::AudioData, game_state::{PongData, TicTackToeData}};
+use crate::{
+    audio::AudioData,
+    game_state::{PongData, TicTacToeData},
+    Data, GameState,
+};
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
 
-use super::{EditorCamera, grid::GridData, run_if_editor};
+use super::{EditorCamera, EditorState, grid::GridData};
 use strum::IntoEnumIterator;
 
 #[derive(Inspectable)]
 pub struct UIData {
-    #[inspectable(min = 0.5, max = 2.0, speed = 0.01, label = "Scale Factor *warning* - may panic")]
+    #[inspectable(
+        min = 0.5,
+        max = 2.0,
+        speed = 0.01,
+        label = "Scale Factor *warning* - may panic"
+    )]
     scale: f64,
 
     camera: EditorCamera,
@@ -26,13 +35,11 @@ pub struct UIData {
     #[inspectable(ignore)]
     fps: bool,
 
-
     // egui information
     #[inspectable(ignore)]
     egui_settings: bool,
     #[inspectable(ignore)]
     egui_inspection: bool,
-
 }
 
 impl Default for UIData {
@@ -55,10 +62,13 @@ impl Plugin for UIPlugin {
         app.add_plugin(InspectorPlugin::<UIData>::new().open(false).shared())
             .add_system(update_ui_scale_factor.system())
             .add_system_set(
-                SystemSet::new()
-                    .with_run_criteria(run_if_editor.system())
-                    .with_system(draw_editor.system()),
+                SystemSet::on_update(EditorState::Playing).with_system(draw_editor.system()),
             );
+            // .add_system_set(
+            //     SystemSet::new()
+            //         .with_run_criteria(run_if_editor.system())
+            //         .with_system(draw_editor.system()),
+            // )
     }
 }
 
@@ -85,7 +95,7 @@ fn draw_editor(
     TopBottomPanel::top("top_panel")
         .min_height(100.0)
         .show(egui_ctx.ctx(), |ui| {
-            // The top panel is often a good place for a menu bar:
+            // The top panel is often a good place for a menu bar:  
 
             menu::bar(ui, |ui| {
                 menu::menu(ui, "App", |ui| {
@@ -101,7 +111,7 @@ fn draw_editor(
 
                 menu::menu(ui, "Resources", |ui| {
                     draw_menu_item::<Data>(&mut inspector_windows, ui);
-                    draw_menu_item::<TicTackToeData>(&mut inspector_windows, ui);
+                    draw_menu_item::<TicTacToeData>(&mut inspector_windows, ui);
                     draw_menu_item::<PongData>(&mut inspector_windows, ui);
                     draw_menu_item::<UIData>(&mut inspector_windows, ui);
                     draw_menu_item::<GridData>(&mut inspector_windows, ui);
@@ -110,18 +120,20 @@ fn draw_editor(
 
                 menu::menu(ui, "Egui", |ui| {
                     ui.add(Checkbox::new(&mut ui_data.egui_settings, "Egui Settings"));
-                    ui.add(Checkbox::new(&mut ui_data.egui_inspection, "Egui Inspection"));
+                    ui.add(Checkbox::new(
+                        &mut ui_data.egui_inspection,
+                        "Egui Inspection",
+                    ));
                 });
 
                 // TODO: Figure out better way to align right
                 let desired_size = ui.available_width();
                 ui.add_space(desired_size - 200.0);
 
-
-                menu::menu(ui, format!("State: {}", state.current() ), |ui| {
+                menu::menu(ui, format!("State: {}", state.current()), |ui| {
                     for s in GameState::iter() {
-                        match s  {
-                            GameState::Loading => {},
+                        match s {
+                            GameState::Loading => {}
                             _ => {
                                 // Don't set state to current state, will panic
                                 if s != *state.current() {
@@ -131,7 +143,7 @@ fn draw_editor(
                                 } else {
                                     ui.label(format!("{}", s));
                                 }
-                            },
+                            }
                         }
                     }
                 });
@@ -139,7 +151,7 @@ fn draw_editor(
                 ui.horizontal(|ui| {
                     if let Some(fps) = diagnostics.get(FrameTimeDiagnosticsPlugin::FPS) {
                         if let Some(fps_value) = fps.value() {
-                            ui.label(format!("FPS: {:.2}", fps_value,));
+                            ui.label(format!("FPS: {:.0}", fps_value,));
                         }
                     }
                 });
