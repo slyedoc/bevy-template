@@ -16,7 +16,7 @@ impl Plugin for MenuPlugin {
 }
 
 fn draw_menu(egui_ctx: Res<EguiContext>, mut exit: EventWriter<AppExit>) {
-    egui::Area::new("my_area")
+    egui::Window::new("my_area")
         .fixed_pos(egui::pos2(32.0, 32.0))
         .show(egui_ctx.ctx(), |ui| {
             ui.ctx().request_repaint();
@@ -57,8 +57,6 @@ fn draw_menu(egui_ctx: Res<EguiContext>, mut exit: EventWriter<AppExit>) {
         egui::Area::new("exit")
         .fixed_pos(egui::pos2(20.0, 300.0))
         .show(egui_ctx.ctx(), |ui| {
-            ui.vertical_centered(|ui| {});
-
             if ui.button("Exit").clicked() {
                 exit.send(AppExit);
             }

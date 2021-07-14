@@ -4,7 +4,8 @@ use bevy::{
     render::camera::PerspectiveProjection,
 };
 use bevy_mod_picking::PickingCameraBundle;
-use bevy_skybox::SkyboxCamera;
+
+use crate::helpers::cleanup_system;
 
 use super::EditorState;
 
@@ -12,27 +13,28 @@ pub struct CameraPlugin;
 
 impl Plugin for CameraPlugin {
     fn build(&self, app: &mut AppBuilder) {
-        app
-            .add_system_set(
-                SystemSet::on_enter(EditorState::Loading).with_system(spawn_cameras.system()),
-            )
-            .add_system_set(
-                SystemSet::on_exit(EditorState::Playing).with_system(clear_camera.system()),
-            )
-            .add_system(pan_orbit_camera.system());
+        // app
+        //     .add_system_set(
+        //         SystemSet::on_enter(EditorState::Loading).with_system(spawn_cameras.system()),
+        //     )
+        //     .add_system_set(
+        //         SystemSet::on_exit(EditorState::Playing).with_system(cleanup_system::<EditorCamera>.system()),
+        //     )
+        //     .add_system(pan_orbit_camera.system());
     }
 }
 
-/// Marker component for game camera
-
-/// Marker component for UI camera
-pub struct UiCamera;
+/// Marker component for editor game camera
+pub enum EditorCamera {
+    Ui,
+    Perspective,
+}
 
 /// Spawn a camera like this
 pub fn spawn_cameras(mut commands: Commands) {
     commands
         .spawn_bundle(UiCameraBundle::default())
-        .insert(UiCamera);
+        .insert(EditorCamera::Ui);
 
     // commands
     //     .spawn_bundle(OrthographicCameraBundle::new_2d())
@@ -51,13 +53,10 @@ pub fn spawn_cameras(mut commands: Commands) {
             ..Default::default()
         })
         .insert_bundle(PickingCameraBundle::default())
-        .insert(SkyboxCamera);
+
+        .insert(EditorCamera::Perspective);
 }
 
-
-fn clear_camera() {
-
-}
 /// Tags an entity as capable of panning and orbiting.
 pub struct PanOrbitCamera {
     /// The "focus point" to orbit around. It is automatically updated when panning the camera

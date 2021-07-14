@@ -17,9 +17,7 @@ use bevy::reflect::TypeRegistration;
 
 
 use bevy_inspector_egui::{Inspectable, InspectorPlugin, widgets::ResourceInspector};
-use bevy_mod_picking::{
-    InteractablePickingPlugin, PickingPlugin,
-};
+use bevy_mod_picking::{InteractablePickingPlugin, PickingEvent, PickingPlugin};
 use bevy::diagnostic::{FrameTimeDiagnosticsPlugin};
 
 
@@ -54,7 +52,8 @@ fn main() {
         .insert_resource(WindowDescriptor {
             width: 800.,
             height: 600.,
-            // TODO: Rename App
+            vsync: true,
+            resizable: true,
             title: "Bevy Template".to_string(),
             ..Default::default()
         })
@@ -63,6 +62,7 @@ fn main() {
         .add_plugins(DefaultPlugins)
         .add_plugin(FrameTimeDiagnosticsPlugin::default())
         .add_plugin(EguiPlugin)
+
 
         .add_plugin(PickingPlugin)
         .add_plugin(InteractablePickingPlugin)
@@ -75,11 +75,12 @@ fn main() {
         .add_plugin(LoadingPlugin::new().open(GameState::TicTackToe))
 
         // App State
-        .add_state(GameState::Loading);
+        .add_state(GameState::Loading)
         //.add_startup_system(print_resources.system());
+        .add_system_to_stage(CoreStage::PostUpdate, print_events.system())
 
         //app.add_plugin(LogDiagnosticsPlugin::default());
-
+        ;
         app.run()
 }
 
@@ -98,4 +99,10 @@ fn print_resources(archetypes: &Archetypes, components: &Components) {
     // sort list alphebetically
     r.sort();
     r.iter().for_each(|name| println!("{}", name));
+}
+
+pub fn print_events(mut events: EventReader<PickingEvent>) {
+    for event in events.iter() {
+        println!("This event happened! {:?}", event);
+    }
 }

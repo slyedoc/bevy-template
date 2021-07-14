@@ -2,7 +2,9 @@ pub mod data;
 pub use data::*;
 
 
-use super::{run_if_editor, EditorState};
+use crate::helpers::cleanup_system;
+
+use super::EditorState;
 use bevy::prelude::*;
 use bevy_inspector_egui::InspectorPlugin;
 use std::f32::consts::PI;
@@ -15,15 +17,9 @@ impl Plugin for GridPlugin {
             .add_plugin(InspectorPlugin::<GridData>::new().open(false))
             .add_system_set(
                 SystemSet::on_enter(EditorState::Loading).with_system(spawn_grids.system()),
-
             )
             .add_system_set(
-                SystemSet::on_exit(EditorState::Playing).with_system(clear_grid.system()),
-            )
-            .add_system_set(
-                SystemSet::new()
-                    .with_run_criteria(run_if_editor.system())
-                    .with_system(clear_grid_button.system()),
+                SystemSet::on_exit(EditorState::Playing).with_system(cleanup_system::<Grid>.system()),
             );
     }
 }
@@ -58,8 +54,11 @@ enum Orientation {
     Vertical,
 }
 
-struct Grid;
-struct GridLine;
+enum Grid {
+    Grid,
+    Line,
+}
+
 
 #[derive(Copy, Clone, Debug)]
 enum GridType {
@@ -68,31 +67,6 @@ enum GridType {
     Z,
 }
 
-fn clear_grid(
-    mut commands: Commands,
-    q: Query<Entity, With<Grid>>,
-) {
-
-
-    println!("clear grid");
-    for e in q.iter() {
-        commands.entity(e).despawn_recursive();
-    }
-
-}
-
-fn clear_grid_button(
-    mut commands: Commands,
-    mut ev_clear: EventReader<GridResetEventButton>,
-    data: Res<GridData>,
-    q: Query<Entity, With<Grid>>,
-) {
-    for _ in ev_clear.iter() {
-        for e in q.iter() {
-            commands.entity(e).despawn_recursive();
-        }
-    }
-}
 
 
 pub fn spawn_grids(
@@ -164,7 +138,7 @@ fn build_grid(commands: &mut Commands, grid: &Res<GridData>, grid_type: GridType
             ..Default::default()
         })
         .insert(grid_type) // so we get cleaned up
-        .insert(Grid)
+        .insert(Grid::Grid)
         .insert(Name::new(format!("Grid {:?}", grid_type)))
         .id();
 
@@ -182,7 +156,7 @@ fn build_grid(commands: &mut Commands, grid: &Res<GridData>, grid_type: GridType
                 size,
             ))
             .insert(grid_type)
-            .insert(GridLine)
+            .insert(Grid::Line)
             .id();
         lines.push(line);
     }

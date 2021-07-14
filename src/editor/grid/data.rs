@@ -49,7 +49,7 @@ impl FromWorld for GridData {
             grid_x_material: materials.add(Color::RED.into()),
             grid_y_material: materials.add(Color::GREEN.into()),
             grid_z_material: materials.add(Color::BLUE.into()),
-            line_thickness: 0.01,
+            line_thickness: 0.02,
             line_thickness_bold: 0.3,
             cell_size: 10.0,
             rebuild: InspectableButton::<GridResetEventButton>::new()

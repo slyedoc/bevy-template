@@ -1,5 +1,7 @@
 # Bevy Template
 
+*DO NOT USE!* This was me playing round with creating a simple editor egui, and learning bevy a bit better.  Also played around with how you would switch scenes, going to look at bevy_scenes, didnt know about it at the time.
+
 This is a project template using bevy and cummunity plugins.
 
 This will be a framework for myself and where I figure out how to use existing solutions.
