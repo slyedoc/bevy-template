@@ -1,16 +1,13 @@
-
-
 use crate::helpers::cleanup_system;
 
 use super::EditorState;
 use bevy::prelude::*;
 use bevy_inspector_egui::InspectorPlugin;
+use bevy_inspector_egui::{widgets::InspectableButton, Inspectable};
 use std::f32::consts::PI;
-use bevy_inspector_egui::{Inspectable, widgets::InspectableButton};
 
 #[derive(Inspectable, Debug)]
 pub struct GridData {
-
     #[inspectable()]
     pub size: (u32, u32, u32),
 
@@ -32,7 +29,7 @@ pub struct GridData {
     pub line_thickness_bold: f32,
 
     #[inspectable(text = "Rebuild")]
-    rebuild: InspectableButton<GridResetEventButton>
+    rebuild: InspectableButton<GridResetEventButton>,
 }
 
 impl FromWorld for GridData {
@@ -56,11 +53,10 @@ impl FromWorld for GridData {
             line_thickness: 0.02,
             line_thickness_bold: 0.3,
             cell_size: 100.0,
-            rebuild: InspectableButton::<GridResetEventButton>::new()
+            rebuild: InspectableButton::<GridResetEventButton>::new(),
         }
     }
 }
-
 
 pub struct GridPlugin;
 
@@ -70,13 +66,14 @@ impl Plugin for GridPlugin {
             .add_event::<GridClearEvent>()
             .add_plugin(InspectorPlugin::<GridData>::new().open(false))
             .add_system_set(
-                SystemSet::on_enter(EditorState::Loading).with_system(spawn_grids.system()),
+                SystemSet::on_enter(EditorState::Loading).with_system(setup.system()),
             )
             .add_system_set(
-                SystemSet::on_update(EditorState::Playing).with_system(rebuild.system()),
+                SystemSet::on_update(EditorState::Playing).with_system(rebuild_button.system()),
             )
             .add_system_set(
-                SystemSet::on_exit(EditorState::Playing).with_system(cleanup_system::<Grid>.system()),
+                SystemSet::on_exit(EditorState::Playing)
+                    .with_system(cleanup_system::<Grid>.system()),
             );
     }
 }
@@ -116,7 +113,6 @@ enum Grid {
     Line,
 }
 
-
 #[derive(Copy, Clone, Debug)]
 enum GridType {
     X,
@@ -124,25 +120,20 @@ enum GridType {
     Z,
 }
 
+pub fn setup(mut commands: Commands, grid: Res<GridData>) {
+    spawn_grid(&grid, &mut commands);
+}
 
-
-pub fn spawn_grids(
-    mut commands: Commands,
-    grid: Res<GridData>,
-) {
-    println!("spawn");
-
-        if grid.show_x_grid {
-            build_grid(&mut commands, &grid, GridType::X);
-        }
-
-        if grid.show_y_grid {
-            build_grid(&mut commands, &grid, GridType::Y);
-        }
-
-        if grid.show_z_grid {
-            build_grid(&mut commands, &grid, GridType::Z);
-        }
+fn spawn_grid(grid: &Res<GridData>, commands: &mut Commands) {
+    if grid.show_x_grid {
+        build_grid( commands, grid, GridType::X);
+    }
+    if grid.show_y_grid {
+        build_grid( commands, grid, GridType::Y);
+    }
+    if grid.show_z_grid {
+        build_grid( commands, grid, GridType::Z);
+    }
 }
 
 fn build_grid(commands: &mut Commands, grid: &Res<GridData>, grid_type: GridType) -> Entity {
@@ -281,29 +272,18 @@ fn build_gridline(
     }
 }
 
-fn rebuild(
+fn rebuild_button(
     mut commands: Commands,
     grid: Res<GridData>,
     mut ev_reset: EventReader<GridResetEventButton>,
     q: Query<Entity, With<Grid>>,
 ) {
-     for _ in ev_reset.iter() {
-        println!("respawn");
-
+    for _ in ev_reset.iter() {
         for e in q.iter() {
             commands.entity(e).despawn_recursive();
         }
 
-        if grid.show_x_grid {
-            build_grid(&mut commands, &grid, GridType::X);
-        }
+        spawn_grid(&grid, &mut commands);
 
-        if grid.show_y_grid {
-            build_grid(&mut commands, &grid, GridType::Y);
-        }
-
-        if grid.show_z_grid {
-            build_grid(&mut commands, &grid, GridType::Z);
-        }
-     }
+    }
 }

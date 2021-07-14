@@ -2,6 +2,7 @@ use bevy::prelude::*;
 use bevy_inspector_egui::Inspectable;
 use bevy_inspector_egui::InspectorPlugin;
 use bevy_mod_picking::PickableBundle;
+use bevy_mod_picking::PickingSystem;
 
 use crate::{helpers::cleanup_system, GameState};
 
@@ -70,9 +71,9 @@ impl Plugin for TicTackToePlugin {
         CoreStage::PostUpdate,
         maintain_inspected_entities
             .system()
-            .after(bevy_mod_picking::PickingSystem::Focus),
-    )        // PickingPlugin provides core picking systems and must be registered first
-            ;
+            .after(PickingSystem::Focus)
+        );
+
     }
 }
 

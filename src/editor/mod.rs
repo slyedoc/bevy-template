@@ -60,6 +60,8 @@ fn loaded(
     if state.current().eq(&EditorState::Loading) {
         state.set(EditorState::Playing).expect("Editor state didnt set in loaded.");
     }
+
+    
 }
 
 

@@ -3,20 +3,59 @@ name = "bevy-template" # TODO: Rename
 version = "0.1.0"
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
-bevy = { version = "0.5.0" }
-bevy_egui = "0.6.0"
-#emath = "0.13.0" # Math lib for egui, bevy_egui reexports it
-bevy-inspector-egui = { path = "../bevy-inspector-egui" }
-#bevy-inspector-egui = { git = "https://github.com/slyedoc/bevy-inspector-egui.git" }
-bevy_mod_picking = "0.4.0"
-bevy_input_actionmap = { git = "https://github.com/lightsoutgames/bevy_input_actionmap.git" }
-bevy_kira_audio = "0.5.1"
-bevy_asset_loader = "0.4.0"
-bevycheck = "0.1.4"
+bevy = { git = "https://github.com/bevyengine/bevy", branch = "main", default-features = false, features = [
+    "bevy_audio",
+    "bevy_dynamic_plugin",
+    "bevy_gilrs",
+    "bevy_gltf",
+    "bevy_wgpu",
+    "bevy_winit",
+    "render",
+    # "png",
+    # "hdr",
+    "mp3",
+    "x11",
+    "bevy_dylib",
+]}
+bevy_egui = { git = "https://github.com/jakobhellermann/bevy_egui", branch = "bevy-main", default-features = false, features = ["open_url"] }
+bevy-inspector-egui = { git = "https://github.com/jakobhellermann/bevy-inspector-egui"}
+bevy_mod_picking = { git = "https://github.com/aevyrie/bevy_mod_picking" }
+bevy_input_actionmap = { git = "https://github.com/lightsoutgames/bevy_input_actionmap" }
+bevy_kira_audio = { git = "https://github.com/NiklasEi/bevy_kira_audio", branch = "bevy_main", features = [ "ogg", "mp3" ] }
+bevy_asset_loader = { git = "https://github.com/NiklasEi/bevy_asset_loader", branch = "bevy_main" }
 bevy_skybox = "0.4.0"
-enum-iter = { git = "https://github.com/cbreeden/enum-iter.git" }
+strum = { version = "0.21", features = ["derive"] }
+
+
+[dev-dependencies]
+bevycheck = "0.1.4"
+
 [profile.dev]
 opt-level = 1
+
+
+
+# Below are patches to different repos to use bevy git main repo and any updates they required
+
+# Setup to use bevy_main
+[patch.crates-io]
+bevycheck = { git = "https://github.com/slyedoc/bevycheck" }
+bevy_skybox = { git = "https://github.com/slyedoc/bevy_skybox" }
+
+# Setup to use bevy_main
+[patch.'https://github.com/lightsoutgames/bevy_input_actionmap']
+bevy_input_actionmap = { git = "https://github.com/slyedoc/bevy_input_actionmap" }
+
+# Added more support for controlling windows
+[patch.'https://github.com/jakobhellermann/bevy-inspector-egui']
+# bevy-inspector-egui = { path = "../bevy-inspector-egui", default-features = false, features = ["open_url"] }
+bevy-inspector-egui = { git = "https://github.com/slyedoc/bevy-inspector-egui", default-features = false, features = ["open_url"] }
+
+# Setup to use bevy_main
+[patch.'https://github.com/NiklasEi/bevy_asset_loader']
+bevy_asset_loader = { git = "https://github.com/slyedoc/bevy_asset_loader", branch = "bevy_main" }
+
+# Setup to use bevy_main
+[patch.'https://github.com/NiklasEi/bevy_kira_audio']
+bevy_kira_audio = { git = "https://github.com/slyedoc/bevy_kira_audio", branch = "bevy_main", features = [ "ogg", "mp3" ] }

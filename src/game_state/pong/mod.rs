@@ -15,7 +15,6 @@ use crate::{helpers::cleanup_system, GameState};
 use self::ball::{ball_collision_system, ball_movement_system, Ball};
 use self::goal::{goal_collision_system, Goal};
 use self::paddle::{paddle_movement_system, Paddle};
-use self::score::Score;
 use self::wall::Wall;
 
 #[derive(Inspectable, Debug)]
@@ -46,10 +45,14 @@ impl Plugin for PongPlugin {
     fn build(&self, app: &mut AppBuilder) {
         app.insert_resource(score::Score::default())
             .add_plugin(InspectorPlugin::<PongData>::new().open(false))
-            .add_system_set(SystemSet::on_enter(GameState::Pong).with_system(setup.system())
-            .with_system(window_resize_listener.system()))
+            .add_system_set(
+                SystemSet::on_enter(GameState::Pong)
+                    .with_system(setup.system())
+                    .with_system(window_resize_listener.system()),
+            )
             .add_system_set(
                 SystemSet::on_update(GameState::Pong)
+                    .with_system(update_system.system())
                     .with_system(ball_movement_system.system())
                     .with_system(paddle_movement_system.system())
                     .with_system(window_resize_listener.system())
@@ -57,7 +60,7 @@ impl Plugin for PongPlugin {
                     .with_system(goal_collision_system.system()),
             )
             .add_system_set(
-                SystemSet::on_exit(GameState::Pong).with_system(cleanup_system::<Pong>.system())
+                SystemSet::on_exit(GameState::Pong).with_system(cleanup_system::<Pong>.system()),
             );
     }
 
@@ -102,20 +105,27 @@ fn setup(
         .spawn()
         .insert_bundle(UiCameraBundle::default())
         .insert(Pong);
-    ball::spawn_ball(&mut commands);
-    paddle::spawn_paddles(&mut commands);
-    wall::spawn_walls(&mut commands);
-    goal::spawn_goals(&mut commands);
+    ball::spawn_ball(&mut commands, data.primary_material.clone());
+    paddle::spawn_paddles(&mut commands, data.primary_material.clone());
+    wall::spawn_walls(&mut commands, data.primary_material.clone());
+    goal::spawn_goals(&mut commands, data.primary_material.clone());
     score::spawn_score_board(&mut commands, &asset_server);
 
+    // Update our background
     clear_color.0 = data.background;
 
+    // TODO: This is a hack to reuse the logic in window_resize_listener, should pass size into, to constructors
     let window = windows.get_primary();
     window_resize.send(WindowResized {
         id: window.unwrap().id(),
         width: window_desc.width,
         height: window_desc.height,
     });
+}
+// TODO: This entire system is only needed because I want really time feedback in inspector
+// Can't use 
+fn update_system(data: Res<PongData>, mut clear_color: ResMut<ClearColor>) {
+    clear_color.0 = data.background;
 }
 
 fn window_resize_listener(
@@ -126,14 +136,8 @@ fn window_resize_listener(
         Query<(&mut Sprite, &mut Transform, &Goal, &Player)>,
         Query<(&mut Sprite, &mut Transform, &mut Ball)>,
     )>,
-    score: Res<Score>,
 ) {
     if let Some(resize_event) = resize_reader.iter().last() {
-        println!("Score: {}", *score);
-        let width = resize_event.width;
-        let height = resize_event.height;
-        println!("Window resized to {}x{}", width, height);
-
         let paddles = query_set.q0_mut();
         for (mut sprite, mut transform, mut paddle, player) in paddles.iter_mut() {
             paddle.update_after_window_resize(

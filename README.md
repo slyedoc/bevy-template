@@ -37,7 +37,7 @@ I have removed it for now, though I do plan on adding it back.  I want to look i
 * [bevy_mod_picking](https://github.com/aevyrie/bevy_mod_picking) plugin for 3D mouse picking
 * [bevy_asset_loader](https://github.com/NiklasEi/bevy_asset_loader) reduces boilerplate when loading game assets
 * [bevycheck](https://github.com/jakobhellermann/bevycheck) provides handy debug information for bevy systems
-  * put ```#[bevycheck::system]``` above a system to get some helpful debugging information(remove after use, will panic if you leave it in) 
+  * put ```#[bevycheck::system]``` above a system to get some helpful debugging information(remove after use, will panic if you leave it in)
 * [bevy_skybox]
 
 ## Github Features
@@ -45,3 +45,11 @@ I have removed it for now, though I do plan on adding it back.  I want to look i
 This repo has a [release workflow](.github/workflows/release.yaml) setup that will build releases and publish them on github.com
 
 For more information see [Workflow and Tags](docs/workflows.md)
+
+## Tricks
+
+It can be hard to figure out what crate is using what version of bevy, this command was finally how i tracked it down
+
+```bash
+cargo tree --format "{p}{r}" | grep --color=always -e "^" -e "bevy#d8"
+```

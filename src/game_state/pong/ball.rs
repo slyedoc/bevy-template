@@ -2,10 +2,11 @@ use super::{Collider, Pong};
 use bevy::core::{Name, Time};
 use bevy::ecs::system::{Commands, Query, Res};
 use bevy::math::{Vec2, Vec3};
+use bevy::prelude::Handle;
 use bevy::sprite::collide_aabb::collide;
 use bevy::sprite::collide_aabb::Collision;
 use bevy::sprite::entity::SpriteBundle;
-use bevy::sprite::Sprite;
+use bevy::sprite::{ColorMaterial, Sprite};
 use bevy::transform::components::Transform;
 use bevy::window::WindowResized;
 
@@ -44,10 +45,13 @@ impl Default for Ball {
 	}
 }
 
-pub fn spawn_ball(commands: &mut Commands) {
+pub fn spawn_ball(commands: &mut Commands, material: Handle<ColorMaterial>) {
 	commands
 		.spawn()
-		.insert_bundle(SpriteBundle::default())
+		.insert_bundle(SpriteBundle {
+            material: material,
+            ..Default::default()
+        })
 		.insert(Ball::default())
         .insert(Name::new("Ball"))
         .insert(Pong);

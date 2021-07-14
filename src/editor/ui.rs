@@ -12,28 +12,36 @@ use bevy_inspector_egui::{plugin::InspectorWindows, WorldInspectorParams};
 use crate::{Data, GameState, audio::AudioData, game_state::{PongData, TicTackToeData}};
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
 
-use super::{grid::GridData, run_if_editor};
+use super::{EditorCamera, grid::GridData, run_if_editor};
+use strum::IntoEnumIterator;
 
 #[derive(Inspectable)]
 pub struct UIData {
     #[inspectable(min = 0.5, max = 2.0, speed = 0.01, label = "Scale Factor *warning* - may panic")]
     scale: f64,
 
-    // window state information
-    #[inspectable(ignore)]
-    settings: bool,
-    #[inspectable(ignore)]
-    inspection: bool,
+    camera: EditorCamera,
+
+    // Window Information
     #[inspectable(ignore)]
     fps: bool,
+
+
+    // egui information
+    #[inspectable(ignore)]
+    egui_settings: bool,
+    #[inspectable(ignore)]
+    egui_inspection: bool,
+
 }
 
 impl Default for UIData {
     fn default() -> Self {
         UIData {
             scale: 1.5,
-            settings: false,
-            inspection: false,
+            camera: EditorCamera::Perspective,
+            egui_settings: false,
+            egui_inspection: false,
             fps: false,
         }
     }
@@ -101,8 +109,8 @@ fn draw_editor(
                 });
 
                 menu::menu(ui, "Egui", |ui| {
-                    ui.add(Checkbox::new(&mut ui_data.settings, "Egui Settings"));
-                    ui.add(Checkbox::new(&mut ui_data.inspection, "Egui Inspection"));
+                    ui.add(Checkbox::new(&mut ui_data.egui_settings, "Egui Settings"));
+                    ui.add(Checkbox::new(&mut ui_data.egui_inspection, "Egui Inspection"));
                 });
 
                 // TODO: Figure out better way to align right
@@ -111,10 +119,11 @@ fn draw_editor(
 
 
                 menu::menu(ui, format!("State: {}", state.current() ), |ui| {
-                    for s in GameState::enum_iter() {
+                    for s in GameState::iter() {
                         match s  {
                             GameState::Loading => {},
                             _ => {
+                                // Don't set state to current state, will panic
                                 if s != *state.current() {
                                     if ui.button(format!("{}", s)).clicked() {
                                         state.set(s).unwrap();
@@ -138,14 +147,14 @@ fn draw_editor(
         });
 
     Window::new("Inspection")
-        .open(&mut ui_data.inspection)
+        .open(&mut ui_data.egui_inspection)
         .scroll(true)
         .show(egui_ctx.ctx(), |ui| {
             egui_ctx.ctx().inspection_ui(ui);
         });
 
     Window::new("Settings")
-        .open(&mut ui_data.settings)
+        .open(&mut ui_data.egui_settings)
         .scroll(true)
         .show(egui_ctx.ctx(), |ui| {
             egui_ctx.ctx().settings_ui(ui);

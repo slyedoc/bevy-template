@@ -2,6 +2,8 @@ use super::{Collider, Pong};
 use bevy::core::Name;
 use bevy::ecs::system::Commands;
 use bevy::math::{Vec2, Vec3};
+use bevy::prelude::Handle;
+use bevy::sprite::ColorMaterial;
 use bevy::sprite::entity::SpriteBundle;
 use bevy::window::WindowResized;
 
@@ -28,15 +30,18 @@ impl Wall {
 	}
 }
 
-pub fn spawn_walls(commands: &mut Commands) {
-	spawn_wall(commands, Wall::Top);
-	spawn_wall(commands, Wall::Bottom);
+pub fn spawn_walls(commands: &mut Commands, material: Handle<ColorMaterial>) {
+	spawn_wall(commands, Wall::Top, material.clone());
+	spawn_wall(commands, Wall::Bottom, material.clone());
 }
 
-fn spawn_wall(commands: &mut Commands, wall: Wall) {
+fn spawn_wall(commands: &mut Commands, wall: Wall, material: Handle<ColorMaterial>) {
 	commands
 		.spawn()
-		.insert_bundle(SpriteBundle::default())
+		.insert_bundle(SpriteBundle {
+            material: material,
+            ..Default::default()
+        })
 		.insert(wall)
 		.insert(Collider)
         .insert(Name::new( "Wall"))

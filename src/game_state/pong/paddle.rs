@@ -4,6 +4,8 @@ use bevy::ecs::system::{Commands, Query, Res};
 use bevy::input::keyboard::KeyCode;
 use bevy::input::Input;
 use bevy::math::{Vec2, Vec3};
+use bevy::prelude::Handle;
+use bevy::sprite::ColorMaterial;
 use bevy::sprite::entity::SpriteBundle;
 use bevy::transform::components::Transform;
 use bevy::window::WindowResized;
@@ -40,15 +42,18 @@ impl Paddle {
 	}
 }
 
-pub fn spawn_paddles(commands: &mut Commands) {
-	spawn_paddle(commands, Player::Left);
-	spawn_paddle(commands, Player::Right);
+pub fn spawn_paddles(commands: &mut Commands, material: Handle<ColorMaterial>) {
+	spawn_paddle(commands, Player::Left, material.clone());
+	spawn_paddle(commands, Player::Right, material.clone());
 }
 
-fn spawn_paddle(commands: &mut Commands, player: Player) {
+fn spawn_paddle(commands: &mut Commands, player: Player, material: Handle<ColorMaterial>) {
 	commands
 		.spawn()
-		.insert_bundle(SpriteBundle::default())
+		.insert_bundle(SpriteBundle {
+            material: material,
+            ..Default::default()
+        })
 		.insert(Paddle::default())
 		.insert(player)
 		.insert(Collider)

@@ -16,17 +16,16 @@ use bevy::ecs::{archetype::Archetypes, component::Components};
 use bevy::prelude::*;
 use bevy::reflect::TypeRegistration;
 
-#[macro_use] extern crate enum_iter;
-
 use bevy_inspector_egui::{Inspectable, InspectorPlugin, widgets::ResourceInspector};
-use bevy_mod_picking::{InteractablePickingPlugin, PickingEvent, PickingPlugin};
+use bevy_mod_picking::{DefaultPickingPlugins, PickingEvent};
 use bevy::diagnostic::{FrameTimeDiagnosticsPlugin};
+use strum::EnumIter;
 
 
 // This example game uses States to separate logic
 // See https://bevy-cheatbook.github.io/programming/states.html
 // Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
-#[derive(Clone, Eq, PartialEq, Debug, Hash,  EnumIterator)]
+#[derive(Clone, Eq, PartialEq, Debug, Hash, EnumIter)]
 pub enum GameState {
     // During the loading State the LoadingPlugin will load our assets
     Loading,
@@ -82,15 +81,14 @@ fn main() {
         .add_plugin(EguiPlugin)
 
 
-        .add_plugin(PickingPlugin)
-        .add_plugin(InteractablePickingPlugin)
+        .add_plugin(DefaultPickingPlugins)
         .add_plugin(InspectorPlugin::<Data>::new().open(false))
         // Add our plugins
         .add_plugin(EditorPlugin)
         .add_plugin(InternalAudioPlugin)
         .add_plugin(GameStatePlugin)
         // Load our asses then load the main menu
-        .add_plugin(LoadingPlugin::new().open(GameState::Pong))
+        .add_plugin(LoadingPlugin::new().open(GameState::Menu))
 
         // App State
         .add_state(GameState::Loading)

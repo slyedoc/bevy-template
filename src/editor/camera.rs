@@ -6,6 +6,7 @@ use bevy::{
     render::camera::PerspectiveProjection,
 };
 use bevy_mod_picking::PickingCameraBundle;
+use bevy_inspector_egui::{ Inspectable };
 
 use crate::helpers::cleanup_system;
 
@@ -27,7 +28,7 @@ impl Plugin for CameraPlugin {
 }
 
 /// Marker component for editor game camera
-#[allow(dead_code)]
+#[derive(Inspectable, Debug)]
 pub enum EditorCamera {
     Ui,
     Perspective,
@@ -44,13 +45,18 @@ pub fn spawn_cameras(mut commands: Commands) {
     //     .spawn_bundle(OrthographicCameraBundle::new_2d())
     //     .insert(MainCamera);
 
-    let translation = Vec3::new(100.0, 100.0, 300.0);
-    let radius = translation.length();
+
+    let location = Vec3::new(100.0, 100.0, 600.0);
+    let radius = location.length();
 
     commands
         .spawn_bundle(PerspectiveCameraBundle {
-            
-            transform: Transform::from_translation(translation).looking_at(Vec3::ZERO, Vec3::Y),
+
+            transform: Transform::from_translation(location).looking_at(Vec3::ZERO, Vec3::Y),
+            perspective_projection: PerspectiveProjection {
+                far: f32::MAX,
+                ..Default::default()
+            },
             ..Default::default()
         })
         .insert(PanOrbitCamera {
@@ -82,7 +88,6 @@ impl Default for PanOrbitCamera {
 
 // This is from the bevy cheatbook
 /// Pan the camera with middle mouse click, zoom with scroll wheel, orbit with right mouse click.
-#[allow(dead_code)]
 pub fn pan_orbit_camera(
     windows: Res<Windows>,
     mut ev_motion: EventReader<MouseMotion>,
