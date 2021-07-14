@@ -12,7 +12,7 @@ use bevy_inspector_egui::{plugin::InspectorWindows, WorldInspectorParams};
 use crate::{Data, GameState, audio::AudioData, game_state::{PongData, TicTackToeData}};
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
 
-use super::{grid::data::GridData, run_if_editor};
+use super::{grid::GridData, run_if_editor};
 
 #[derive(Inspectable)]
 pub struct UIData {
@@ -67,7 +67,7 @@ fn update_ui_scale_factor(
 
 fn draw_editor(
     egui_ctx: Res<EguiContext>,
-    state: Res<State<GameState>>,
+    mut state: ResMut<State<GameState>>,
     mut exit: EventWriter<AppExit>,
     mut ui_data: ResMut<UIData>,
     mut world_inspection: ResMut<WorldInspectorParams>,
@@ -89,6 +89,9 @@ fn draw_editor(
                 menu::menu(ui, "Windows", |ui| {
                     ui.add(Checkbox::new(&mut world_inspection.enabled, "World"));
                     ui.add(Checkbox::new(&mut ui_data.fps, "FPS"));
+                });
+
+                menu::menu(ui, "Resources", |ui| {
                     draw_menu_item::<Data>(&mut inspector_windows, ui);
                     draw_menu_item::<TicTackToeData>(&mut inspector_windows, ui);
                     draw_menu_item::<PongData>(&mut inspector_windows, ui);
@@ -104,15 +107,26 @@ fn draw_editor(
 
                 // TODO: Figure out better way to align right
                 let desired_size = ui.available_width();
-                ui.add_space(desired_size - 250.0);
+                ui.add_space(desired_size - 200.0);
 
 
-                menu::menu(ui, format!("State: {:?}", state.current() ), |ui| {
-
-                    ui.add(Checkbox::new(&mut ui_data.settings, "Menu"));
+                menu::menu(ui, format!("State: {}", state.current() ), |ui| {
+                    for s in GameState::enum_iter() {
+                        match s  {
+                            GameState::Loading => {},
+                            _ => {
+                                if s != *state.current() {
+                                    if ui.button(format!("{}", s)).clicked() {
+                                        state.set(s).unwrap();
+                                    }
+                                } else {
+                                    ui.label(format!("{}", s));
+                                }
+                            },
+                        }
+                    }
                 });
 
-                ui.label(format!("State: {:?}", state.current() ));
                 ui.horizontal(|ui| {
                     if let Some(fps) = diagnostics.get(FrameTimeDiagnosticsPlugin::FPS) {
                         if let Some(fps_value) = fps.value() {

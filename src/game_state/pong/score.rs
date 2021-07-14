@@ -1,6 +1,7 @@
 use super::wall::Wall;
 use super::Pong;
 use bevy::asset::AssetServer;
+use bevy::core::Name;
 use bevy::ecs::system::{Commands, Res};
 use bevy::math::{Rect, Size};
 use bevy::text::TextStyle;
@@ -50,5 +51,6 @@ pub fn spawn_score_board(commands: &mut Commands, asset_server: &Res<AssetServer
 			..Default::default()
 		})
 		.insert(ScoreBoard)
+        .insert(Name::new( "Score Board"))
         .insert(Pong);
 }

@@ -1,5 +1,5 @@
 use super::{Collider, Pong};
-use bevy::core::Time;
+use bevy::core::{Name, Time};
 use bevy::ecs::system::{Commands, Query, Res};
 use bevy::math::{Vec2, Vec3};
 use bevy::sprite::collide_aabb::collide;
@@ -49,6 +49,7 @@ pub fn spawn_ball(commands: &mut Commands) {
 		.spawn()
 		.insert_bundle(SpriteBundle::default())
 		.insert(Ball::default())
+        .insert(Name::new("Ball"))
         .insert(Pong);
 }
 

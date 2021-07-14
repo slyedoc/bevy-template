@@ -49,6 +49,7 @@ fn actions(mut state: ResMut<State<GameState>>, input: Res<InputMap<Action>>, mu
         }
     }
 
+
     set_state(Action::Pong, GameState::Pong, &input, &mut state);
     set_state(Action::TicTackToe, GameState::TicTackToe, &input, &mut state);
 }

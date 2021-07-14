@@ -1,3 +1,5 @@
+
+
 use bevy::{
     input::mouse::{MouseMotion, MouseWheel},
     prelude::*,
@@ -13,24 +15,26 @@ pub struct CameraPlugin;
 
 impl Plugin for CameraPlugin {
     fn build(&self, app: &mut AppBuilder) {
-        // app
-        //     .add_system_set(
-        //         SystemSet::on_enter(EditorState::Loading).with_system(spawn_cameras.system()),
-        //     )
-        //     .add_system_set(
-        //         SystemSet::on_exit(EditorState::Playing).with_system(cleanup_system::<EditorCamera>.system()),
-        //     )
-        //     .add_system(pan_orbit_camera.system());
+        app
+            .add_system_set(
+                SystemSet::on_enter(EditorState::Loading).with_system(spawn_cameras.system()),
+            )
+            .add_system_set(
+                SystemSet::on_exit(EditorState::Playing).with_system(cleanup_system::<EditorCamera>.system()),
+            )
+            .add_system(pan_orbit_camera.system());
     }
 }
 
 /// Marker component for editor game camera
+#[allow(dead_code)]
 pub enum EditorCamera {
     Ui,
     Perspective,
 }
 
 /// Spawn a camera like this
+#[allow(dead_code)]
 pub fn spawn_cameras(mut commands: Commands) {
     commands
         .spawn_bundle(UiCameraBundle::default())
@@ -45,6 +49,7 @@ pub fn spawn_cameras(mut commands: Commands) {
 
     commands
         .spawn_bundle(PerspectiveCameraBundle {
+            
             transform: Transform::from_translation(translation).looking_at(Vec3::ZERO, Vec3::Y),
             ..Default::default()
         })
@@ -77,6 +82,7 @@ impl Default for PanOrbitCamera {
 
 // This is from the bevy cheatbook
 /// Pan the camera with middle mouse click, zoom with scroll wheel, orbit with right mouse click.
+#[allow(dead_code)]
 pub fn pan_orbit_camera(
     windows: Res<Windows>,
     mut ev_motion: EventReader<MouseMotion>,

@@ -1,6 +1,7 @@
 use super::ball::Ball;
 use super::score::Score;
 use super::{Player, Pong};
+use bevy::core::Name;
 use bevy::ecs::system::{Commands, Query, ResMut};
 use bevy::math::{Vec2, Vec3};
 use bevy::sprite::collide_aabb::collide;
@@ -47,6 +48,7 @@ fn spawn_goal(commands: &mut Commands, player: Player) {
 		.insert_bundle(SpriteBundle::default())
 		.insert(Goal)
 		.insert(player)
+        .insert(Name::new( format!("{:?} Goal", player)))
         .insert(Pong);
 }
 

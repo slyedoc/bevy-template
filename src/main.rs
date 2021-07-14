@@ -4,6 +4,8 @@ mod editor;
 mod game_state;
 mod helpers;
 
+use std::fmt;
+
 use bevy_egui::EguiPlugin;
 use editor::EditorPlugin;
 use game_state::GameStatePlugin;
@@ -14,7 +16,7 @@ use bevy::ecs::{archetype::Archetypes, component::Components};
 use bevy::prelude::*;
 use bevy::reflect::TypeRegistration;
 
-
+#[macro_use] extern crate enum_iter;
 
 use bevy_inspector_egui::{Inspectable, InspectorPlugin, widgets::ResourceInspector};
 use bevy_mod_picking::{InteractablePickingPlugin, PickingEvent, PickingPlugin};
@@ -24,7 +26,7 @@ use bevy::diagnostic::{FrameTimeDiagnosticsPlugin};
 // This example game uses States to separate logic
 // See https://bevy-cheatbook.github.io/programming/states.html
 // Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
-#[derive(Clone, Eq, PartialEq, Debug, Hash)]
+#[derive(Clone, Eq, PartialEq, Debug, Hash,  EnumIterator)]
 pub enum GameState {
     // During the loading State the LoadingPlugin will load our assets
     Loading,
@@ -35,6 +37,19 @@ pub enum GameState {
     Menu,
 }
 
+// Implement `Display` for `MinMax`.
+impl fmt::Display for GameState {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        // Use `self.number` to refer to each positional data point.
+        match *self {
+            GameState::Loading => write!(f, "Loading"),
+            GameState::Pong => write!(f, "Pong"),
+            GameState::TicTackToe => write!(f, "Tic-Tack-Toe"),
+            GameState::Menu => write!(f, "Menu"),
+        }
+    }
+}
+
 #[derive(Inspectable, Default)]
 pub struct Data {
     #[inspectable(label = "Background Color")]
@@ -43,6 +58,9 @@ pub struct Data {
     #[inspectable(min = 1169)]
     seed: u64,
 }
+
+
+
 
 fn main() {
     let mut app = App::build();
@@ -72,18 +90,19 @@ fn main() {
         .add_plugin(InternalAudioPlugin)
         .add_plugin(GameStatePlugin)
         // Load our asses then load the main menu
-        .add_plugin(LoadingPlugin::new().open(GameState::TicTackToe))
+        .add_plugin(LoadingPlugin::new().open(GameState::Pong))
 
         // App State
         .add_state(GameState::Loading)
         //.add_startup_system(print_resources.system());
-        .add_system_to_stage(CoreStage::PostUpdate, print_events.system())
+        .add_system_to_stage(CoreStage::PostUpdate, print_picking_events.system())
 
         //app.add_plugin(LogDiagnosticsPlugin::default());
         ;
         app.run()
 }
 
+#[allow(dead_code)]
 fn print_resources(archetypes: &Archetypes, components: &Components) {
     let mut r: Vec<String> = archetypes
         .resource()
@@ -101,7 +120,7 @@ fn print_resources(archetypes: &Archetypes, components: &Components) {
     r.iter().for_each(|name| println!("{}", name));
 }
 
-pub fn print_events(mut events: EventReader<PickingEvent>) {
+pub fn print_picking_events(mut events: EventReader<PickingEvent>) {
     for event in events.iter() {
         println!("This event happened! {:?}", event);
     }

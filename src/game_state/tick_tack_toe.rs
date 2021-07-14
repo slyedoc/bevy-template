@@ -18,7 +18,7 @@ pub struct TicTackToeData {
     board_material: Handle<ColorMaterial>,
     x_material: Handle<ColorMaterial>,
     o_material: Handle<ColorMaterial>,
-    none_material: Handle<ColorMaterial>,
+    none_material: Handle<StandardMaterial>,
 }
 
 #[derive(Inspectable, Default)]
@@ -35,12 +35,20 @@ impl FromWorld for TicTackToeData {
             .get_resource_mut::<Assets<ColorMaterial>>()
             .expect("ResMut<Assets<ColorMaterial>> not found.");
 
+        let mut standard_materials = world
+            .get_resource_mut::<Assets<StandardMaterial>>()
+            .expect("ResMut<Assets<StandardMaterial>> not found.");
+
         TicTackToeData {
             clear_color: Color::WHITE,
             board_material: materials.add(Color::BLACK.into()),
             o_material: materials.add(Color::BLUE.into()),
             x_material: materials.add(Color::RED.into()),
-            none_material: materials.add(Color::ANTIQUE_WHITE.into()),
+            none_material: standard_materials.add(StandardMaterial {
+                base_color: Color::ANTIQUE_WHITE.into(),
+                unlit: true,
+                ..Default::default()
+            }),
             size: 400.0,
             line_thickness: 10.0,
         }
@@ -88,48 +96,48 @@ fn maintain_inspected_entities(
 }
 
 #[derive(Copy, Clone, Eq, PartialEq, Debug)]
-enum TicTackToe {
-    Board,
-    Cell,
-    Camera,
-}
+struct TicTackToe;
 
 #[derive(Copy, Clone, Eq, PartialEq, Debug)]
 enum Cell {
     None,
-    X,
-    O,
 }
 
-fn setup(mut commands: Commands, data: Res<TicTackToeData>) {
+fn setup(
+    mut commands: Commands,
+    data: Res<TicTackToeData>,
+    mut meshes: ResMut<Assets<Mesh>>,
+    mut clear_color: ResMut<ClearColor>,
+) {
+    clear_color.0 = data.clear_color;
 
     let board_center_offset = Vec2::new(0.0, 0.0);
     let board_left_edge: f32 = board_center_offset.x - 0.5 * data.size;
     let board_bot_edge: f32 = board_center_offset.y - 0.5 * data.size;
 
-    let offset = data.size / 3.0;
+    let cell_size = data.size / 3.0;
 
     // Spawn Camera
     commands
         .spawn_bundle(UiCameraBundle::default())
-        .insert(TicTackToe::Camera);
+        .insert(TicTackToe);
 
     commands
         .spawn_bundle(OrthographicCameraBundle::new_2d())
-        .insert(TicTackToe::Camera);
+        .insert(TicTackToe);
 
     //Board Horizontal
     draw_line(
         &mut commands,
         Vec2::new(data.line_thickness, data.size),
-        Vec2::new(board_left_edge + offset, 0.0),
+        Vec2::new(board_left_edge + cell_size, 0.0),
         &data.board_material,
     );
 
     draw_line(
         &mut commands,
         Vec2::new(data.line_thickness, data.size),
-        Vec2::new(board_left_edge + (offset * 2.0), 0.0),
+        Vec2::new(board_left_edge + (cell_size * 2.0), 0.0),
         &data.board_material,
     );
 
@@ -137,31 +145,43 @@ fn setup(mut commands: Commands, data: Res<TicTackToeData>) {
     draw_line(
         &mut commands,
         Vec2::new(data.size, data.line_thickness),
-        Vec2::new(0.0, board_left_edge + offset),
+        Vec2::new(0.0, board_left_edge + cell_size),
         &data.board_material,
     );
 
     draw_line(
         &mut commands,
         Vec2::new(data.size, data.line_thickness),
-        Vec2::new(0.0, board_left_edge + (offset * 2.0)),
+        Vec2::new(0.0, board_left_edge + (cell_size * 2.0)),
         &data.board_material,
     );
 
-    // Board Cells
+    let mesh = meshes.add(Mesh::from(shape::Quad {
+        size: Vec2::new(cell_size, cell_size),
+        flip: false,
+    }));
+
     for i in 0..=2 {
         for j in 0..=2 {
-            draw_cell(
-                &mut commands,
-                Vec2::new(offset, offset),
-                Vec3::new(
-                    board_left_edge + (offset * 0.5) + offset * i as f32,
-                    board_bot_edge + (offset * 0.5) + offset * j as f32,
-                    0.0
-                ),
-                &data,
-                Cell::None,
-            );
+            commands
+                .spawn_bundle(PbrBundle {
+                    transform: Transform {
+                        translation: Vec3::new(
+                            board_left_edge + (cell_size * 0.5) + cell_size * i as f32,
+                            board_bot_edge + (cell_size * 0.5) + cell_size * j as f32,
+                            0.0,
+                        ),
+                        scale: Vec3::splat(0.8),
+                        ..Default::default()
+                    },
+                    mesh: mesh.clone(),
+                    material: data.none_material.clone(),
+                    ..Default::default()
+                })
+                .insert(TicTackToe)
+                .insert(Cell::None)
+                .insert(Name::new(format!("Cell {}x{}", i, j)))
+                .insert_bundle(PickableBundle::default());
         }
     }
 }
@@ -182,66 +202,29 @@ fn draw_line<'a>(
             transform: Transform::from_xyz(pos.x, pos.y, 0.0),
             ..Default::default()
         })
-        .insert(TicTackToe::Board);
-}
-
-fn draw_cell<'a>(
-    commands: &'a mut Commands,
-    size: Vec2,
-    pos: Vec3,
-    data: &'a Res<TicTackToeData>,
-    cell_type: Cell,
-) {
-    let material = match cell_type {
-        Cell::None => data.none_material.clone(),
-        Cell::X => data.x_material.clone(),
-        Cell::O => data.o_material.clone(),
-    };
-
-    let mut cell = commands
-        .spawn_bundle(SpriteBundle {
-            sprite: Sprite {
-                size: size * 0.8,
-                ..Default::default()
-            },
-            material,
-            transform: Transform::from_xyz(pos.x, pos.y, 0.0),
-            ..Default::default()
-        });
-
-        cell.insert(TicTackToe::Cell)
-            .insert(Cell::None);
-
-        if cell_type == Cell::None {
-            cell.insert_bundle(PickableBundle::default());
-        }
-
+        .insert(Name::new("Line"))
+        .insert(TicTackToe);
 }
 
 fn update(
     mut commands: Commands,
     mut clear_color: ResMut<ClearColor>,
     data: Res<TicTackToeData>,
-    query: Query<(Entity, &Sprite, &Transform,  &Interaction), (With<Cell>, Changed<Interaction>)>,
+    query: Query<(Entity, &Sprite, &Transform, &Interaction), (With<Cell>, Changed<Interaction>)>,
 ) {
     // TODO: Remove this hack, but it lets each state have its own background color
+
     clear_color.0 = data.clear_color;
 
-
-    let (entity, size, pos) = query
-    .iter()
-    .filter(|(_, _, _, interaction)| matches!(interaction, Interaction::Clicked))
-    .map(|(entity, s, t, _)| {
-        (Some(entity), s.size,  t.translation)
-    })
-    .next()
-    .unwrap_or_else(|| (None, Vec2::new(10.0, 10.0), Vec3::ZERO));
-
+    let (entity, _size, _pos) = query
+        .iter()
+        .filter(|(_, _, _, interaction)| matches!(interaction, Interaction::Clicked))
+        .map(|(entity, s, t, _)| (Some(entity), s.size, t.translation))
+        .next()
+        .unwrap_or_else(|| (None, Vec2::new(10.0, 10.0), Vec3::ZERO));
 
     if let Some(entity) = entity {
         commands.entity(entity).despawn_recursive();
-
-        draw_cell(&mut commands, size, pos, &data, Cell::O);
     }
-        //
+    //
 }

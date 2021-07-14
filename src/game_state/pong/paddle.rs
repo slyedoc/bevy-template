@@ -1,5 +1,5 @@
 use super::{Collider, Player, Pong};
-use bevy::core::Time;
+use bevy::core::{Name, Time};
 use bevy::ecs::system::{Commands, Query, Res};
 use bevy::input::keyboard::KeyCode;
 use bevy::input::Input;
@@ -52,6 +52,7 @@ fn spawn_paddle(commands: &mut Commands, player: Player) {
 		.insert(Paddle::default())
 		.insert(player)
 		.insert(Collider)
+        .insert(Name::new( format!("{:?} Paddle", player)))
         .insert(Pong);
 }
 

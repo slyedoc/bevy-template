@@ -1,4 +1,5 @@
 use super::{Collider, Pong};
+use bevy::core::Name;
 use bevy::ecs::system::Commands;
 use bevy::math::{Vec2, Vec3};
 use bevy::sprite::entity::SpriteBundle;
@@ -38,5 +39,6 @@ fn spawn_wall(commands: &mut Commands, wall: Wall) {
 		.insert_bundle(SpriteBundle::default())
 		.insert(wall)
 		.insert(Collider)
+        .insert(Name::new( "Wall"))
         .insert(Pong);
 }
