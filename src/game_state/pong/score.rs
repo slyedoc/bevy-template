@@ -4,13 +4,11 @@ use bevy::asset::AssetServer;
 use bevy::core::Name;
 use bevy::ecs::system::{Commands, Res};
 use bevy::math::{Rect, Size};
-use bevy::text::TextStyle;
-use bevy::text::{Text, TextSection};
-use bevy::ui::entity::TextBundle;
-use bevy::ui::{Style, Val};
+use bevy::prelude::*;
 use std::fmt::{Display, Formatter};
+use std::ops::Deref;
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct Score {
 	pub left: usize,
 	pub right: usize,
@@ -29,7 +27,7 @@ pub fn spawn_score_board(commands: &mut Commands, asset_server: &Res<AssetServer
 		.spawn()
 		.insert_bundle(TextBundle {
 			style: Style {
-				size: Size::new(Val::Px(100.0), Val::Px(50.0)),
+				size: Size::new(Val::Auto, Val::Px(50.0)),
 				// center
 				margin: Rect {
 					top: Val::Px(2.0 * Wall::THICKNESS),
@@ -46,11 +44,20 @@ pub fn spawn_score_board(commands: &mut Commands, asset_server: &Res<AssetServer
 						..Default::default()
 					},
 				}],
-				alignment: Default::default(),
+				alignment: TextAlignment {
+                    vertical: VerticalAlign::Top,
+                    horizontal: HorizontalAlign::Center,
+                }
 			},
 			..Default::default()
 		})
 		.insert(ScoreBoard)
         .insert(Name::new( "Score Board"))
         .insert(Pong);
+}
+
+pub fn update_score_board( score: Res<Score>, mut query: Query<&mut Text>) {
+    let mut text = query.single_mut().unwrap();
+    text.sections[0].value = format!("{}", score.deref() );
+
 }

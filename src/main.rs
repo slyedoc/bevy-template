@@ -66,7 +66,7 @@ pub struct Data {
 fn main() {
     let mut app = App::build();
     app
-
+        .add_state(GameState::Loading)
         .insert_resource(Msaa { samples: 4 })
         .insert_resource(ClearColor(Color::rgb(0.4, 0.4, 0.4)))
         .insert_resource(WindowDescriptor {
@@ -93,8 +93,8 @@ fn main() {
         // Load our asses then load the main menu
         .add_plugin(LoadingPlugin::new().open(GameState::Menu))
 
-        // App State
-        .add_state(GameState::Loading)
+
+
         //.add_startup_system(print_resources.system());
         .add_system_to_stage(CoreStage::PostUpdate, print_picking_events.system())
 

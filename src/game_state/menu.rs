@@ -28,7 +28,10 @@ fn draw_menu(
             if ui.button("Pong").clicked() { state.set(GameState::Pong).unwrap(); }
             if ui.button("Tic-Tac-Toe").clicked() { state.set(GameState::TicTacToe).unwrap(); }
             ui.separator();
-            ui.label("Settings");
+            if ui.button("Settings").clicked() { 
+                
+            }
+
             ui.separator();
             if ui.button("Exit").clicked() { exit.send(AppExit); }
         });

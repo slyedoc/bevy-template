@@ -25,7 +25,8 @@ bevy_input_actionmap = { git = "https://github.com/lightsoutgames/bevy_input_act
 bevy_kira_audio = { git = "https://github.com/NiklasEi/bevy_kira_audio", branch = "bevy_main", features = [ "mp3" ] }
 bevy_asset_loader = { git = "https://github.com/NiklasEi/bevy_asset_loader", branch = "bevy_main" }
 bevy_skybox = "0.4.0"
-strum = { version = "0.21", features = ["derive"] }
+strum = { version = "0.21", features = ["derive"] }  
+rand = "0.8.4"
 
 
 [dev-dependencies]

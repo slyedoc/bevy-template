@@ -6,14 +6,21 @@ use bevy_kira_audio::{Audio, AudioPlugin};
 
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
 
-#[derive(Inspectable, Default)]
+#[derive(Inspectable)]
 pub struct AudioData {
 
     #[inspectable(min = 0.5, max = 1.0)]
     volume: f32,
     muted: bool,
-    #[inspectable(min = 1169)]
-    seed: u64,
+}
+
+impl Default for AudioData {
+    fn default() -> Self {
+        Self {
+            volume: 1.0,
+            muted: false,
+        }
+    }
 }
 
 pub struct InternalAudioPlugin;
@@ -22,7 +29,6 @@ pub struct InternalAudioPlugin;
 impl Plugin for InternalAudioPlugin {
     fn build(&self, app: &mut AppBuilder) {
         app.add_plugin(AudioPlugin)
-            //.init_resource::<AudioData>()
             .add_plugin(InspectorPlugin::<AudioData>::new().open(false))
             .add_system_set(
                 SystemSet::on_enter(GameState::Menu).with_system(start_audio.system()),
@@ -34,7 +40,8 @@ impl Plugin for InternalAudioPlugin {
 }
 
 fn start_audio(audio_assets: Res<AudioAssets>, audio: Res<Audio>, data: Res<AudioData>) {
-    println!("start");
+
+    println!("audio");
     audio.set_volume(data.volume);
     audio.play_looped(audio_assets.background_music.clone());
 }
