@@ -15,6 +15,8 @@ use crate::{helpers::cleanup_system, GameState};
 use self::ball::{ball_collision_system, ball_movement_system, Ball};
 use self::goal::{goal_collision_system, Goal};
 use self::paddle::{paddle_movement_system, Paddle};
+use self::score::Score;
+use self::score::update_score_board;
 use self::wall::Wall;
 
 #[derive(Inspectable, Debug)]
@@ -44,6 +46,7 @@ pub struct PongPlugin;
 impl Plugin for PongPlugin {
     fn build(&self, app: &mut AppBuilder) {
         app.insert_resource(score::Score::default())
+            .add_event::<GoalEvent>()
             .add_plugin(InspectorPlugin::<PongData>::new().open(false))
             .add_system_set(
                 SystemSet::on_enter(GameState::Pong)
@@ -52,12 +55,14 @@ impl Plugin for PongPlugin {
             )
             .add_system_set(
                 SystemSet::on_update(GameState::Pong)
-                    .with_system(update_system.system())
+                    .with_system(update_clear_color_system.system())
                     .with_system(ball_movement_system.system())
                     .with_system(paddle_movement_system.system())
                     .with_system(window_resize_listener.system())
                     .with_system(ball_collision_system.system())
-                    .with_system(goal_collision_system.system()),
+                    .with_system(goal_collision_system.system().label("goal"))
+                    .with_system(goal_scored_event.system().after("goal"))
+                    .with_system(update_score_board.system())
             )
             .add_system_set(
                 SystemSet::on_exit(GameState::Pong).with_system(cleanup_system::<Pong>.system()),
@@ -66,6 +71,42 @@ impl Plugin for PongPlugin {
 
     fn name(&self) -> &str {
         std::any::type_name::<Self>()
+    }
+}
+
+pub struct GoalEvent {
+    player: Player,
+}
+
+fn goal_scored_event(
+    mut commands: Commands,
+    mut ev_goal: EventReader<GoalEvent>,
+    query: Query<(Entity, &Ball)>,
+    mut score: ResMut<Score>,
+    data: Res<PongData>,
+    window_desc: Res<WindowDescriptor>,
+) {
+
+    // Was a goal scored
+    for goal in ev_goal.iter() {
+        //add to the score
+        use Player::*;
+        match goal.player {
+            Left => score.left += 1,
+            Right => score.right += 1,
+        }
+
+        // Remove ball
+        for (entity, _ball) in query.iter() {
+            commands.entity(entity).despawn_recursive();
+        }
+
+        // spawn new one
+        ball::spawn_ball(
+            &mut commands,
+            data.primary_material.clone(),
+            Vec2::new(window_desc.width, window_desc.height),
+        );
     }
 }
 
@@ -105,7 +146,11 @@ fn setup(
         .spawn()
         .insert_bundle(UiCameraBundle::default())
         .insert(Pong);
-    ball::spawn_ball(&mut commands, data.primary_material.clone());
+    ball::spawn_ball(
+        &mut commands,
+        data.primary_material.clone(),
+        Vec2::new(window_desc.width, window_desc.height),
+    );
     paddle::spawn_paddles(&mut commands, data.primary_material.clone());
     wall::spawn_walls(&mut commands, data.primary_material.clone());
     goal::spawn_goals(&mut commands, data.primary_material.clone());
@@ -123,8 +168,7 @@ fn setup(
     });
 }
 // TODO: This entire system is only needed because I want really time feedback in inspector
-// Can't use 
-fn update_system(data: Res<PongData>, mut clear_color: ResMut<ClearColor>) {
+fn update_clear_color_system(data: Res<PongData>, mut clear_color: ResMut<ClearColor>) {
     clear_color.0 = data.background;
 }
 

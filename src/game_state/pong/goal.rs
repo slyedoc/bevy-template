@@ -1,16 +1,14 @@
 use super::ball::Ball;
-use super::score::Score;
-use super::{Player, Pong};
+use super::{GoalEvent, Player, Pong};
 use bevy::core::Name;
-use bevy::ecs::system::{Commands, Query, ResMut};
+use bevy::ecs::system::{Commands, Query};
 use bevy::math::{Vec2, Vec3};
-use bevy::prelude::Handle;
+use bevy::prelude::{EventWriter, Handle};
 use bevy::sprite::collide_aabb::collide;
 use bevy::sprite::entity::SpriteBundle;
 use bevy::sprite::{ColorMaterial, Sprite};
 use bevy::transform::components::Transform;
 use bevy::window::WindowResized;
-use std::ops::DerefMut;
 
 pub struct Goal;
 
@@ -43,7 +41,7 @@ pub fn spawn_goals(commands: &mut Commands, material: Handle<ColorMaterial>) {
 	spawn_goal(commands, Player::Right, material.clone());
 }
 
-fn spawn_goal(commands: &mut Commands, player: Player, material: Handle<ColorMaterial>) {
+fn spawn_goal(commands: &mut Commands, player: Player, material: Handle<ColorMaterial>, ) {
 	commands
 		.spawn()
 		.insert_bundle(SpriteBundle {
@@ -59,9 +57,9 @@ fn spawn_goal(commands: &mut Commands, player: Player, material: Handle<ColorMat
 pub fn goal_collision_system(
 	ball_query: Query<(&Ball, &Transform, &Sprite)>,
 	goal_query: Query<(&Transform, &Sprite, &Goal, &Player)>,
-	mut score: ResMut<Score>,
+    mut ev_goal: EventWriter<GoalEvent>,
 ) {
-    println!("hit");
+
 	for (_ball, ball_transform, ball_sprite) in ball_query.iter() {
 		for (goal_transform, goal_sprite, _goal, player) in goal_query.iter() {
 			let collision = collide(
@@ -72,11 +70,9 @@ pub fn goal_collision_system(
 			);
 
 			if collision.is_some() {
-				use Player::*;
-				match player {
-					Left => score.deref_mut().left += 1,
-					Right => score.deref_mut().right += 1,
-				}
+                ev_goal.send(GoalEvent {
+                    player: player.clone(),
+                })
 			}
 		}
 	}

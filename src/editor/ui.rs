@@ -61,17 +61,18 @@ impl Plugin for UIPlugin {
     fn build(&self, app: &mut AppBuilder) {
         app.add_plugin(InspectorPlugin::<UIData>::new().open(false).shared())
             .add_system(update_ui_scale_factor.system())
-            .add_stage_before(
-                CoreStage::Update,
-                GameStages::Editor,
-                SystemStage::parallel(),
-            )
             .add_system_set_to_stage(
                 GameStages::Editor,
-                SystemSet::on_update(EditorState::Playing).with_system(draw_editor_topbar.system()),
+                SystemSet::on_update(EditorState::Playing)
+                        .with_system(draw_editor_topbar.system()
+                ),
             );
     }
 }
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(SystemLabel)]
+struct EditorUIStage;
 
 // TODO: Change this value to much and egui panics
 // This runs all the time, to update the scale factor for any ui the game has
