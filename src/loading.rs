@@ -1,7 +1,7 @@
 use crate::GameState;
 use bevy::prelude::*;
 use bevy_asset_loader::{AssetCollection, AssetLoader};
-use bevy_kira_audio::AudioSource;
+use bevy_kira_audio::{AudioSource};
 
 
 pub struct LoadingPlugin {
@@ -60,7 +60,7 @@ pub struct FontAssets {
 pub struct AudioAssets {
 
     //https://www.bensound.com/royalty-free-music/track/creative-minds
-    #[asset(path = "audio/bensound-creativeminds.ogg")]
+    #[asset(path = "audio/bensound-creativeminds.mp3")]
     pub background_music: Handle<AudioSource>,
 }
 

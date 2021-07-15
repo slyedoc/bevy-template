@@ -1,10 +1,14 @@
+
+
 use bevy::{
     input::mouse::{MouseMotion, MouseWheel},
     prelude::*,
     render::camera::PerspectiveProjection,
 };
 use bevy_mod_picking::PickingCameraBundle;
-use bevy_skybox::SkyboxCamera;
+use bevy_inspector_egui::{ Inspectable };
+
+use crate::helpers::cleanup_system;
 
 use super::EditorState;
 
@@ -17,33 +21,42 @@ impl Plugin for CameraPlugin {
                 SystemSet::on_enter(EditorState::Loading).with_system(spawn_cameras.system()),
             )
             .add_system_set(
-                SystemSet::on_exit(EditorState::Playing).with_system(clear_camera.system()),
+                SystemSet::on_exit(EditorState::Playing).with_system(cleanup_system::<EditorCamera>.system()),
             )
             .add_system(pan_orbit_camera.system());
     }
 }
 
-/// Marker component for game camera
-
-/// Marker component for UI camera
-pub struct UiCamera;
+/// Marker component for editor game camera
+#[derive(Inspectable, Debug)]
+pub enum EditorCamera {
+    Ui,
+    Perspective,
+}
 
 /// Spawn a camera like this
+#[allow(dead_code)]
 pub fn spawn_cameras(mut commands: Commands) {
     commands
         .spawn_bundle(UiCameraBundle::default())
-        .insert(UiCamera);
+        .insert(EditorCamera::Ui);
 
     // commands
     //     .spawn_bundle(OrthographicCameraBundle::new_2d())
     //     .insert(MainCamera);
 
-    let translation = Vec3::new(100.0, 100.0, 300.0);
-    let radius = translation.length();
+
+    let location = Vec3::new(100.0, 100.0, 600.0);
+    let radius = location.length();
 
     commands
         .spawn_bundle(PerspectiveCameraBundle {
-            transform: Transform::from_translation(translation).looking_at(Vec3::ZERO, Vec3::Y),
+
+            transform: Transform::from_translation(location).looking_at(Vec3::ZERO, Vec3::Y),
+            perspective_projection: PerspectiveProjection {
+                far: f32::MAX,
+                ..Default::default()
+            },
             ..Default::default()
         })
         .insert(PanOrbitCamera {
@@ -51,13 +64,10 @@ pub fn spawn_cameras(mut commands: Commands) {
             ..Default::default()
         })
         .insert_bundle(PickingCameraBundle::default())
-        .insert(SkyboxCamera);
+
+        .insert(EditorCamera::Perspective);
 }
 
-
-fn clear_camera() {
-
-}
 /// Tags an entity as capable of panning and orbiting.
 pub struct PanOrbitCamera {
     /// The "focus point" to orbit around. It is automatically updated when panning the camera
