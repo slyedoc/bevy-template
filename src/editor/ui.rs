@@ -12,11 +12,11 @@ use bevy_inspector_egui::{plugin::InspectorWindows, WorldInspectorParams};
 use crate::{
     audio::AudioData,
     game_state::{PongData, TicTacToeData},
-    Data, GameState,
+    Data, GameStages, GameState,
 };
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
 
-use super::{EditorCamera, EditorState, grid::GridData};
+use super::{grid::GridData, EditorCamera, EditorState};
 use strum::IntoEnumIterator;
 
 #[derive(Inspectable)]
@@ -61,17 +61,19 @@ impl Plugin for UIPlugin {
     fn build(&self, app: &mut AppBuilder) {
         app.add_plugin(InspectorPlugin::<UIData>::new().open(false).shared())
             .add_system(update_ui_scale_factor.system())
-            .add_system_set(
-                SystemSet::on_update(EditorState::Playing).with_system(draw_editor.system()),
+            .add_stage_before(
+                CoreStage::Update,
+                GameStages::Editor,
+                SystemStage::parallel(),
+            )
+            .add_system_set_to_stage(
+                GameStages::Editor,
+                SystemSet::on_update(EditorState::Playing).with_system(draw_editor_topbar.system()),
             );
-            // .add_system_set(
-            //     SystemSet::new()
-            //         .with_run_criteria(run_if_editor.system())
-            //         .with_system(draw_editor.system()),
-            // )
     }
 }
 
+// TODO: Change this value to much and egui panics
 // This runs all the time, to update the scale factor for any ui the game has
 fn update_ui_scale_factor(
     mut egui_settings: ResMut<EguiSettings>,
@@ -83,7 +85,7 @@ fn update_ui_scale_factor(
     }
 }
 
-fn draw_editor(
+fn draw_editor_topbar(
     egui_ctx: Res<EguiContext>,
     mut state: ResMut<State<GameState>>,
     mut exit: EventWriter<AppExit>,
@@ -95,8 +97,6 @@ fn draw_editor(
     TopBottomPanel::top("top_panel")
         .min_height(100.0)
         .show(egui_ctx.ctx(), |ui| {
-            // The top panel is often a good place for a menu bar:  
-
             menu::bar(ui, |ui| {
                 menu::menu(ui, "App", |ui| {
                     if ui.button("Quit").clicked() {
@@ -172,7 +172,7 @@ fn draw_editor(
             egui_ctx.ctx().settings_ui(ui);
         });
 
-    // setup basic fps window
+    // setup basic fps window, could use some plots and far better code, but ok for now
     Window::new("FPS")
         .open(&mut ui_data.fps)
         .scroll(true)
@@ -187,7 +187,6 @@ fn draw_editor(
                     }
                 }
             }
-
             if let Some(frame_time) = diagnostics.get(FrameTimeDiagnosticsPlugin::FRAME_TIME) {
                 if let Some(frame_time_value) = frame_time.value() {
                     if let Some(frame_time_avg) = frame_time.average() {

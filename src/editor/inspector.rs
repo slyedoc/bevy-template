@@ -44,7 +44,5 @@ fn maintain_inspected_entities(
                 camera.focus = transform.translation;
             }
         }
-
-        //
     }
 }

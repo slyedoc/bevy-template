@@ -2,12 +2,12 @@ pub mod camera;
 pub mod grid;
 pub mod ui;
 
-use bevy::ecs::schedule::ShouldRun;
 use bevy::prelude::*;
 use bevy_inspector_egui::{WorldInspectorParams, WorldInspectorPlugin};
 pub use camera::*;
 pub use grid::*;
 pub use ui::*;
+
 
 #[derive(Clone, Eq, PartialEq, Debug, Hash)]
 pub enum EditorState {
@@ -61,7 +61,6 @@ fn loaded(
         state.set(EditorState::Playing).expect("Editor state didnt set in loaded.");
     }
 
-    
 }
 
 

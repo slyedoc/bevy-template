@@ -21,17 +21,17 @@ use bevy_inspector_egui::{widgets::ResourceInspector, Inspectable, InspectorPlug
 use bevy_mod_picking::{DefaultPickingPlugins, PickingEvent};
 use strum::EnumIter;
 
-// This example game uses States to separate logic
 // See https://bevy-cheatbook.github.io/programming/states.html
 // Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
 #[derive(Clone, Eq, PartialEq, Debug, Hash, EnumIter)]
 pub enum GameState {
     // During the loading State the LoadingPlugin will load our assets
+    // For now we just load everything
     Loading,
-    // During this State the actual game logic is executed
+    // Different Games
     Pong,
     TicTacToe,
-    // Here the menu is drawn and waiting for player interaction
+    // Main Menu
     Menu,
 }
 
@@ -48,6 +48,12 @@ impl fmt::Display for GameState {
     }
 }
 
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(StageLabel)]
+pub enum GameStages {
+    Editor, // only used for ui currently
+}
+
 #[derive(Inspectable, Default)]
 pub struct Data {
     #[inspectable(label = "Background Color")]
@@ -60,6 +66,7 @@ pub struct Data {
 fn main() {
     let mut app = App::build();
     app
+
         .insert_resource(Msaa { samples: 4 })
         .insert_resource(ClearColor(Color::rgb(0.4, 0.4, 0.4)))
         .insert_resource(WindowDescriptor {

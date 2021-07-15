@@ -16,13 +16,13 @@ bevy = { git = "https://github.com/bevyengine/bevy", branch = "main", default-fe
     # "hdr",
     "mp3",
     "x11",
-    "bevy_dylib",
+    "bevy_dylib", # Faster compile times
 ]}
 bevy_egui = { git = "https://github.com/jakobhellermann/bevy_egui", branch = "bevy-main", default-features = false, features = ["open_url"] }
 bevy-inspector-egui = { git = "https://github.com/jakobhellermann/bevy-inspector-egui"}
 bevy_mod_picking = { git = "https://github.com/aevyrie/bevy_mod_picking" }
 bevy_input_actionmap = { git = "https://github.com/lightsoutgames/bevy_input_actionmap" }
-bevy_kira_audio = { git = "https://github.com/NiklasEi/bevy_kira_audio", branch = "bevy_main", features = [ "ogg", "mp3" ] }
+bevy_kira_audio = { git = "https://github.com/NiklasEi/bevy_kira_audio", branch = "bevy_main", features = [ "mp3" ] }
 bevy_asset_loader = { git = "https://github.com/NiklasEi/bevy_asset_loader", branch = "bevy_main" }
 bevy_skybox = "0.4.0"
 strum = { version = "0.21", features = ["derive"] }
@@ -58,4 +58,4 @@ bevy_asset_loader = { git = "https://github.com/slyedoc/bevy_asset_loader", bran
 
 # Setup to use bevy_main
 [patch.'https://github.com/NiklasEi/bevy_kira_audio']
-bevy_kira_audio = { git = "https://github.com/slyedoc/bevy_kira_audio", branch = "bevy_main", features = [ "ogg", "mp3" ] }
+bevy_kira_audio = { git = "https://github.com/slyedoc/bevy_kira_audio", branch = "bevy_main", features = [ "mp3" ] }

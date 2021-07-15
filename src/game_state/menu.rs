@@ -8,7 +8,8 @@ use crate::GameState;
 pub struct MenuPlugin;
 impl Plugin for MenuPlugin {
     fn build(&self, app: &mut AppBuilder) {
-        app.add_system_set(SystemSet::on_update(GameState::Menu).with_system(draw_menu.system()));
+        app.add_system_set(SystemSet::on_update(GameState::Menu)
+            .with_system(draw_menu.system()));
     }
 }
 
@@ -22,17 +23,13 @@ fn draw_menu(
         .resizable(false)
         .show(egui_ctx.ctx(), |ui| {
             ui.heading("Bevy Template");
-
-            if ui.button("Pong").clicked() {
-                state.set(GameState::Pong).unwrap();
-            }
-
-            if ui.button("Tic-Tac-Toe").clicked() {
-                state.set(GameState::TicTacToe).unwrap();
-            }
-
-            if ui.button("Exit").clicked() {
-                exit.send(AppExit);
-            }
+            ui.separator();
+            ui.label("Game States");
+            if ui.button("Pong").clicked() { state.set(GameState::Pong).unwrap(); }
+            if ui.button("Tic-Tac-Toe").clicked() { state.set(GameState::TicTacToe).unwrap(); }
+            ui.separator();
+            ui.label("Settings");
+            ui.separator();
+            if ui.button("Exit").clicked() { exit.send(AppExit); }
         });
 }
