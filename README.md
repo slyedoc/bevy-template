@@ -1,5 +1,7 @@
 # Bevy Template
 
+(Currently this is the most complex version on pong in the universe.)
+
 This project is a playground where I try out different way of doing things in bevy, something more than a simple scene,
 
 This is a project template using bevy and cummunity plugins.

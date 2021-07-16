@@ -188,12 +188,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "atomic_refcell"
-version = "0.1.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "681b971236e0f76b20fcafca0236b8718c9186ee778d67cd78bd5f28fd85427f"
-
-[[package]]
 name = "autocfg"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -315,7 +309,6 @@ dependencies = [
 [[package]]
 name = "bevy_asset_loader"
 version = "0.2.0"
-source = "git+https://github.com/slyedoc/bevy_asset_loader?branch=bevy_main#6ece41488cee98a99890839ca2aaa2a227f1660a"
 dependencies = [
  "bevy",
  "bevy_asset_loader_derive",
@@ -324,7 +317,6 @@ dependencies = [
 [[package]]
 name = "bevy_asset_loader_derive"
 version = "0.2.0"
-source = "git+https://github.com/slyedoc/bevy_asset_loader?branch=bevy_main#6ece41488cee98a99890839ca2aaa2a227f1660a"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -418,7 +410,7 @@ dependencies = [
 [[package]]
 name = "bevy_egui"
 version = "0.6.0"
-source = "git+https://github.com/jakobhellermann/bevy_egui?branch=bevy-main#70e859a59ef517a9230bfe0273176f55fa4cf235"
+source = "git+https://github.com/slyedoc/bevy_egui?branch=bevy-main#8a46cdd022b494705e11a6cb87dd4847b44723e9"
 dependencies = [
  "bevy",
  "clipboard",
@@ -477,7 +469,6 @@ dependencies = [
 [[package]]
 name = "bevy_input_actionmap"
 version = "0.1.0"
-source = "git+https://github.com/slyedoc/bevy_input_actionmap#3e232d018ba2f480cc6474f1d9556dff4c5cc70a"
 dependencies = [
  "bevy",
 ]
@@ -1478,9 +1469,9 @@ checksum = "132e30d483d9fa252fe06aa112de777d068503c379fa51bc5834204ee3258fce"
 dependencies = [
  "ab_glyph",
  "ahash 0.7.4",
- "atomic_refcell",
  "emath",
  "ordered-float",
+ "parking_lot",
 ]
 
 [[package]]

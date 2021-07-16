@@ -19,6 +19,7 @@ bevy = { git = "https://github.com/bevyengine/bevy", branch = "main", default-fe
     "x11",
     "bevy_dylib", # Faster compile times
 ]}
+# This is fork jakob has thats updated for main
 bevy_egui = { git = "https://github.com/jakobhellermann/bevy_egui", branch = "bevy-main", default-features = false, features = ["open_url"] }
 bevy-inspector-egui = { git = "https://github.com/jakobhellermann/bevy-inspector-egui"}
 bevy_mod_picking = { git = "https://github.com/aevyrie/bevy_mod_picking" }
@@ -47,7 +48,8 @@ bevy_skybox = { git = "https://github.com/slyedoc/bevy_skybox" }
 
 # Setup to use bevy_main
 [patch.'https://github.com/lightsoutgames/bevy_input_actionmap']
-bevy_input_actionmap = { git = "https://github.com/slyedoc/bevy_input_actionmap" }
+#bevy_input_actionmap = { git = "https://github.com/slyedoc/bevy_input_actionmap" }
+bevy_input_actionmap = { path = "../bevy_input_actionmap" }
 
 # Added more support for controlling windows
 [patch.'https://github.com/jakobhellermann/bevy-inspector-egui']
@@ -55,8 +57,14 @@ bevy-inspector-egui = { git = "https://github.com/slyedoc/bevy-inspector-egui", 
 
 # Setup to use bevy_main instead of rev
 [patch.'https://github.com/NiklasEi/bevy_asset_loader']
-bevy_asset_loader = { git = "https://github.com/slyedoc/bevy_asset_loader", branch = "bevy_main" }
+#bevy_asset_loader = { git = "https://github.com/slyedoc/bevy_asset_loader", branch = "bevy_main" }
+bevy_asset_loader = { path = "../bevy_asset_loader/bevy_asset_loader" }
 
-# Setup to use bevy_main instead of rev 
+# Setup to use bevy_main instead of rev
 [patch.'https://github.com/NiklasEi/bevy_kira_audio']
 bevy_kira_audio = { git = "https://github.com/slyedoc/bevy_kira_audio", branch = "bevy_main", features = [ "wav" ] }
+
+# This is fork with jakob changes and multi_thread support
+# ran into https://github.com/mvlabat/bevy_egui/issues/32 and trying it out
+[patch.'https://github.com/jakobhellermann/bevy_egui']
+bevy_egui = { git = "https://github.com/slyedoc/bevy_egui", branch = "bevy-main", default-features = false, features = ["open_url"] }

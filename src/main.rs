@@ -5,12 +5,12 @@ mod menu;
 mod pong;
 mod state;
 mod tic_tac_toe;
-mod actions_ui;
+mod actions;
 use std::fmt;
 
-
-use actions_ui::draw_actions;
+use actions::ActionsPlugin;
 use bevy_egui::EguiPlugin;
+
 use bevy_kira_audio::AudioPlugin;
 use editor::EditorPlugin;
 use loading::LoadingPlugin;
@@ -77,8 +77,9 @@ fn main() {
         // Add States
         .add_state(GameState::Loading)
         // Should send us to Menu once everything is loaded, been having issues with this, maybe media related
-        .add_plugin(LoadingPlugin::default())
+        .add_plugin(LoadingPlugin)
         // Add our plugins
+        .add_plugin(ActionsPlugin)
         .add_plugin(EditorPlugin)
         .add_plugin(StatePlugin)
         .add_plugin(PongPlugin)
@@ -86,10 +87,7 @@ fn main() {
         .add_plugin(MenuPlugin)
 
         //
-        .add_system_set(
-            SystemSet::on_update(GameState::Menu)
-            .with_system(draw_actions.system())
-        )
+
         .run()
 }
 

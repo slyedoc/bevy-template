@@ -22,6 +22,7 @@ fn draw_menu(
     mut exit: EventWriter<AppExit>,
     mut state: ResMut<State<GameState>>,
 ) {
+
     SidePanel::left("menu")
         .default_width(200.0)
         .resizable(false)

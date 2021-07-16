@@ -3,7 +3,9 @@ pub mod grid;
 pub mod ui;
 
 use bevy::{ecs::schedule::ShouldRun, prelude::*};
+use bevy_input_actionmap::{ActionPlugin, InputMap};
 use bevy_inspector_egui::{WorldInspectorParams, WorldInspectorPlugin};
+use std::fmt;
 pub use camera::*;
 pub use grid::*;
 pub use ui::*;
@@ -25,6 +27,7 @@ impl Plugin for EditorPlugin {
             despawnable_entities: false,
             ..Default::default()
         })
+        .add_plugin(ActionPlugin::<EditorAction>::default())
         .add_state(EditorState::Disabled)
         .add_stage_before(
             CoreStage::Update,
@@ -39,13 +42,32 @@ impl Plugin for EditorPlugin {
         .add_plugin(CameraPlugin)
         .add_plugin(GridPlugin)
         .add_plugin(UIPlugin)
-        .add_system(handle_keyboard.system())
+        .add_startup_system(setup.system())
+        .add_system(run_actions.system())
         .add_system_set(SystemSet::on_update(EditorState::Loading).with_system(loaded.system()));
     }
 }
 
-fn handle_keyboard(keyboard_input: Res<Input<KeyCode>>, mut state: ResMut<State<EditorState>>) {
-    if keyboard_input.just_pressed(KeyCode::F12) {
+#[derive(Debug, Hash, PartialEq, Eq, Clone)]
+pub enum EditorAction {
+    EditorToggle,
+}
+
+impl fmt::Display for EditorAction {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            EditorAction::EditorToggle => write!(f, "Toggle Editor"),
+
+        }
+    }
+}
+
+fn setup(mut input_map: ResMut<InputMap<EditorAction>>) {
+    input_map.bind(EditorAction::EditorToggle, KeyCode::F12);
+}
+
+fn run_actions(input_map: Res<InputMap<EditorAction>>, mut state: ResMut<State<EditorState>>) {
+    if input_map.just_active(EditorAction::EditorToggle) {
         let result = match state.current() {
             // could only happen if loading takes a while for frist frame, but go ahead and disable editor if so
             EditorState::Loading => EditorState::Disabled,

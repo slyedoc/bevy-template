@@ -7,23 +7,22 @@ mod paddle;
 mod score;
 mod wall;
 
-use crate::{helpers::cleanup_system, GameState};
+use crate::GameState;
+use crate::helpers::*;
 use audio::*;
 use bevy::prelude::*;
 use bevy::window::WindowResized;
+use bevy_input_actionmap::*;
 use bevy_inspector_egui::widgets::ResourceInspector;
-use bevy_inspector_egui::Inspectable;
-use bevy_inspector_egui::InspectorPlugin;
+use bevy_inspector_egui::*;
+use std::fmt;
 
-use self::ball::{ball_collision_system, ball_movement_system, Ball};
-use self::events::BallBounceEvent;
-use self::events::GoalEvent;
-use self::goal::goal_scored_event;
-use self::goal::{goal_collision_system, Goal};
-use self::paddle::{paddle_movement_system, Paddle};
-use self::score::update_score_board;
-use self::score::Score;
-use self::wall::Wall;
+use self::ball::*;
+use self::events::*;
+use self::goal::*;
+use self::paddle::*;
+use self::score::*;
+use self::wall::*;
 
 #[derive(Inspectable, Debug)]
 pub struct PongData {
@@ -59,6 +58,7 @@ impl Plugin for PongPlugin {
             .add_event::<GoalEvent>()
             .add_event::<BallBounceEvent>()
             .add_plugin(InspectorPlugin::<PongData>::new().open(false))
+            .add_plugin(ActionPlugin::<PongAction>::default())
             .add_system_set(
                 SystemSet::on_enter(GameState::Pong)
                     .with_system(setup.system())
@@ -80,8 +80,29 @@ impl Plugin for PongPlugin {
             .add_system_set(
                 SystemSet::on_exit(GameState::Pong)
                     .with_system(stop_bg_audio.system())
-                    .with_system(cleanup_system::<Pong>.system()),
+                    .with_system(cleanup_system::<Pong>.system())
+                    .with_system(cleanup_actions_system::<PongAction>.system())
             );
+    }
+}
+
+
+#[derive(Debug, Hash, PartialEq, Eq, Clone)]
+pub enum PongAction {
+    Player1Up,
+    Player1Down,
+    Player2Up,
+    Player2Down,
+}
+
+impl fmt::Display for PongAction {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            PongAction::Player1Up => write!(f, "Player 1 - Up"),
+            PongAction::Player1Down => write!(f, "Player 1 - Down"),
+            PongAction::Player2Up => write!(f, "Player 2 - Up"),
+            PongAction::Player2Down => write!(f, "Player 2 - Down"),
+        }
     }
 }
 
@@ -92,10 +113,10 @@ pub enum Player {
 }
 
 impl Player {
-    fn movement_keys(&self) -> (KeyCode, KeyCode) {
+    fn movement_actions(&self) -> (PongAction, PongAction) {
         match self {
-            Player::Left => (KeyCode::W, KeyCode::S),
-            Player::Right => (KeyCode::Up, KeyCode::Down),
+            Player::Left => (PongAction::Player1Up, PongAction::Player1Down),
+            Player::Right => (PongAction::Player2Up, PongAction::Player2Down),
         }
     }
 }
@@ -112,6 +133,7 @@ fn setup(
     windows: Res<Windows>,
     window_desc: Res<WindowDescriptor>,
     mut window_resize: EventWriter<WindowResized>,
+    mut input: ResMut<InputMap<PongAction>>
 ) {
     // TODO: Editor really should remove this cameras, but works, leaving for now
     commands
@@ -144,7 +166,16 @@ fn setup(
         width: window_desc.width,
         height: window_desc.height,
     });
+
+
+    input
+        .bind(PongAction::Player1Up, KeyCode::W)
+        .bind(PongAction::Player1Down, KeyCode::S)
+        .bind(PongAction::Player2Up, KeyCode::Up)
+        .bind(PongAction::Player2Down, KeyCode::Down);
+
 }
+
 // TODO: This entire system is only needed because I want really time feedback in inspector
 fn update_clear_color_system(data: Res<PongData>, mut clear_color: ResMut<ClearColor>) {
     clear_color.0 = data.background;

@@ -1,14 +1,8 @@
-use super::{Collider, Player, Pong};
-use bevy::core::{Name, Time};
-use bevy::ecs::system::{Commands, Query, Res};
-use bevy::input::keyboard::KeyCode;
-use bevy::input::Input;
-use bevy::math::{Vec2, Vec3};
-use bevy::prelude::Handle;
-use bevy::sprite::entity::SpriteBundle;
-use bevy::sprite::ColorMaterial;
-use bevy::transform::components::Transform;
+use super::wall::Wall;
+use super::{Collider, Player, Pong, PongAction};
+use bevy::prelude::*;
 use bevy::window::{WindowDescriptor, WindowResized};
+use bevy_input_actionmap::*;
 
 #[derive(Default)]
 pub struct Paddle {
@@ -61,27 +55,30 @@ fn spawn_paddle(commands: &mut Commands, player: Player, material: Handle<ColorM
         .insert(Pong);
 }
 
+
 pub fn paddle_movement_system(
     time: Res<Time>,
-    keyboard_input: Res<Input<KeyCode>>,
+    input_map: Res<InputMap<PongAction>>,
     mut query: Query<(&Paddle, &Player, &mut Transform)>,
     window_desc: Res<WindowDescriptor>,
 ) {
     let time_delta = time.delta_seconds();
 
     for (paddle, player, mut transform) in query.iter_mut() {
-        let (up_keycode, down_keycode) = player.movement_keys();
+        let (up_action, down_action) = player.movement_actions();
 
-        if keyboard_input.pressed(up_keycode) {
+        if input_map.active(up_action) {
             transform.translation += time_delta * Vec3::new(0.0, paddle.speed, 0.0);
         }
 
-        if keyboard_input.pressed(down_keycode) {
+        if input_map.active(down_action) {
             transform.translation += time_delta * Vec3::new(0.0, -paddle.speed, 0.0);
         }
 
         // Clamp paddles so they dont go off the screen
-        let range = window_desc.height * 0.4;
+        let range = window_desc.height * 0.4 - Wall::THICKNESS;
         transform.translation.y = transform.translation.y.clamp(-range, range);
     }
 }
+
+

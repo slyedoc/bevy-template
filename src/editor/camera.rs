@@ -3,45 +3,62 @@ use bevy::{
     prelude::*,
     render::camera::PerspectiveProjection,
 };
+use bevy_input_actionmap::*;
 use bevy_inspector_egui::Inspectable;
 use bevy_mod_picking::PickingCameraBundle;
 
-use crate::helpers::cleanup_system;
-
+use crate::helpers::{cleanup_actions_system, cleanup_system};
+use std::fmt;
 use super::EditorState;
 
 pub struct CameraPlugin;
 
 impl Plugin for CameraPlugin {
     fn build(&self, app: &mut AppBuilder) {
-        app.add_system_set(
-            SystemSet::on_enter(EditorState::Loading).with_system(spawn_cameras.system()),
+        app.add_plugin(ActionPlugin::<EditorCameraAction>::default())
+        .add_system_set(
+            SystemSet::on_enter(EditorState::Loading)
+                .with_system(spawn_cameras.system()),
         )
         .add_system_set(
             SystemSet::on_exit(EditorState::Playing)
-                .with_system(cleanup_system::<EditorCamera>.system()),
+                .with_system(cleanup_system::<EditorCamera>.system())
+                .with_system(cleanup_actions_system::<EditorCameraAction>.system())
         )
         .add_system(pan_orbit_camera.system());
+    }
+}
+
+
+#[derive(Debug, Hash, PartialEq, Eq, Clone)]
+pub enum EditorCameraAction {
+    Orbit,
+    Pan,
+}
+
+impl fmt::Display for EditorCameraAction {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            EditorCameraAction::Orbit => write!(f, "Orbit Camera"),
+            EditorCameraAction::Pan => write!(f, "Pan Camera"),
+        }
     }
 }
 
 /// Marker component for editor game camera
 #[derive(Inspectable, Debug)]
 pub enum EditorCamera {
-    Ui,
+    UI,
     Perspective,
 }
 
 /// Spawn a camera like this
 #[allow(dead_code)]
-pub fn spawn_cameras(mut commands: Commands) {
+pub fn spawn_cameras(mut commands: Commands, mut input_map: ResMut<InputMap<EditorCameraAction>>) {
     commands
         .spawn_bundle(UiCameraBundle::default())
-        .insert(EditorCamera::Ui);
+        .insert(EditorCamera::UI);
 
-    // commands
-    //     .spawn_bundle(OrthographicCameraBundle::new_2d())
-    //     .insert(MainCamera);
 
     let location = Vec3::new(100.0, 100.0, 600.0);
     let radius = location.length();
@@ -62,6 +79,11 @@ pub fn spawn_cameras(mut commands: Commands) {
         .insert_bundle(PickingCameraBundle::default())
         .insert(EditorCamera::Perspective)
         .insert(Name::new("EditorCamera"));
+
+        input_map
+            .bind(EditorCameraAction::Orbit, MouseButton::Right)
+            .bind(EditorCameraAction::Pan, MouseButton::Middle);
+
 }
 
 /// Tags an entity as capable of panning and orbiting.
@@ -88,23 +110,22 @@ pub fn pan_orbit_camera(
     windows: Res<Windows>,
     mut ev_motion: EventReader<MouseMotion>,
     mut ev_scroll: EventReader<MouseWheel>,
-    input_mouse: Res<Input<MouseButton>>,
+    input_map: Res<InputMap<EditorCameraAction>>,
     mut query: Query<(&mut PanOrbitCamera, &mut Transform, &PerspectiveProjection)>,
 ) {
     // change input mapping for orbit and panning here
-    let orbit_button = MouseButton::Right;
-    let pan_button = MouseButton::Middle;
+
 
     let mut pan = Vec2::ZERO;
     let mut rotation_move = Vec2::ZERO;
     let mut scroll = 0.0;
     let mut orbit_button_changed = false;
 
-    if input_mouse.pressed(orbit_button) {
+    if input_map.active(EditorCameraAction::Orbit) {
         for ev in ev_motion.iter() {
             rotation_move += ev.delta;
         }
-    } else if input_mouse.pressed(pan_button) {
+    } else if input_map.active(EditorCameraAction::Pan){
         // Pan only if we're not rotating at the moment
         for ev in ev_motion.iter() {
             pan += ev.delta;
@@ -113,7 +134,7 @@ pub fn pan_orbit_camera(
     for ev in ev_scroll.iter() {
         scroll += ev.y;
     }
-    if input_mouse.just_released(orbit_button) || input_mouse.just_pressed(orbit_button) {
+    if input_map.just_inactive(EditorCameraAction::Orbit) || input_map.just_active(EditorCameraAction::Orbit) {
         orbit_button_changed = true;
     }
 
