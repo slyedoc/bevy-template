@@ -48,8 +48,8 @@ bevy_skybox = { git = "https://github.com/slyedoc/bevy_skybox" }
 
 # Setup to use bevy_main
 [patch.'https://github.com/lightsoutgames/bevy_input_actionmap']
-#bevy_input_actionmap = { git = "https://github.com/slyedoc/bevy_input_actionmap" }
-bevy_input_actionmap = { path = "../bevy_input_actionmap" }
+bevy_input_actionmap = { git = "https://github.com/slyedoc/bevy_input_actionmap" }
+#bevy_input_actionmap = { path = "../bevy_input_actionmap" }
 
 # Added more support for controlling windows
 [patch.'https://github.com/jakobhellermann/bevy-inspector-egui']
@@ -57,8 +57,8 @@ bevy-inspector-egui = { git = "https://github.com/slyedoc/bevy-inspector-egui", 
 
 # Setup to use bevy_main instead of rev
 [patch.'https://github.com/NiklasEi/bevy_asset_loader']
-#bevy_asset_loader = { git = "https://github.com/slyedoc/bevy_asset_loader", branch = "bevy_main" }
-bevy_asset_loader = { path = "../bevy_asset_loader/bevy_asset_loader" }
+bevy_asset_loader = { git = "https://github.com/slyedoc/bevy_asset_loader", branch = "bevy_main" }
+#bevy_asset_loader = { path = "../bevy_asset_loader/bevy_asset_loader" }
 
 # Setup to use bevy_main instead of rev
 [patch.'https://github.com/NiklasEi/bevy_kira_audio']

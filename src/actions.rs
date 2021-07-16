@@ -3,15 +3,18 @@ use std::fmt;
 use bevy::prelude::*;
 use bevy_egui::*;
 use bevy_input_actionmap::*;
-use crate::{GameState, editor::{EditorAction, EditorCameraAction}, pong::PongAction, state::StateAction};
+use crate::{editor::{EditorAction, EditorCameraAction}, pong::PongAction, state::StateAction};
 
 // Since I am using action maps I wanted a to display what actions are currently possible
 pub struct ActionsPlugin;
 impl Plugin for ActionsPlugin {
     fn build(&self, app: &mut AppBuilder) {
+
+        // before adding egui multi_threaded drawing like this would fail because
+        // to fix ui issues let rest of egui draw first
         app.add_system_set_to_stage(
             CoreStage::PostUpdate,
-            SystemSet::new() // GameState::Menu)
+            SystemSet::new()
                 .with_system(draw_actions.system())
         );
     }
@@ -50,6 +53,8 @@ fn dispaly_input_map<T: 'static  + Send + Sync + fmt::Display>(input_map: &Res<I
                     ui.label(format!("{} ", a));
                 });
             }
+
+            // TODO: Add other button types, like gamepad
         }
      }
 }

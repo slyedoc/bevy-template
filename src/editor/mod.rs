@@ -74,7 +74,7 @@ fn run_actions(input_map: Res<InputMap<EditorAction>>, mut state: ResMut<State<E
             EditorState::Playing => EditorState::Disabled,
             EditorState::Disabled => EditorState::Loading,
         };
-        state.set(result).expect("Editor state didnt set");
+        state.set(result).expect("Editor state didn't set");
     }
 }
 
@@ -83,7 +83,7 @@ fn loaded(mut state: ResMut<State<EditorState>>) {
     if state.current().eq(&EditorState::Loading) {
         state
             .set(EditorState::Playing)
-            .expect("Editor state didnt set in loaded.");
+            .expect("Editor state didn't set in loaded.");
     }
 }
 

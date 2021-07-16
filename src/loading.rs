@@ -23,14 +23,15 @@ impl Plugin for LoadingPlugin {
 
         app.add_system_set(
             SystemSet::on_update(GameState::Loading)
-            .with_system(display_loading_status::<Handle<Font>, FontAssets>.system())
-            .with_system(display_loading_status::<Handle<AudioSource>, AudioAssets>.system())
-            .with_system(display_loading_status::<Handle<Texture>, AudioAssets>.system())
+            //.with_system(display_loading_status::<Handle<Font>, FontAssets>.system())
+            //.with_system(display_loading_status::<Handle<AudioSource>, AudioAssets>.system())
+            //.with_system(display_loading_status::<Handle<Texture>, AudioAssets>.system())
         );
     }
 }
 
 // AssetLoader is not going to menu, stuck in loading state
+#[allow(dead_code)]
 fn display_loading_status<T: Component + Debug + Clone + Eq + Hash, Assets: AssetCollection>(
     asset_server: Res<AssetServer>,
     loading_asset_handles: Option<Res<LoadingAssetHandles<Assets>>>,
