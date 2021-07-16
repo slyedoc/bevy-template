@@ -9,11 +9,7 @@ use bevy_egui::{
 };
 use bevy_inspector_egui::{plugin::InspectorWindows, WorldInspectorParams};
 
-use crate::{
-    audio::AudioData,
-    game_state::{PongData, TicTacToeData},
-    Data, GameStages, GameState,
-};
+use crate::{GameStages, GameState, pong::PongData, tick_tac_toe::TicTacToeData};
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
 
 use super::{grid::GridData, EditorCamera, EditorState};
@@ -63,15 +59,12 @@ impl Plugin for UIPlugin {
             .add_system(update_ui_scale_factor.system())
             .add_system_set_to_stage(
                 GameStages::Editor,
-                SystemSet::on_update(EditorState::Playing)
-                        .with_system(draw_editor_topbar.system()
-                ),
+                SystemSet::on_update(EditorState::Playing).with_system(draw_editor_topbar.system()),
             );
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
-#[derive(SystemLabel)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, SystemLabel)]
 struct EditorUIStage;
 
 // TODO: Change this value to much and egui panics
@@ -111,12 +104,10 @@ fn draw_editor_topbar(
                 });
 
                 menu::menu(ui, "Resources", |ui| {
-                    draw_menu_item::<Data>(&mut inspector_windows, ui);
                     draw_menu_item::<TicTacToeData>(&mut inspector_windows, ui);
                     draw_menu_item::<PongData>(&mut inspector_windows, ui);
                     draw_menu_item::<UIData>(&mut inspector_windows, ui);
                     draw_menu_item::<GridData>(&mut inspector_windows, ui);
-                    draw_menu_item::<AudioData>(&mut inspector_windows, ui);
                 });
 
                 menu::menu(ui, "Egui", |ui| {

@@ -1,15 +1,16 @@
-mod audio;
+
 mod editor;
-mod game_state;
+mod state;
 mod helpers;
 mod loading;
-
+mod menu;
+mod pong;
+mod tick_tac_toe;
 use std::fmt;
 
-use audio::InternalAudioPlugin;
 use bevy_egui::EguiPlugin;
+use bevy_kira_audio::AudioPlugin;
 use editor::EditorPlugin;
-use game_state::GameStatePlugin;
 use loading::LoadingPlugin;
 
 use bevy::ecs::{archetype::Archetypes, component::Components};
@@ -17,9 +18,12 @@ use bevy::prelude::*;
 use bevy::reflect::TypeRegistration;
 
 use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
-use bevy_inspector_egui::{widgets::ResourceInspector, Inspectable, InspectorPlugin};
 use bevy_mod_picking::{DefaultPickingPlugins, PickingEvent};
+use pong::PongPlugin;
+use state::StatePlugin;
+use menu::MenuPlugin;
 use strum::EnumIter;
+use tick_tac_toe::TicTacToePlugin;
 
 // See https://bevy-cheatbook.github.io/programming/states.html
 // Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
@@ -48,25 +52,14 @@ impl fmt::Display for GameState {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
-#[derive(StageLabel)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, StageLabel)]
 pub enum GameStages {
     Editor, // only used for ui currently
-}
-
-#[derive(Inspectable, Default)]
-pub struct Data {
-    #[inspectable(label = "Background Color")]
-    clear_color: ResourceInspector<ClearColor>,
-    ui: ResourceInspector<editor::ui::UIData>,
-    #[inspectable(min = 1169)]
-    seed: u64,
 }
 
 fn main() {
     let mut app = App::build();
     app
-        .add_state(GameState::Loading)
         .insert_resource(Msaa { samples: 4 })
         .insert_resource(ClearColor(Color::rgb(0.4, 0.4, 0.4)))
         .insert_resource(WindowDescriptor {
@@ -82,18 +75,19 @@ fn main() {
         .add_plugins(DefaultPlugins)
         .add_plugin(FrameTimeDiagnosticsPlugin::default())
         .add_plugin(EguiPlugin)
-
-
+        .add_plugin(AudioPlugin)
         .add_plugin(DefaultPickingPlugins)
-        .add_plugin(InspectorPlugin::<Data>::new().open(false))
+
         // Add our plugins
         .add_plugin(EditorPlugin)
-        .add_plugin(InternalAudioPlugin)
-        .add_plugin(GameStatePlugin)
-        // Load our asses then load the main menu
-        .add_plugin(LoadingPlugin::new().open(GameState::Menu))
+        .add_plugin(StatePlugin)
 
-
+        // Add States
+        .add_state(GameState::Loading)
+        .add_plugin(LoadingPlugin::default()) //.open(GameState::Pong))
+        .add_plugin(PongPlugin)
+        .add_plugin(TicTacToePlugin)
+        .add_plugin(MenuPlugin)
 
         //.add_startup_system(print_resources.system());
         .add_system_to_stage(CoreStage::PostUpdate, print_picking_events.system())

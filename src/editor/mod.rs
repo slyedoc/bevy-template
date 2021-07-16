@@ -8,7 +8,7 @@ pub use camera::*;
 pub use grid::*;
 pub use ui::*;
 
-use crate::{GameStages};
+use crate::GameStages;
 
 #[derive(Clone, Eq, PartialEq, Debug, Hash)]
 pub enum EditorState {
@@ -20,23 +20,21 @@ pub enum EditorState {
 pub struct EditorPlugin;
 impl Plugin for EditorPlugin {
     fn build(&self, app: &mut AppBuilder) {
-        app.add_state(EditorState::Loading)
-        .insert_resource(WorldInspectorParams {
+        app.insert_resource(WorldInspectorParams {
             enabled: false,
             despawnable_entities: false,
             ..Default::default()
         })
+        .add_state(EditorState::Disabled)
         .add_stage_before(
             CoreStage::Update,
             GameStages::Editor,
             SystemStage::parallel(),
         )
-
         // This is still a bit werid to me, this next like fixs the error, but its not clear to by why
         // the state already exists, but this works it works
         // see https://github.com/bevyengine/bevy/issues/2312
-        .add_state_to_stage(GameStages::Editor, EditorState::Playing)
-
+        .add_state_to_stage(GameStages::Editor, EditorState::Disabled)
         .add_plugin(WorldInspectorPlugin::new())
         .add_plugin(CameraPlugin)
         .add_plugin(GridPlugin)

@@ -3,10 +3,38 @@ use bevy::prelude::*;
 use bevy_asset_loader::{AssetCollection, AssetLoader};
 use bevy_kira_audio::{AudioSource};
 
-
 pub struct LoadingPlugin {
     target: GameState,
 }
+
+// the following asset collections will be loaded during the State `GameState::Loading`
+// when done loading, they will be inserted as resources (see https://github.com/NiklasEi/bevy_asset_loader)
+#[derive(AssetCollection)]
+pub struct FontAssets {
+    #[asset(path = "fonts/FiraSans-Bold.ttf")]
+    pub fira_sans: Handle<Font>,
+}
+
+#[derive(AssetCollection)]
+pub struct AudioAssets {
+    #[asset(path = "audio/bensound-creativeminds.wav")]
+    pub background_music: Handle<AudioSource>,
+
+    #[asset(path = "audio/bensound-onceagain.wav")]
+    pub background_music2: Handle<AudioSource>,
+
+    #[asset(path = "audio/pong/bounce.wav")]
+    pub pong_bounce: Handle<AudioSource>,
+    #[asset(path = "audio/pong/lowDown.wav")]
+    pub pong_goal: Handle<AudioSource>,
+}
+
+#[derive(AssetCollection)]
+pub struct TextureAssets {
+    #[asset(path = "textures/bevy.png")]
+    pub texture_bevy: Handle<Texture>,
+}
+
 
 /// This plugin loads all assets using [AssetLoader] from a third party bevy plugin
 /// Alternatively you can write the logic to load assets yourself
@@ -38,34 +66,3 @@ impl Default for LoadingPlugin {
     }
 }
 
-impl LoadingPlugin {
-    /// Creates a new inspector plugin with access to `World` in the [`Context`](crate::Context).
-    pub fn new() -> Self {
-        LoadingPlugin {
-            target: GameState::Menu,
-        }
-    }
-}
-
-
-// the following asset collections will be loaded during the State `GameState::Loading`
-// when done loading, they will be inserted as resources (see https://github.com/NiklasEi/bevy_asset_loader)
-#[derive(AssetCollection)]
-pub struct FontAssets {
-    #[asset(path = "fonts/FiraSans-Bold.ttf")]
-    pub fira_sans: Handle<Font>,
-}
-
-#[derive(AssetCollection)]
-pub struct AudioAssets {
-
-    //https://www.bensound.com/royalty-free-music/track/creative-minds
-    #[asset(path = "audio/bensound-creativeminds.mp3")]
-    pub background_music: Handle<AudioSource>,
-}
-
-#[derive(AssetCollection)]
-pub struct TextureAssets {
-    #[asset(path = "textures/bevy.png")]
-    pub texture_bevy: Handle<Texture>,
-}

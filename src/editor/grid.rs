@@ -65,9 +65,7 @@ impl Plugin for GridPlugin {
         app.add_event::<GridSpawnEvent>()
             .add_event::<GridClearEvent>()
             .add_plugin(InspectorPlugin::<GridData>::new().open(false))
-            .add_system_set(
-                SystemSet::on_enter(EditorState::Loading).with_system(setup.system()),
-            )
+            .add_system_set(SystemSet::on_enter(EditorState::Loading).with_system(setup.system()))
             .add_system_set(
                 SystemSet::on_update(EditorState::Playing).with_system(rebuild_button.system()),
             )
@@ -126,13 +124,13 @@ pub fn setup(mut commands: Commands, grid: Res<GridData>) {
 
 fn spawn_grid(grid: &Res<GridData>, commands: &mut Commands) {
     if grid.show_x_grid {
-        build_grid( commands, grid, GridType::X);
+        build_grid(commands, grid, GridType::X);
     }
     if grid.show_y_grid {
-        build_grid( commands, grid, GridType::Y);
+        build_grid(commands, grid, GridType::Y);
     }
     if grid.show_z_grid {
-        build_grid( commands, grid, GridType::Z);
+        build_grid(commands, grid, GridType::Z);
     }
 }
 
@@ -284,6 +282,5 @@ fn rebuild_button(
         }
 
         spawn_grid(&grid, &mut commands);
-
     }
 }
