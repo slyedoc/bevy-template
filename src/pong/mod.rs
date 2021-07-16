@@ -1,19 +1,19 @@
 // From https://github.com/FSMaxB/bevy-pong-clone
+mod audio;
 mod ball;
+mod events;
 mod goal;
 mod paddle;
 mod score;
 mod wall;
-mod audio;
-mod events;
 
+use crate::{helpers::cleanup_system, GameState};
+use audio::*;
 use bevy::prelude::*;
 use bevy::window::WindowResized;
 use bevy_inspector_egui::widgets::ResourceInspector;
 use bevy_inspector_egui::Inspectable;
 use bevy_inspector_egui::InspectorPlugin;
-use audio::*;
-use crate::{helpers::cleanup_system, GameState};
 
 use self::ball::{ball_collision_system, ball_movement_system, Ball};
 use self::events::BallBounceEvent;
@@ -79,13 +79,11 @@ impl Plugin for PongPlugin {
             )
             .add_system_set(
                 SystemSet::on_exit(GameState::Pong)
-                .with_system(stop_bg_audio.system())
-                .with_system(cleanup_system::<Pong>.system()),
+                    .with_system(stop_bg_audio.system())
+                    .with_system(cleanup_system::<Pong>.system()),
             );
     }
 }
-
-
 
 #[derive(Debug, Clone, Copy)]
 pub enum Player {
@@ -115,7 +113,6 @@ fn setup(
     window_desc: Res<WindowDescriptor>,
     mut window_resize: EventWriter<WindowResized>,
 ) {
-
     // TODO: Editor really should remove this cameras, but works, leaving for now
     commands
         .spawn()
@@ -202,5 +199,3 @@ fn window_resize_listener(
         }
     }
 }
-
-

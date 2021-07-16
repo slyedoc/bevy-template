@@ -137,4 +137,3 @@ pub fn ball_collision_system(
         }
     }
 }
-

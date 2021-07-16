@@ -1,11 +1,11 @@
+use super::events::{BallBounceEvent, GoalEvent};
 use crate::loading::AudioAssets;
 use bevy::prelude::*;
 use bevy_kira_audio::{Audio, AudioChannel};
 
-use super::events::{BallBounceEvent, GoalEvent};
-
 pub struct PongAudio {
     background: AudioChannel,
+    #[allow(dead_code)]
     bounce: AudioChannel,
     goal: AudioChannel,
 }
@@ -20,16 +20,14 @@ impl Default for PongAudio {
     }
 }
 
-
 pub fn start_bg_audio(
     audio: Res<Audio>,
     audio_assets: Res<AudioAssets>,
     audio_state: Res<PongAudio>,
 ) {
-
     println!("play pong background sound!");
     audio.play_looped_in_channel(
-        audio_assets.background_music2.clone(),
+        audio_assets.background_music.clone(),
         &audio_state.background,
     );
 }
@@ -45,12 +43,10 @@ pub fn handle_audio_events(
     audio_assets: Res<AudioAssets>,
     audio_state: Res<PongAudio>,
 ) {
-
     for _ in ev_ball_bounce.iter() {
         println!("play bounce");
         let channel = AudioChannel::new("pong-bounce-ball".to_owned());
         audio.play_in_channel(audio_assets.pong_bounce.clone(), &channel);
-
     }
 
     for _ in ev_goal.iter() {

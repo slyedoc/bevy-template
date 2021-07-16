@@ -1,5 +1,5 @@
 [package]
-name = "bevy-template" # TODO: Rename
+name = "bevy-template" # TODO: Rename once i figure out what i want to work on
 version = "0.1.0"
 edition = "2018"
 
@@ -51,13 +51,12 @@ bevy_input_actionmap = { git = "https://github.com/slyedoc/bevy_input_actionmap"
 
 # Added more support for controlling windows
 [patch.'https://github.com/jakobhellermann/bevy-inspector-egui']
-# bevy-inspector-egui = { path = "../bevy-inspector-egui", default-features = false, features = ["open_url"] }
 bevy-inspector-egui = { git = "https://github.com/slyedoc/bevy-inspector-egui", default-features = false, features = ["open_url"] }
 
-# Setup to use bevy_main
+# Setup to use bevy_main instead of rev
 [patch.'https://github.com/NiklasEi/bevy_asset_loader']
 bevy_asset_loader = { git = "https://github.com/slyedoc/bevy_asset_loader", branch = "bevy_main" }
 
-# Setup to use bevy_main
+# Setup to use bevy_main instead of rev 
 [patch.'https://github.com/NiklasEi/bevy_kira_audio']
 bevy_kira_audio = { git = "https://github.com/slyedoc/bevy_kira_audio", branch = "bevy_main", features = [ "wav" ] }

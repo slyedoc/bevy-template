@@ -1,8 +1,6 @@
+use crate::GameState;
 use bevy::{app::AppExit, prelude::*};
 use bevy_input_actionmap::*;
-use crate::GameState;
-
-
 
 pub struct StatePlugin;
 impl Plugin for StatePlugin {
@@ -12,9 +10,6 @@ impl Plugin for StatePlugin {
             .add_system(actions.system());
     }
 }
-
-
-
 
 #[derive(Hash, PartialEq, Eq, Clone)]
 enum Action {

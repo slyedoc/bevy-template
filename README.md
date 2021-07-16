@@ -33,7 +33,7 @@ I have removed it for now, though I do plan on adding it back.  I want to look i
 * [bevy_egui](https://github.com/mvlabat/bevy_egui) provides a [Egui](https://github.com/emilk/egui) integration
   * Checkout [egui_demo](https://github.com/emilk/egui/tree/master/egui_demo_lib/src/apps) for some amazing examples
 * [bevy-inspector-egui](https://github.com/jakobhellermann/bevy-inspector-egui) Creates egui window inspectors of any data we want.
-* [bevy_kira_audio](https://github.com/NiklasEi/bevy_kira_audio) audio manager, integrates [Kira](https://github.com/tesselode/kira/) into Bevy.
+* [bevy_kira_audio](https://github.com/NiklasEi/bevy_kira_audio) audio  manager, integrates [Kira](https://github.com/tesselode/kira/) into Bevy.  bevy_audio is
 * [bevy_mod_picking](https://github.com/aevyrie/bevy_mod_picking) plugin for 3D mouse picking
 * [bevy_asset_loader](https://github.com/NiklasEi/bevy_asset_loader) reduces boilerplate when loading game assets
 * [bevycheck](https://github.com/jakobhellermann/bevycheck) provides handy debug information for bevy systems

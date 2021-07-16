@@ -9,7 +9,7 @@ use bevy_egui::{
 };
 use bevy_inspector_egui::{plugin::InspectorWindows, WorldInspectorParams};
 
-use crate::{GameStages, GameState, pong::PongData, tick_tac_toe::TicTacToeData};
+use crate::{pong::PongData, tic_tac_toe::TicTacToeData, GameStages, GameState};
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
 
 use super::{grid::GridData, EditorCamera, EditorState};

@@ -1,13 +1,15 @@
-
 mod editor;
-mod state;
 mod helpers;
 mod loading;
 mod menu;
 mod pong;
-mod tick_tac_toe;
+mod state;
+mod tic_tac_toe;
+mod actions_ui;
 use std::fmt;
 
+
+use actions_ui::draw_actions;
 use bevy_egui::EguiPlugin;
 use bevy_kira_audio::AudioPlugin;
 use editor::EditorPlugin;
@@ -19,11 +21,11 @@ use bevy::reflect::TypeRegistration;
 
 use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
 use bevy_mod_picking::{DefaultPickingPlugins, PickingEvent};
+use menu::MenuPlugin;
 use pong::PongPlugin;
 use state::StatePlugin;
-use menu::MenuPlugin;
 use strum::EnumIter;
-use tick_tac_toe::TicTacToePlugin;
+use tic_tac_toe::TicTacToePlugin;
 
 // See https://bevy-cheatbook.github.io/programming/states.html
 // Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
@@ -59,14 +61,9 @@ pub enum GameStages {
 
 fn main() {
     let mut app = App::build();
-    app
-        .insert_resource(Msaa { samples: 4 })
-        .insert_resource(ClearColor(Color::rgb(0.4, 0.4, 0.4)))
+    app.insert_resource(Msaa { samples: 4 })
+        .insert_resource(ClearColor(Color::rgb(0.0, 0.0, 0.0)))
         .insert_resource(WindowDescriptor {
-            width: 800.,
-            height: 600.,
-            vsync: true,
-            resizable: true,
             title: "Bevy Template".to_string(),
             ..Default::default()
         })
@@ -77,25 +74,26 @@ fn main() {
         .add_plugin(EguiPlugin)
         .add_plugin(AudioPlugin)
         .add_plugin(DefaultPickingPlugins)
-
+        // Add States
+        .add_state(GameState::Loading)
+        // Should send us to Menu once everything is loaded, been having issues with this, maybe media related
+        .add_plugin(LoadingPlugin::default())
         // Add our plugins
         .add_plugin(EditorPlugin)
         .add_plugin(StatePlugin)
-
-        // Add States
-        .add_state(GameState::Loading)
-        .add_plugin(LoadingPlugin::default()) //.open(GameState::Pong))
         .add_plugin(PongPlugin)
         .add_plugin(TicTacToePlugin)
         .add_plugin(MenuPlugin)
 
-        //.add_startup_system(print_resources.system());
-        .add_system_to_stage(CoreStage::PostUpdate, print_picking_events.system())
-
-        //app.add_plugin(LogDiagnosticsPlugin::default());
-        ;
-    app.run()
+        //
+        .add_system_set(
+            SystemSet::on_update(GameState::Menu)
+            .with_system(draw_actions.system())
+        )
+        .run()
 }
+
+
 
 #[allow(dead_code)]
 fn print_resources(archetypes: &Archetypes, components: &Components) {

@@ -177,24 +177,22 @@ fn draw_line<'a>(
 }
 
 fn update(
-    mut commands: Commands,
+    mut _commands: Commands,
     mut clear_color: ResMut<ClearColor>,
     data: Res<TicTacToeData>,
-    query: Query<(Entity, &Sprite, &Transform, &Interaction), (With<Cell>, Changed<Interaction>)>,
+    _query: Query<(Entity, &Sprite, &Transform, &Interaction), (With<Cell>, Changed<Interaction>)>,
 ) {
+    // let (entity, _size, _pos) = query
+    //     .iter()
+    //     .filter(|(_, _, _, interaction)| matches!(interaction, Interaction::Clicked))
+    //     .map(|(entity, s, t, _)| (Some(entity), s.size, t.translation))
+    //     .next()
+    //     .unwrap_or_else(|| (None, Vec2::new(10.0, 10.0), Vec3::ZERO));
+
+    // if let Some(entity) = entity {
+    //     commands.entity(entity).despawn_recursive();
+    // }
+
     // TODO: Remove this hack, but it lets each state have its own background color
-
     clear_color.0 = data.clear_color;
-
-    let (entity, _size, _pos) = query
-        .iter()
-        .filter(|(_, _, _, interaction)| matches!(interaction, Interaction::Clicked))
-        .map(|(entity, s, t, _)| (Some(entity), s.size, t.translation))
-        .next()
-        .unwrap_or_else(|| (None, Vec2::new(10.0, 10.0), Vec3::ZERO));
-
-    if let Some(entity) = entity {
-        commands.entity(entity).despawn_recursive();
-    }
-    //
 }
