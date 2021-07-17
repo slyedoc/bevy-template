@@ -2,15 +2,18 @@
 
 (Currently this is the most complex version on pong in the universe.)
 
-This project is a playground where I try out different way of doing things in bevy, something more than a simple scene,
+I am learning rust and [bevy](https://github.com/bevyengine/bevy) and this is my latest playground.
 
-This is a project template using bevy and cummunity plugins.
+I hope to turn this into template using all the amazing work in the bevy communty. Would this be allowed in a [bevy game jam](https://github.com/bevyengine/bevy/discussions/2364)?
 
-This will be a framework for myself and where I figure out how to use existing solutions.
+## Editor
 
-Would this be allowed in a game jam? I really hope so.
+I have started an editor plugin, a hack job, just me playing around.
 
-![Editor Example](docs/images/tick-tack-toe.png)
+After years of messing around in Unity and writting some of my own editor inspectors its amazing what you can already put together in bevy.
+
+![Editor Example](docs/images/editor.png)
+~Yes, I know the Anti-aliasing is a problem, its not beyv that was me, going to place all that code~
 
 ## Setup
 
@@ -20,28 +23,26 @@ Be sure to follow the [Bevy Setup Guide](https://bevyengine.org/learn/book/getti
 
 ## Personal Notes
 
-*UI in bevy is alot of work and not very complete, good news is that like all of bevy people far smarter than me are working on it.*
-For now though everything will be using [Egui](https://github.com/emilk/egui) immediate mode GUI library for Rust, its been has great so far.
+For now I am using [Egui](https://github.com/emilk/egui) an immediate mode GUI library for Rust, its been has great so far.  You can still use Bevy UI though.
 
-I started the workflow stuff based on [NiklasEi template](https://github.com/NiklasEi/bevy_game_template), it had web support using bevy_webgl2.
-I have removed it for now, though I do plan on adding it back.  I want to look into bevy_webgl2.
+I started this after seeing [NiklasEi template](https://github.com/NiklasEi/bevy_game_template)
+## Latest
 
-## Latest release
+// TODO: Add WASM Demo link and build downloads releases automatically
 
-// TODO: Add links to releases automatically
-
-## Current Plugins
+## Used Bevy Communtiy Plugins
 
 * [bevy_egui](https://github.com/mvlabat/bevy_egui) provides a [Egui](https://github.com/emilk/egui) integration
-  * Checkout [egui_demo](https://github.com/emilk/egui/tree/master/egui_demo_lib/src/apps) for some amazing examples
 * [bevy-inspector-egui](https://github.com/jakobhellermann/bevy-inspector-egui) Creates egui window inspectors of any data we want.
-* [bevy_kira_audio](https://github.com/NiklasEi/bevy_kira_audio) audio  manager, integrates [Kira](https://github.com/tesselode/kira/) into Bevy.  bevy_audio is
+* [bevy_kira_audio](https://github.com/NiklasEi/bevy_kira_audio) audio  manager, integrates [Kira](https://github.com/tesselode/kira/) into Bevy.
 * [bevy_mod_picking](https://github.com/aevyrie/bevy_mod_picking) plugin for 3D mouse picking
 * [bevy_asset_loader](https://github.com/NiklasEi/bevy_asset_loader) reduces boilerplate when loading game assets
-* [bevycheck](https://github.com/jakobhellermann/bevycheck) provides handy debug information for bevy systems
-  * put ```#[bevycheck::system]``` above a system to get some helpful debugging information(remove after use, will panic if you leave it in)
-* [bevy_skybox]
+* [bevy_input_actionmap](https://github.com/lightsoutgames/bevy_input_actionmap)
+* [bevy_skybox] - A skybox plugin
 
+Dev
+
+* [bevycheck](https://github.com/jakobhellermann/bevycheck) provides some handy debug information
 ## Github Features
 
 This repo has a [release workflow](.github/workflows/release.yaml) setup that will build releases and publish them on github.com

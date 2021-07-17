@@ -15,7 +15,7 @@ use std::hash::Hash;
 pub struct LoadingPlugin;
 impl Plugin for LoadingPlugin {
     fn build(&self, app: &mut AppBuilder) {
-        AssetLoader::new(GameState::Loading, GameState::Menu)
+        AssetLoader::new(GameState::Loading, GameState::Pong)
             .with_collection::<FontAssets>()
             .with_collection::<AudioAssets>()
             .with_collection::<TextureAssets>()
