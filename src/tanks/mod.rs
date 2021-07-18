@@ -95,22 +95,6 @@ fn animate_sprite_system(
 
 
 
-use std::fs::File;
-
-use spritesheet_generator::spritesheet::Spritesheet;
-
-fn main() {
-    // Open the file in read-only mode.
-    let file = File::open("examples/resources/example.json").unwrap();
-
-    // Read the JSON contents of the file as an instance of `Spritesheet`.
-    let sprites: Spritesheet = serde_json::from_reader(file).unwrap();
-    println!("Json parsed {:?}", sprites);
-
-    // Read one specific frame.
-    let frame = sprites.frames.get("battlehammer").unwrap().screen.clone();
-    println!("Frame parsed {:?}", frame);
-}
 
 
 fn setup_spritesheet(

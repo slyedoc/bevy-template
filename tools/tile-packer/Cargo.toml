@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-#spritesheet-generator = { git = "https://github.com/slyedoc/spritesheet-generator.git" }
-spritesheet-generator = { git = "../spritesheet-generator" }
+spritesheet-generator = { git = "https://github.com/slyedoc/spritesheet-generator.git" }
 clap = "3.0.0-beta.2"
 

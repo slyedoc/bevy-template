@@ -248,26 +248,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "bevy-template"
-version = "0.1.0"
-dependencies = [
- "bevy",
- "bevy-inspector-egui",
- "bevy_asset_loader",
- "bevy_ecs_tilemap",
- "bevy_egui",
- "bevy_input_actionmap",
- "bevy_kira_audio",
- "bevy_mod_picking",
- "bevy_skybox",
- "bevycheck",
- "pretty-type-name",
- "rand",
- "spritesheet-generator",
- "strum",
-]
-
-[[package]]
 name = "bevy_app"
 version = "0.5.0"
 source = "git+https://github.com/bevyengine/bevy?branch=main#3a20462d3f92230da9fc229451ce72c2873c17bb"
@@ -681,6 +661,30 @@ dependencies = [
  "bevy",
  "image 0.23.14",
  "itertools",
+]
+
+[[package]]
+name = "bevy_slyedoc_template"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bevy",
+ "bevy-inspector-egui",
+ "bevy_asset_loader",
+ "bevy_ecs_tilemap",
+ "bevy_egui",
+ "bevy_input_actionmap",
+ "bevy_kira_audio",
+ "bevy_mod_picking",
+ "bevy_skybox",
+ "bevycheck",
+ "convert_case",
+ "pretty-type-name",
+ "rand",
+ "ron",
+ "serde",
+ "spritesheet_generator",
+ "strum",
 ]
 
 [[package]]
@@ -1124,6 +1128,12 @@ dependencies = [
  "cfg-if 0.1.10",
  "wasm-bindgen",
 ]
+
+[[package]]
+name = "convert_case"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6245d59a3e82a7fc217c5828a6692dbc6dfb63a0c8c90495621f7b9d79704a0e"
 
 [[package]]
 name = "copyless"
@@ -3373,7 +3383,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "spritesheet-generator"
+name = "spritesheet_generator"
 version = "0.5.0"
 dependencies = [
  "image 0.20.1",

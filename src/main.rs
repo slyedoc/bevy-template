@@ -7,7 +7,10 @@ mod state;
 mod tanks;
 mod actions;
 mod audio;
+mod window_config;
+mod ron_asset;
 
+use std::env::var;
 use std::fmt;
 use actions::ActionsPlugin;
 use bevy_ecs_tilemap::TilemapPlugin;
@@ -28,19 +31,20 @@ use pong::PongPlugin;
 use state::StatePlugin;
 use strum::EnumIter;
 use tanks::TanksPlugin;
+use window_config::WindowConfigPlugin;
+use convert_case::{Case, Casing};
 
-// See https://bevy-cheatbook.github.io/programming/states.html
-// Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
+
+// See https://bevy-cheatbook.github.io/  for about everything
+
 #[derive(Clone, Eq, PartialEq, Debug, Hash, EnumIter)]
 pub enum GameState {
-    // During the loading State the LoadingPlugin will load our assets
-    // For now we just load everything
-    Loading,
+    Loading, // Asset Loading
+    Menu, // Main Menu
+    
     // Different Games
     Pong,
     Tanks,
-    // Main Menu
-    Menu,
 }
 
 impl fmt::Display for GameState {
@@ -59,12 +63,27 @@ pub enum GameStages {
     Editor, // only used for ui currently
 }
 
+pub struct ConfigPath {
+    pub path: String
+}
+
 fn main() {
+
+    let name = "Bevy Slyedoc Template".to_string();
+     let config_home = var("XDG_CONFIG_HOME")
+         .or_else(|_| var("HOME").map(|home|format!("{}/.config", home))).unwrap();
+
+    let config_path = format!("{}/{}", config_home, name.to_case(Case::Snake));
+     println!("{:?}", config_path);
+
+
     let mut app = App::build();
-    app.insert_resource(Msaa { samples: 4 })
+
+    app.insert_resource(Msaa { samples: 8 })
+        .insert_resource(ConfigPath { path: config_path })
         .insert_resource(ClearColor(Color::rgb(0.0, 0.0, 0.0)))
         .insert_resource(WindowDescriptor {
-            title: "Bevy Template".to_string(),
+            title: name,
             ..Default::default()
         })
 
@@ -80,13 +99,14 @@ fn main() {
         // Should send us to Menu once everything is loaded, been having issues with this, maybe media related
         .add_plugin(LoadingPlugin)
         // Add our plugins
-        .add_plugin(ActionsPlugin)
         .add_plugin(EditorPlugin)
+        .add_plugin(WindowConfigPlugin)
+        .add_plugin(ActionsPlugin)
         .add_plugin(StatePlugin)
         .add_plugin(PongPlugin)
         .add_plugin(TanksPlugin)
         .add_plugin(MenuPlugin)
-        .run()
+        .run();
 }
 
 
@@ -97,10 +117,6 @@ fn print_resources(archetypes: &Archetypes, components: &Components) {
         .resource()
         .components()
         .map(|id| components.get_info(id).unwrap())
-        // get_short_name removes the path information
-        // i.e. `bevy_audio::audio::Audio` -> `Audio`
-        // if you want to see the path info replace
-        // `TypeRegistration::get_short_name` with `String::from`
         .map(|info| TypeRegistration::get_short_name(info.name()))
         .collect();
 
@@ -109,6 +125,7 @@ fn print_resources(archetypes: &Archetypes, components: &Components) {
     r.iter().for_each(|name| println!("{}", name));
 }
 
+#[allow(dead_code)]
 pub fn print_picking_events(mut events: EventReader<PickingEvent>) {
     for event in events.iter() {
         println!("This event happened! {:?}", event);

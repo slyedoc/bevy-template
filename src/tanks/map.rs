@@ -16,7 +16,7 @@ impl Plugin for MapPlugin {
             )
             .add_system_set(
                 SystemSet::on_update(GameState::Tanks)
-                .with_system(update_map.system())
+                //.with_system(update_map.system())
             );
     }
 }
