@@ -9,7 +9,7 @@ use bevy_egui::{
 };
 use bevy_inspector_egui::{plugin::InspectorWindows, WorldInspectorParams};
 
-use crate::{pong::PongData, tic_tac_toe::TicTacToeData, GameStages, GameState};
+use crate::{pong::PongData, tanks::TanksData, GameStages, GameState};
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
 
 use super::{grid::GridData, EditorCamera, EditorState};
@@ -104,7 +104,7 @@ fn draw_editor_topbar(
                 });
 
                 menu::menu(ui, "Resources", |ui| {
-                    draw_menu_item::<TicTacToeData>(&mut inspector_windows, ui);
+                    draw_menu_item::<TanksData>(&mut inspector_windows, ui);
                     draw_menu_item::<PongData>(&mut inspector_windows, ui);
                     draw_menu_item::<UIData>(&mut inspector_windows, ui);
                     draw_menu_item::<GridData>(&mut inspector_windows, ui);

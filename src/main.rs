@@ -4,11 +4,13 @@ mod loading;
 mod menu;
 mod pong;
 mod state;
-mod tic_tac_toe;
+mod tanks;
 mod actions;
-use std::fmt;
+mod audio;
 
+use std::fmt;
 use actions::ActionsPlugin;
+use bevy_ecs_tilemap::TilemapPlugin;
 use bevy_egui::EguiPlugin;
 
 use bevy_kira_audio::AudioPlugin;
@@ -25,7 +27,7 @@ use menu::MenuPlugin;
 use pong::PongPlugin;
 use state::StatePlugin;
 use strum::EnumIter;
-use tic_tac_toe::TicTacToePlugin;
+use tanks::TanksPlugin;
 
 // See https://bevy-cheatbook.github.io/programming/states.html
 // Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
@@ -36,19 +38,17 @@ pub enum GameState {
     Loading,
     // Different Games
     Pong,
-    TicTacToe,
+    Tanks,
     // Main Menu
     Menu,
 }
 
-// Implement `Display` for `MinMax`.
 impl fmt::Display for GameState {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        // Use `self.number` to refer to each positional data point.
         match *self {
             GameState::Loading => write!(f, "Loading"),
             GameState::Pong => write!(f, "Pong"),
-            GameState::TicTacToe => write!(f, "Tic-Tack-Toe"),
+            GameState::Tanks => write!(f, "Tanks"),
             GameState::Menu => write!(f, "Menu"),
         }
     }
@@ -71,6 +71,7 @@ fn main() {
         // Load 3rd party plugins
         .add_plugins(DefaultPlugins)
         .add_plugin(FrameTimeDiagnosticsPlugin::default())
+        .add_plugin(TilemapPlugin)
         .add_plugin(EguiPlugin)
         .add_plugin(AudioPlugin)
         .add_plugin(DefaultPickingPlugins)
@@ -83,11 +84,8 @@ fn main() {
         .add_plugin(EditorPlugin)
         .add_plugin(StatePlugin)
         .add_plugin(PongPlugin)
-        .add_plugin(TicTacToePlugin)
+        .add_plugin(TanksPlugin)
         .add_plugin(MenuPlugin)
-
-        //
-
         .run()
 }
 

@@ -4,6 +4,7 @@ use bevy::app::AppExit;
 use bevy::prelude::*;
 use bevy_egui::{egui::*, *};
 use bevy_kira_audio::{Audio, AudioChannel};
+use strum::IntoEnumIterator;
 
 pub struct MenuPlugin;
 impl Plugin for MenuPlugin {
@@ -29,15 +30,16 @@ fn draw_menu(
         .show(egui_ctx.ctx(), |ui| {
             ui.heading("Bevy Template");
             ui.separator();
-            ui.label("Game States");
-            if ui.button("Pong").clicked() {
-                state.set(GameState::Pong).unwrap();
-            }
-            if ui.button("Tic-Tac-Toe").clicked() {
-                state.set(GameState::TicTacToe).unwrap();
+            ui.label("Games");
+            for s in GameState::iter() {
+                if s != GameState::Loading && s != GameState::Menu {
+                    if ui.button( s.to_string() ).clicked() {
+                        state.set(s).unwrap();
+                     }
+                }
             }
             ui.separator();
-            if ui.button("Settings").clicked() {}
+            if ui.button("Settings").clicked() { }
 
             ui.separator();
             if ui.button("Exit").clicked() {

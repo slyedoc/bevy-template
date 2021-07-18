@@ -8,6 +8,7 @@ mod score;
 mod wall;
 
 use crate::GameState;
+use crate::audio::AudioState;
 use crate::helpers::*;
 use audio::*;
 use bevy::prelude::*;
@@ -32,7 +33,12 @@ pub struct PongData {
     primary_material: Handle<ColorMaterial>,
 
     score: ResourceInspector<Score>,
+
+    audio: AudioState,
+
 }
+
+
 
 impl FromWorld for PongData {
     fn from_world(world: &mut World) -> Self {
@@ -46,6 +52,7 @@ impl FromWorld for PongData {
             background: Color::BLACK,
             primary_material: materials.add(Color::WHITE.into()),
             score: ResourceInspector::<Score>::default(),
+            audio: AudioState::default(),
         }
     }
 }
@@ -54,7 +61,6 @@ pub struct PongPlugin;
 impl Plugin for PongPlugin {
     fn build(&self, app: &mut AppBuilder) {
         app.insert_resource(score::Score::default())
-            .insert_resource(PongAudio::default())
             .add_event::<GoalEvent>()
             .add_event::<BallBounceEvent>()
             .add_plugin(InspectorPlugin::<PongData>::new().open(false))
@@ -62,8 +68,6 @@ impl Plugin for PongPlugin {
             .add_system_set(
                 SystemSet::on_enter(GameState::Pong)
                     .with_system(setup.system())
-                    .with_system(start_bg_audio.system())
-                    .with_system(window_resize_listener.system()),
             )
             .add_system_set(
                 SystemSet::on_update(GameState::Pong)
@@ -79,7 +83,6 @@ impl Plugin for PongPlugin {
             )
             .add_system_set(
                 SystemSet::on_exit(GameState::Pong)
-                    .with_system(stop_bg_audio.system())
                     .with_system(cleanup_system::<Pong>.system())
                     .with_system(cleanup_actions_system::<PongAction>.system())
             );

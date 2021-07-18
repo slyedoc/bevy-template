@@ -4,7 +4,7 @@
 
 I am learning rust and [bevy](https://github.com/bevyengine/bevy) and this is my latest playground.
 
-I hope to turn this into template using all the amazing work in the bevy communty. Would this be allowed in a [bevy game jam](https://github.com/bevyengine/bevy/discussions/2364)?
+I hope i can use it for a [bevy game jam](https://github.com/bevyengine/bevy/discussions/2364)
 
 ## Editor
 
