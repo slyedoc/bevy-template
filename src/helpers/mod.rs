@@ -1,4 +1,5 @@
-pub(crate) mod camera;
+pub mod camera;
+pub mod texture;
 
 use std::fmt::Debug;
 use std::hash::Hash;

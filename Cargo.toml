@@ -29,6 +29,7 @@ bevy_input_actionmap = { git = "https://github.com/lightsoutgames/bevy_input_act
 bevy_kira_audio = { git = "https://github.com/NiklasEi/bevy_kira_audio", branch = "bevy_main", features = [ "wav" ] }
 bevy_asset_loader = { git = "https://github.com/NiklasEi/bevy_asset_loader", branch = "bevy_main" }
 bevy_ecs_tilemap = { git = "https://github.com/StarArawn/bevy_ecs_tilemap", branch = "bevy-track" }
+bevy_asset_ron = "0.2.0"
 bevy_skybox = "0.4.0"
 strum = { version = "0.21", features = ["derive"] }
 rand = "0.8.4"
@@ -39,6 +40,7 @@ ron = "0.6.4"
 serde = "1.0.126"
 anyhow = "1.0"
 convert_case = "0.4.0"
+
 
 [dev-dependencies]
 bevycheck = "0.1.4"
@@ -51,6 +53,7 @@ opt-level = 1
 [patch.crates-io]
 bevycheck = { git = "https://github.com/slyedoc/bevycheck" }
 bevy_skybox = { git = "https://github.com/slyedoc/bevy_skybox" }
+bevy_asset_ron = { path = "../bevy_asset_ron"}
 
 # Setup to use bevy_main
 [patch.'https://github.com/lightsoutgames/bevy_input_actionmap']

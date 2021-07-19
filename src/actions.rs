@@ -12,7 +12,10 @@ impl Plugin for ActionsPlugin {
 
         // before adding egui multi_threaded drawing like this would fail because
         // to fix ui issues let rest of egui draw first
-        app.add_system_set_to_stage(
+        app.insert_resource(ActionsWindow{
+            enabled: true
+        })
+            .add_system_set_to_stage(
             CoreStage::PostUpdate,
             SystemSet::new()
                 .with_system(draw_actions.system())
@@ -20,14 +23,20 @@ impl Plugin for ActionsPlugin {
     }
 }
 
+pub struct ActionsWindow {
+    pub enabled: bool,
+}
 pub fn draw_actions(
     egui_ctx: Res<EguiContext>,
     state_map: Res<InputMap<StateAction>>,
     pong_map: Res<InputMap<PongAction>>,
     editor_map: Res<InputMap<EditorAction>>,
     editor_camera_map: Res<InputMap<EditorCameraAction>>,
+    mut window: ResMut<ActionsWindow>
 ) {
-    egui::Window::new("Key Bindings").show(egui_ctx.ctx(), |ui| {
+    egui::Window::new("Key Bindings")
+    .open(&mut window.enabled)
+    .show(egui_ctx.ctx(), |ui| {
          dispaly_input_map::<StateAction>(&state_map, ui);
          dispaly_input_map::<PongAction>(&pong_map, ui);
          dispaly_input_map::<EditorAction>(&editor_map, ui);

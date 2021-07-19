@@ -51,22 +51,28 @@ impl Plugin for EditorPlugin {
 #[derive(Debug, Hash, PartialEq, Eq, Clone)]
 pub enum EditorAction {
     EditorToggle,
+    World,
 }
 
 impl fmt::Display for EditorAction {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             EditorAction::EditorToggle => write!(f, "Toggle Editor"),
-
+            EditorAction::World => write!(f, "Open World Inspector"),
         }
     }
 }
 
 fn setup(mut input_map: ResMut<InputMap<EditorAction>>) {
     input_map.bind(EditorAction::EditorToggle, KeyCode::F12);
+    input_map.bind(EditorAction::World, KeyCode::F11);
 }
 
-fn run_actions(input_map: Res<InputMap<EditorAction>>, mut state: ResMut<State<EditorState>>) {
+fn run_actions(
+    input_map: Res<InputMap<EditorAction>>,
+     mut state: ResMut<State<EditorState>>, 
+     mut world_inspection: ResMut<WorldInspectorParams>,
+    ) {
     if input_map.just_active(EditorAction::EditorToggle) {
         let result = match state.current() {
             // could only happen if loading takes a while for frist frame, but go ahead and disable editor if so
@@ -75,6 +81,10 @@ fn run_actions(input_map: Res<InputMap<EditorAction>>, mut state: ResMut<State<E
             EditorState::Disabled => EditorState::Loading,
         };
         state.set(result).expect("Editor state didn't set");
+    }
+
+    if input_map.just_active(EditorAction::World) {
+        world_inspection.enabled = !world_inspection.enabled;
     }
 }
 

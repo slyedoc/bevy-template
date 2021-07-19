@@ -7,7 +7,7 @@ use bevy_egui::{
     egui::{menu, Checkbox, TopBottomPanel, Ui, Window},
     EguiContext, EguiSettings,
 };
-use bevy_inspector_egui::{plugin::InspectorWindows, WorldInspectorParams};
+use bevy_inspector_egui::{WorldInspectorParams, plugin::InspectorWindows};
 
 use crate::{pong::PongData, tanks::TanksData, GameStages, GameState};
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
@@ -33,9 +33,14 @@ pub struct UIData {
 
     // egui information
     #[inspectable(ignore)]
-    egui_settings: bool,
+    egui_settings: UIWindow,
     #[inspectable(ignore)]
-    egui_inspection: bool,
+    egui_inspection: UIWindow,
+}
+
+struct UIWindow {
+    enabled: bool,
+    position: Vec2,
 }
 
 impl Default for UIData {
@@ -43,12 +48,22 @@ impl Default for UIData {
         UIData {
             scale: 1.5,
             camera: EditorCamera::Perspective,
-            egui_settings: false,
-            egui_inspection: false,
+            egui_settings: UIWindow {
+                enabled: false,
+                position: Vec2::new(0.0, 0.0),
+            },
+            egui_inspection: UIWindow {
+                enabled: false,
+                position: Vec2::new(0.0, 0.0) ,
+            },
             fps: false,
         }
     }
 }
+
+// ----------------------------------------------------------------------------
+// Compatibility and convenience conversions to and from [f32; 2]:
+
 
 pub struct UIPlugin;
 
@@ -111,9 +126,9 @@ fn draw_editor_topbar(
                 });
 
                 menu::menu(ui, "Egui", |ui| {
-                    ui.add(Checkbox::new(&mut ui_data.egui_settings, "Egui Settings"));
+                    ui.add(Checkbox::new(&mut ui_data.egui_settings.enabled, "Egui Settings"));
                     ui.add(Checkbox::new(
-                        &mut ui_data.egui_inspection,
+                        &mut ui_data.egui_inspection.enabled,
                         "Egui Inspection",
                     ));
                 });
@@ -151,14 +166,14 @@ fn draw_editor_topbar(
         });
 
     Window::new("Inspection")
-        .open(&mut ui_data.egui_inspection)
+        .open(&mut ui_data.egui_inspection.enabled)
         .scroll(true)
         .show(egui_ctx.ctx(), |ui| {
             egui_ctx.ctx().inspection_ui(ui);
         });
 
     Window::new("Settings")
-        .open(&mut ui_data.egui_settings)
+        .open(&mut ui_data.egui_settings.enabled)
         .scroll(true)
         .show(egui_ctx.ctx(), |ui| {
             egui_ctx.ctx().settings_ui(ui);

@@ -1,3 +1,5 @@
+mod actions;
+mod audio;
 mod editor;
 mod helpers;
 mod loading;
@@ -5,16 +7,13 @@ mod menu;
 mod pong;
 mod state;
 mod tanks;
-mod actions;
-mod audio;
 mod window_config;
-mod ron_asset;
 
-use std::env::var;
-use std::fmt;
 use actions::ActionsPlugin;
 use bevy_ecs_tilemap::TilemapPlugin;
 use bevy_egui::EguiPlugin;
+use std::env::var;
+use std::fmt;
 
 use bevy_kira_audio::AudioPlugin;
 use editor::EditorPlugin;
@@ -26,22 +25,21 @@ use bevy::reflect::TypeRegistration;
 
 use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
 use bevy_mod_picking::{DefaultPickingPlugins, PickingEvent};
+use convert_case::{Case, Casing};
 use menu::MenuPlugin;
 use pong::PongPlugin;
 use state::StatePlugin;
 use strum::EnumIter;
 use tanks::TanksPlugin;
 use window_config::WindowConfigPlugin;
-use convert_case::{Case, Casing};
 
-
-// See https://bevy-cheatbook.github.io/  for about everything
+// See https://bevy-cheatbook.github.io/ for about everything
 
 #[derive(Clone, Eq, PartialEq, Debug, Hash, EnumIter)]
 pub enum GameState {
     Loading, // Asset Loading
-    Menu, // Main Menu
-    
+    Menu,    // Main Menu
+
     // Different Games
     Pong,
     Tanks,
@@ -64,18 +62,17 @@ pub enum GameStages {
 }
 
 pub struct ConfigPath {
-    pub path: String
+    pub path: String,
 }
 
 fn main() {
-
     let name = "Bevy Slyedoc Template".to_string();
-     let config_home = var("XDG_CONFIG_HOME")
-         .or_else(|_| var("HOME").map(|home|format!("{}/.config", home))).unwrap();
+    let config_home = var("XDG_CONFIG_HOME")
+        .or_else(|_| var("HOME").map(|home| format!("{}/.config", home)))
+        .unwrap();
 
     let config_path = format!("{}/{}", config_home, name.to_case(Case::Snake));
-     println!("{:?}", config_path);
-
+    println!("configs: {:?}", config_path);
 
     let mut app = App::build();
 
@@ -86,7 +83,6 @@ fn main() {
             title: name,
             ..Default::default()
         })
-
         // Load 3rd party plugins
         .add_plugins(DefaultPlugins)
         .add_plugin(FrameTimeDiagnosticsPlugin::default())
@@ -108,8 +104,6 @@ fn main() {
         .add_plugin(MenuPlugin)
         .run();
 }
-
-
 
 #[allow(dead_code)]
 fn print_resources(archetypes: &Archetypes, components: &Components) {

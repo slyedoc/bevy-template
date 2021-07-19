@@ -53,7 +53,6 @@ struct MenuAudio {
 }
 
 fn start_audio(audio: Res<Audio>, audio_assets: Res<AudioAssets>, menu: Res<MenuAudio>) {
-    println!("play menu sound!");
     audio.play_looped_in_channel(audio_assets.background_music.clone(), &menu.background);
 }
 
