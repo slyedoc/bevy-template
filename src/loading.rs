@@ -10,6 +10,7 @@ impl Plugin for LoadingPlugin {
             .with_collection::<FontAssets>()
             .with_collection::<AudioAssets>()
             .with_collection::<TextureAssets>()
+            .with_collection::<TankAssets>()
             .build(app);
     }
 }
@@ -37,6 +38,13 @@ pub struct TextureAssets {
     #[asset(path = "textures/bevy.png")]
     pub texture_bevy: Handle<Texture>,
 
-    #[asset(path = "tilemaps/stone_floor.png")]
+}
+
+#[derive(AssetCollection)]
+pub struct TankAssets {
+    #[asset(path = "sprite_sheets/stone_floor.png")]
     pub stone_floor: Handle<Texture>,
+
+    #[asset(path = "sprite_sheets/stone_floor.gen.ron")]
+    pub stone_floor_sheet: Handle<spritesheet_generator::sprite_sheet::SpriteSheet>,
 }

@@ -10,6 +10,7 @@ mod tanks;
 mod window_config;
 
 use actions::ActionsPlugin;
+use bevy_asset_ron::RonAssetPlugin;
 use bevy_ecs_tilemap::TilemapPlugin;
 use bevy_egui::EguiPlugin;
 use std::env::var;
@@ -32,6 +33,7 @@ use state::StatePlugin;
 use strum::EnumIter;
 use tanks::TanksPlugin;
 use window_config::WindowConfigPlugin;
+use spritesheet_generator::sprite_sheet;
 
 // See https://bevy-cheatbook.github.io/ for about everything
 
@@ -90,6 +92,8 @@ fn main() {
         .add_plugin(EguiPlugin)
         .add_plugin(AudioPlugin)
         .add_plugin(DefaultPickingPlugins)
+        // Add support for our own sprite generator
+        .add_plugin(RonAssetPlugin::<sprite_sheet::SpriteSheet>::new(&["gen.ron"]))
         // Add States
         .add_state(GameState::Loading)
         // Should send us to Menu once everything is loaded, been having issues with this, maybe media related
@@ -100,7 +104,7 @@ fn main() {
         .add_plugin(ActionsPlugin)
         .add_plugin(StatePlugin)
         .add_plugin(PongPlugin)
-        .add_plugin(TanksPlugin)
+        .add_plugin(TanksPlugin::new(GameState::Tanks))
         .add_plugin(MenuPlugin)
         .run();
 }

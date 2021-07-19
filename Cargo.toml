@@ -34,7 +34,7 @@ bevy_skybox = "0.4.0"
 strum = { version = "0.21", features = ["derive"] }
 rand = "0.8.4"
 pretty-type-name = "1.0.0"
-#spritesheet_generator = { git = "https://github.com/slyedoc/spritesheet-generator" }
+#spritesheet_generator = { git = "https://github.com/slyedoc/spritesheet_generator" }
 spritesheet_generator = { path = "../spritesheet_generator" }
 ron = "0.6.4"
 serde = "1.0.126"
