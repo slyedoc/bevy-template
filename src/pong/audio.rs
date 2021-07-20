@@ -1,5 +1,5 @@
 use super::{PongData, events::{BallBounceEvent, GoalEvent}};
-use crate::loading::AudioAssets;
+use crate::loading::PongAssets;
 use bevy::prelude::*;
 use bevy_kira_audio::{Audio};
 
@@ -7,7 +7,7 @@ pub fn handle_audio_events(
     mut ev_ball_bounce: EventReader<BallBounceEvent>,
     mut ev_goal: EventReader<GoalEvent>,
     audio: Res<Audio>,
-    assets: Res<AudioAssets>,
+    assets: Res<PongAssets>,
     data: Res<PongData>,
 ) {
     for _ in ev_ball_bounce.iter() {

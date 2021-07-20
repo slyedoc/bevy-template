@@ -9,7 +9,7 @@ use bevy_egui::{
 };
 use bevy_inspector_egui::{WorldInspectorParams, plugin::InspectorWindows};
 
-use crate::{pong::PongData, tanks::TanksData, GameStages, GameState};
+use crate::{GameStages, GameState, loading::DungeonPackAtlas, pong::PongData, tanks::TanksData};
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
 
 use super::{grid::GridData, EditorCamera, EditorState};
@@ -119,6 +119,7 @@ fn draw_editor_topbar(
                 });
 
                 menu::menu(ui, "Resources", |ui| {
+                    draw_menu_item::<DungeonPackAtlas>(&mut inspector_windows, ui);
                     draw_menu_item::<TanksData>(&mut inspector_windows, ui);
                     draw_menu_item::<PongData>(&mut inspector_windows, ui);
                     draw_menu_item::<UIData>(&mut inspector_windows, ui);

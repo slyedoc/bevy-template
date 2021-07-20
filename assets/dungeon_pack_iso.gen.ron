@@ -1,0 +1,4614 @@
+(
+    width: 4098,
+    height: 2657,
+    frames: [
+        (
+            name: "stoneWallAgedLeft_S",
+            position: (
+                x: 1737,
+                y: 2292,
+                w: 161,
+                h: 200,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 264,
+                w: 256,
+                h: 512,
+            ),
+        ),// [0]
+        (
+            name: "stoneWallGateOpen_S",
+            position: (
+                x: 1942,
+                y: 832,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [1]
+        (
+            name: "stoneWallDoorOpen_W",
+            position: (
+                x: 2927,
+                y: 931,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [2]
+        (
+            name: "tableShortChairs_E",
+            position: (
+                x: 1073,
+                y: 1172,
+                w: 123,
+                h: 104,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 56,
+                y: 369,
+                w: 256,
+                h: 512,
+            ),
+        ),// [3]
+        (
+            name: "stoneWallAged_W",
+            position: (
+                x: 594,
+                y: 1496,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [4]
+        (
+            name: "stoneWall_S",
+            position: (
+                x: 3780,
+                y: 827,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [5]
+        (
+            name: "stoneColumnWood_W",
+            position: (
+                x: 3988,
+                y: 1430,
+                w: 64,
+                h: 188,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 96,
+                y: 276,
+                w: 256,
+                h: 512,
+            ),
+        ),// [6]
+        (
+            name: "stoneWallColumnIn_N",
+            position: (
+                x: 3262,
+                y: 727,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [7]
+        (
+            name: "stoneCorner_E",
+            position: (
+                x: 1842,
+                y: 1757,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [8]
+        (
+            name: "barrel_E",
+            position: (
+                x: 1489,
+                y: 1706,
+                w: 80,
+                h: 83,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 79,
+                y: 378,
+                w: 256,
+                h: 512,
+            ),
+        ),// [9]
+        (
+            name: "stoneWallGateClosed_E",
+            position: (
+                x: 2596,
+                y: 764,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [10]
+        (
+            name: "tableChairsBroken_E",
+            position: (
+                x: 423,
+                y: 387,
+                w: 130,
+                h: 100,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 61,
+                y: 379,
+                w: 256,
+                h: 512,
+            ),
+        ),// [11]
+        (
+            name: "bridgeBroken_S",
+            position: (
+                x: 1834,
+                y: 104,
+                w: 190,
+                h: 103,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 400,
+                w: 256,
+                h: 512,
+            ),
+        ),// [12]
+        (
+            name: "woodenSupports_W",
+            position: (
+                x: 757,
+                y: 1613,
+                w: 141,
+                h: 224,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 115,
+                y: 288,
+                w: 256,
+                h: 512,
+            ),
+        ),// [13]
+        (
+            name: "stoneColumnWood_E",
+            position: (
+                x: 1487,
+                y: 1877,
+                w: 64,
+                h: 188,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 96,
+                y: 276,
+                w: 256,
+                h: 512,
+            ),
+        ),// [14]
+        (
+            name: "stoneWallWindow_S",
+            position: (
+                x: 165,
+                y: 1653,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [15]
+        (
+            name: "planks_W",
+            position: (
+                x: 1906,
+                y: 1476,
+                w: 256,
+                h: 132,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [16]
+        (
+            name: "stoneWallAgedRight_S",
+            position: (
+                x: 1941,
+                y: 1071,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [17]
+        (
+            name: "tableShort_N",
+            position: (
+                x: 3484,
+                y: 497,
+                w: 118,
+                h: 87,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 60,
+                y: 379,
+                w: 256,
+                h: 512,
+            ),
+        ),// [18]
+        (
+            name: "stoneWallRoundWindow_W",
+            position: (
+                x: 2362,
+                y: 1431,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [19]
+        (
+            name: "stoneRight_S",
+            position: (
+                x: 403,
+                y: 2363,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [20]
+        (
+            name: "bridge_N",
+            position: (
+                x: 2208,
+                y: 699,
+                w: 190,
+                h: 101,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 402,
+                w: 256,
+                h: 512,
+            ),
+        ),// [21]
+        (
+            name: "tableShort_S",
+            position: (
+                x: 2,
+                y: 1250,
+                w: 118,
+                h: 89,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 61,
+                y: 381,
+                w: 256,
+                h: 512,
+            ),
+        ),// [22]
+        (
+            name: "stairsAged_W",
+            position: (
+                x: 399,
+                y: 861,
+                w: 256,
+                h: 159,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 353,
+                w: 256,
+                h: 512,
+            ),
+        ),// [23]
+        (
+            name: "stoneWallDoorBars_S",
+            position: (
+                x: 3805,
+                y: 104,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [24]
+        (
+            name: "stoneTile_W",
+            position: (
+                x: 2705,
+                y: 2,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [25]
+        (
+            name: "stoneSideUneven_E",
+            position: (
+                x: 868,
+                y: 2,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [26]
+        (
+            name: "barrel_W",
+            position: (
+                x: 3996,
+                y: 754,
+                w: 80,
+                h: 84,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 79,
+                y: 378,
+                w: 256,
+                h: 512,
+            ),
+        ),// [27]
+        (
+            name: "stairs_E",
+            position: (
+                x: 3041,
+                y: 1704,
+                w: 256,
+                h: 207,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 305,
+                w: 256,
+                h: 512,
+            ),
+        ),// [28]
+        (
+            name: "barrel_S",
+            position: (
+                x: 1487,
+                y: 1791,
+                w: 80,
+                h: 84,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 79,
+                y: 378,
+                w: 256,
+                h: 512,
+            ),
+        ),// [29]
+        (
+            name: "stoneWallGateClosed_W",
+            position: (
+                x: 2934,
+                y: 2054,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [30]
+        (
+            name: "stoneWallStructure_S",
+            position: (
+                x: 1457,
+                y: 1096,
+                w: 256,
+                h: 285,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [31]
+        (
+            name: "stoneWallDoorClosed_W",
+            position: (
+                x: 2563,
+                y: 1003,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [32]
+        (
+            name: "stoneLeft_S",
+            position: (
+                x: 1999,
+                y: 2083,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [33]
+        (
+            name: "barrels_W",
+            position: (
+                x: 3097,
+                y: 2054,
+                w: 151,
+                h: 102,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 50,
+                y: 374,
+                w: 256,
+                h: 512,
+            ),
+        ),// [34]
+        (
+            name: "stoneWallGate_S",
+            position: (
+                x: 3090,
+                y: 869,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [35]
+        (
+            name: "barrel_N",
+            position: (
+                x: 481,
+                y: 2046,
+                w: 80,
+                h: 84,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 79,
+                y: 378,
+                w: 256,
+                h: 512,
+            ),
+        ),// [36]
+        (
+            name: "stoneWallBrokenRight_W",
+            position: (
+                x: 2,
+                y: 525,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [37]
+        (
+            name: "planksBroken_S",
+            position: (
+                x: 318,
+                y: 1911,
+                w: 256,
+                h: 133,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [38]
+        (
+            name: "chestOpen_E",
+            position: (
+                x: 3943,
+                y: 840,
+                w: 97,
+                h: 95,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 65,
+                y: 370,
+                w: 256,
+                h: 512,
+            ),
+        ),// [39]
+        (
+            name: "stoneWallDoorClosed_E",
+            position: (
+                x: 2164,
+                y: 1605,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [40]
+        (
+            name: "stoneWallWindowBars_N",
+            position: (
+                x: 155,
+                y: 1892,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [41]
+        (
+            name: "stoneWallBrokenLeft_N",
+            position: (
+                x: 3158,
+                y: 241,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [42]
+        (
+            name: "stoneWallCorner_E",
+            position: (
+                x: 749,
+                y: 2182,
+                w: 161,
+                h: 285,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [43]
+        (
+            name: "stoneColumn_N",
+            position: (
+                x: 2226,
+                y: 509,
+                w: 64,
+                h: 188,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 96,
+                y: 276,
+                w: 256,
+                h: 512,
+            ),
+        ),// [44]
+        (
+            name: "stone_E",
+            position: (
+                x: 849,
+                y: 152,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [45]
+        (
+            name: "stoneWallColumn_S",
+            position: (
+                x: 2189,
+                y: 143,
+                w: 66,
+                h: 187,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 229,
+                w: 256,
+                h: 512,
+            ),
+        ),// [46]
+        (
+            name: "bridge_S",
+            position: (
+                x: 1384,
+                y: 2,
+                w: 190,
+                h: 103,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 400,
+                w: 256,
+                h: 512,
+            ),
+        ),// [47]
+        (
+            name: "stoneStep_E",
+            position: (
+                x: 2963,
+                y: 2,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [48]
+        (
+            name: "stoneSide_W",
+            position: (
+                x: 2026,
+                y: 2,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [49]
+        (
+            name: "stairs_S",
+            position: (
+                x: 566,
+                y: 511,
+                w: 256,
+                h: 207,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 305,
+                w: 256,
+                h: 512,
+            ),
+        ),// [50]
+        (
+            name: "stoneUneven_W",
+            position: (
+                x: 936,
+                y: 1025,
+                w: 256,
+                h: 145,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 367,
+                w: 256,
+                h: 512,
+            ),
+        ),// [51]
+        (
+            name: "stoneWallBrokenRight_N",
+            position: (
+                x: 3321,
+                y: 391,
+                w: 161,
+                h: 186,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 326,
+                w: 256,
+                h: 512,
+            ),
+        ),// [52]
+        (
+            name: "tableRound_E",
+            position: (
+                x: 1691,
+                y: 447,
+                w: 94,
+                h: 76,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 74,
+                y: 388,
+                w: 256,
+                h: 512,
+            ),
+        ),// [53]
+        (
+            name: "tableRound_S",
+            position: (
+                x: 1326,
+                y: 1402,
+                w: 94,
+                h: 77,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 71,
+                y: 388,
+                w: 256,
+                h: 512,
+            ),
+        ),// [54]
+        (
+            name: "stoneWallDoor_S",
+            position: (
+                x: 1778,
+                y: 1044,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [55]
+        (
+            name: "stoneWallBrokenLeft_W",
+            position: (
+                x: 3642,
+                y: 219,
+                w: 161,
+                h: 183,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 329,
+                w: 256,
+                h: 512,
+            ),
+        ),// [56]
+        (
+            name: "stoneWallCorner_S",
+            position: (
+                x: 1263,
+                y: 585,
+                w: 256,
+                h: 240,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 224,
+                w: 256,
+                h: 512,
+            ),
+        ),// [57]
+        (
+            name: "tableShort_E",
+            position: (
+                x: 3962,
+                y: 588,
+                w: 117,
+                h: 88,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 63,
+                y: 380,
+                w: 256,
+                h: 512,
+            ),
+        ),// [58]
+        (
+            name: "stoneUneven_E",
+            position: (
+                x: 1842,
+                y: 1610,
+                w: 256,
+                h: 145,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 367,
+                w: 256,
+                h: 512,
+            ),
+        ),// [59]
+        (
+            name: "stoneWallWindowBars_E",
+            position: (
+                x: 1324,
+                y: 1773,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [60]
+        (
+            name: "woodenSupports_S",
+            position: (
+                x: 3425,
+                y: 897,
+                w: 141,
+                h: 225,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 115,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [61]
+        (
+            name: "dirt_S",
+            position: (
+                x: 2843,
+                y: 1520,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [62]
+        (
+            name: "stoneWallGateOpen_W",
+            position: (
+                x: 2400,
+                y: 856,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [63]
+        (
+            name: "stoneWallAgedRight_W",
+            position: (
+                x: 1365,
+                y: 346,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [64]
+        (
+            name: "stoneInset_E",
+            position: (
+                x: 3043,
+                y: 480,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [65]
+        (
+            name: "stoneColumnWood_N",
+            position: (
+                x: 844,
+                y: 1147,
+                w: 64,
+                h: 188,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 96,
+                y: 276,
+                w: 256,
+                h: 512,
+            ),
+        ),// [66]
+        (
+            name: "stoneWallGate_W",
+            position: (
+                x: 2515,
+                y: 391,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [67]
+        (
+            name: "stairs_N",
+            position: (
+                x: 328,
+                y: 1750,
+                w: 256,
+                h: 159,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 353,
+                w: 256,
+                h: 512,
+            ),
+        ),// [68]
+        (
+            name: "stoneWallRoundBroken_S",
+            position: (
+                x: 2692,
+                y: 1732,
+                w: 88,
+                h: 285,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 94,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [69]
+        (
+            name: "planksHole_W",
+            position: (
+                x: 2525,
+                y: 1598,
+                w: 256,
+                h: 132,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [70]
+        (
+            name: "stoneInset_N",
+            position: (
+                x: 2447,
+                y: 2,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [71]
+        (
+            name: "stoneStep_S",
+            position: (
+                x: 2105,
+                y: 1044,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [72]
+        (
+            name: "chestClosed_W",
+            position: (
+                x: 3043,
+                y: 391,
+                w: 80,
+                h: 68,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 82,
+                y: 397,
+                w: 256,
+                h: 512,
+            ),
+        ),// [73]
+        (
+            name: "woodenCrate_N",
+            position: (
+                x: 3978,
+                y: 2310,
+                w: 87,
+                h: 78,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 76,
+                y: 388,
+                w: 256,
+                h: 512,
+            ),
+        ),// [74]
+        (
+            name: "stairsAged_S",
+            position: (
+                x: 591,
+                y: 152,
+                w: 256,
+                h: 207,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 305,
+                w: 256,
+                h: 512,
+            ),
+        ),// [75]
+        (
+            name: "woodenPile_W",
+            position: (
+                x: 2,
+                y: 1930,
+                w: 138,
+                h: 122,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 54,
+                y: 365,
+                w: 256,
+                h: 512,
+            ),
+        ),// [76]
+        (
+            name: "stoneWallDoor_N",
+            position: (
+                x: 2,
+                y: 1580,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [77]
+        (
+            name: "stoneWallGateBars_S",
+            position: (
+                x: 3299,
+                y: 1861,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [78]
+        (
+            name: "stoneUneven_N",
+            position: (
+                x: 1576,
+                y: 2,
+                w: 256,
+                h: 152,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 360,
+                w: 256,
+                h: 512,
+            ),
+        ),// [79]
+        (
+            name: "stoneSteps_E",
+            position: (
+                x: 1648,
+                y: 1451,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [80]
+        (
+            name: "stone_W",
+            position: (
+                x: 481,
+                y: 2213,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [81]
+        (
+            name: "stoneWallRoundWindow_S",
+            position: (
+                x: 3805,
+                y: 343,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [82]
+        (
+            name: "stairsCorner_S",
+            position: (
+                x: 1900,
+                y: 2383,
+                w: 256,
+                h: 159,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 353,
+                w: 256,
+                h: 512,
+            ),
+        ),// [83]
+        (
+            name: "woodenCrate_E",
+            position: (
+                x: 1691,
+                y: 525,
+                w: 87,
+                h: 78,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 76,
+                y: 388,
+                w: 256,
+                h: 512,
+            ),
+        ),// [84]
+        (
+            name: "stoneSide_S",
+            position: (
+                x: 1950,
+                y: 682,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [85]
+        (
+            name: "stoneWallRoundWindow_E",
+            position: (
+                x: 2574,
+                y: 152,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [86]
+        (
+            name: "woodenSupports_N",
+            position: (
+                x: 260,
+                y: 2285,
+                w: 141,
+                h: 224,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 288,
+                w: 256,
+                h: 512,
+            ),
+        ),// [87]
+        (
+            name: "stoneWallStructure_E",
+            position: (
+                x: 3310,
+                y: 1484,
+                w: 256,
+                h: 285,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [88]
+        (
+            name: "stairsSpiral_N",
+            position: (
+                x: 900,
+                y: 2010,
+                w: 195,
+                h: 170,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 296,
+                w: 256,
+                h: 512,
+            ),
+        ),// [89]
+        (
+            name: "woodenSupportBeams_S",
+            position: (
+                x: 757,
+                y: 1839,
+                w: 141,
+                h: 225,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 115,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [90]
+        (
+            name: "tableRoundItemsChairs_N",
+            position: (
+                x: 3968,
+                y: 475,
+                w: 125,
+                h: 111,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 54,
+                y: 366,
+                w: 256,
+                h: 512,
+            ),
+        ),// [91]
+        (
+            name: "stoneCorner_N",
+            position: (
+                x: 1479,
+                y: 2201,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [92]
+        (
+            name: "dirtTiles_E",
+            position: (
+                x: 3413,
+                y: 2317,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [93]
+        (
+            name: "dirtTiles_W",
+            position: (
+                x: 1973,
+                y: 1335,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [94]
+        (
+            name: "barrelsStacked_N",
+            position: (
+                x: 2513,
+                y: 1732,
+                w: 177,
+                h: 146,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 336,
+                w: 256,
+                h: 512,
+            ),
+        ),// [95]
+        (
+            name: "stoneWallHalf_W",
+            position: (
+                x: 645,
+                y: 1336,
+                w: 161,
+                h: 158,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 354,
+                w: 256,
+                h: 512,
+            ),
+        ),// [96]
+        (
+            name: "stairsSpiral_E",
+            position: (
+                x: 2263,
+                y: 1909,
+                w: 185,
+                h: 223,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 259,
+                w: 256,
+                h: 512,
+            ),
+        ),// [97]
+        (
+            name: "stoneWallColumnIn_S",
+            position: (
+                x: 3221,
+                y: 2,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [98]
+        (
+            name: "barrelsStacked_W",
+            position: (
+                x: 3301,
+                y: 579,
+                w: 177,
+                h: 146,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 336,
+                w: 256,
+                h: 512,
+            ),
+        ),// [99]
+        (
+            name: "tableChairsBroken_N",
+            position: (
+                x: 681,
+                y: 720,
+                w: 129,
+                h: 106,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 62,
+                y: 367,
+                w: 256,
+                h: 512,
+            ),
+        ),// [100]
+        (
+            name: "stairsSpiral_S",
+            position: (
+                x: 849,
+                y: 302,
+                w: 160,
+                h: 218,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 45,
+                y: 248,
+                w: 256,
+                h: 512,
+            ),
+        ),// [101]
+        (
+            name: "chair_S",
+            position: (
+                x: 3996,
+                y: 678,
+                w: 51,
+                h: 74,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 97,
+                y: 384,
+                w: 256,
+                h: 512,
+            ),
+        ),// [102]
+        (
+            name: "stoneWallRoundWindow_N",
+            position: (
+                x: 1097,
+                y: 2010,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [103]
+        (
+            name: "stoneWallAgedLeft_W",
+            position: (
+                x: 1787,
+                y: 608,
+                w: 161,
+                h: 195,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 317,
+                w: 256,
+                h: 512,
+            ),
+        ),// [104]
+        (
+            name: "stairsCorner_E",
+            position: (
+                x: 2889,
+                y: 1311,
+                w: 256,
+                h: 207,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 305,
+                w: 256,
+                h: 512,
+            ),
+        ),// [105]
+        (
+            name: "stoneWallDoorOpen_N",
+            position: (
+                x: 3791,
+                y: 1859,
+                w: 174,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [106]
+        (
+            name: "bridgeBroken_W",
+            position: (
+                x: 3805,
+                y: 2,
+                w: 190,
+                h: 100,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 402,
+                w: 256,
+                h: 512,
+            ),
+        ),// [107]
+        (
+            name: "stoneWallGateClosed_S",
+            position: (
+                x: 2416,
+                y: 2418,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [108]
+        (
+            name: "dirt_N",
+            position: (
+                x: 1066,
+                y: 1642,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [109]
+        (
+            name: "stoneWallGate_N",
+            position: (
+                x: 2100,
+                y: 1844,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [110]
+        (
+            name: "stoneSteps_S",
+            position: (
+                x: 2,
+                y: 136,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [111]
+        (
+            name: "stoneSteps_N",
+            position: (
+                x: 1715,
+                y: 1310,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [112]
+        (
+            name: "stoneMissingTiles_N",
+            position: (
+                x: 610,
+                y: 2,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [113]
+        (
+            name: "stoneWallStructure_N",
+            position: (
+                x: 1126,
+                y: 2,
+                w: 256,
+                h: 282,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [114]
+        (
+            name: "stoneWallHole_N",
+            position: (
+                x: 910,
+                y: 1172,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [115]
+        (
+            name: "bridgeBroken_N",
+            position: (
+                x: 1456,
+                y: 1383,
+                w: 190,
+                h: 101,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 402,
+                w: 256,
+                h: 512,
+            ),
+        ),// [116]
+        (
+            name: "tableShort_W",
+            position: (
+                x: 3967,
+                y: 1859,
+                w: 117,
+                h: 89,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 59,
+                y: 380,
+                w: 256,
+                h: 512,
+            ),
+        ),// [117]
+        (
+            name: "woodenSupportsBlock_S",
+            position: (
+                x: 3462,
+                y: 2033,
+                w: 256,
+                h: 282,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [118]
+        (
+            name: "chestOpen_S",
+            position: (
+                x: 2363,
+                y: 1095,
+                w: 88,
+                h: 95,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 81,
+                y: 370,
+                w: 256,
+                h: 512,
+            ),
+        ),// [119]
+        (
+            name: "tableShortChairs_N",
+            position: (
+                x: 3967,
+                y: 2043,
+                w: 121,
+                h: 104,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 56,
+                y: 369,
+                w: 256,
+                h: 512,
+            ),
+        ),// [120]
+        (
+            name: "stairsCorner_N",
+            position: (
+                x: 3786,
+                y: 2149,
+                w: 256,
+                h: 159,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 353,
+                w: 256,
+                h: 512,
+            ),
+        ),// [121]
+        (
+            name: "stoneInset_S",
+            position: (
+                x: 3480,
+                y: 643,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [122]
+        (
+            name: "stoneMissingTiles_W",
+            position: (
+                x: 2676,
+                y: 2034,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [123]
+        (
+            name: "stoneTile_S",
+            position: (
+                x: 1968,
+                y: 382,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [124]
+        (
+            name: "stoneWallAgedLeft_E",
+            position: (
+                x: 3147,
+                y: 1360,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [125]
+        (
+            name: "stoneSideUneven_W",
+            position: (
+                x: 352,
+                y: 2,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [126]
+        (
+            name: "stoneWallBrokenRight_S",
+            position: (
+                x: 2026,
+                y: 143,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [127]
+        (
+            name: "stoneWallArchway_W",
+            position: (
+                x: 1528,
+                y: 447,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [128]
+        (
+            name: "stoneWallAged_E",
+            position: (
+                x: 260,
+                y: 143,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [129]
+        (
+            name: "stoneWallRound_N",
+            position: (
+                x: 2364,
+                y: 401,
+                w: 87,
+                h: 285,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 74,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [130]
+        (
+            name: "woodenSupportBeams_W",
+            position: (
+                x: 2453,
+                y: 630,
+                w: 141,
+                h: 224,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 115,
+                y: 288,
+                w: 256,
+                h: 512,
+            ),
+        ),// [131]
+        (
+            name: "woodenCrates_S",
+            position: (
+                x: 844,
+                y: 858,
+                w: 90,
+                h: 97,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 78,
+                y: 374,
+                w: 256,
+                h: 512,
+            ),
+        ),// [132]
+        (
+            name: "stoneWallRound_S",
+            position: (
+                x: 1011,
+                y: 302,
+                w: 87,
+                h: 285,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [133]
+        (
+            name: "stoneWallRoundBroken_N",
+            position: (
+                x: 1073,
+                y: 1278,
+                w: 88,
+                h: 285,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 74,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [134]
+        (
+            name: "chair_N",
+            position: (
+                x: 1186,
+                y: 1783,
+                w: 62,
+                h: 67,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 86,
+                y: 391,
+                w: 256,
+                h: 512,
+            ),
+        ),// [135]
+        (
+            name: "chair_W",
+            position: (
+                x: 2297,
+                y: 1335,
+                w: 51,
+                h: 67,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 97,
+                y: 391,
+                w: 256,
+                h: 512,
+            ),
+        ),// [136]
+        (
+            name: "stoneWallTop_E",
+            position: (
+                x: 1326,
+                y: 1636,
+                w: 161,
+                h: 135,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 2,
+                y: 328,
+                w: 256,
+                h: 512,
+            ),
+        ),// [137]
+        (
+            name: "barrels_N",
+            position: (
+                x: 2525,
+                y: 1481,
+                w: 142,
+                h: 115,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 48,
+                y: 368,
+                w: 256,
+                h: 512,
+            ),
+        ),// [138]
+        (
+            name: "stoneTile_E",
+            position: (
+                x: 1225,
+                y: 827,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [139]
+        (
+            name: "stoneWallRoundBroken_W",
+            position: (
+                x: 808,
+                y: 1411,
+                w: 256,
+                h: 200,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [140]
+        (
+            name: "stoneInset_W",
+            position: (
+                x: 2583,
+                y: 2334,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [141]
+        (
+            name: "tableRoundChairs_N",
+            position: (
+                x: 2447,
+                y: 152,
+                w: 125,
+                h: 106,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 55,
+                y: 366,
+                w: 256,
+                h: 512,
+            ),
+        ),// [142]
+        (
+            name: "stoneLeft_E",
+            position: (
+                x: 2104,
+                y: 1194,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [143]
+        (
+            name: "stoneColumn_E",
+            position: (
+                x: 844,
+                y: 957,
+                w: 64,
+                h: 188,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 96,
+                y: 276,
+                w: 256,
+                h: 512,
+            ),
+        ),// [144]
+        (
+            name: "stoneWallGateBars_W",
+            position: (
+                x: 1805,
+                y: 369,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [145]
+        (
+            name: "stoneWallTop_W",
+            position: (
+                x: 3153,
+                y: 1205,
+                w: 161,
+                h: 153,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 93,
+                y: 358,
+                w: 256,
+                h: 512,
+            ),
+        ),// [146]
+        (
+            name: "stoneWallBrokenLeft_E",
+            position: (
+                x: 318,
+                y: 2046,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [147]
+        (
+            name: "stoneWallGateBars_E",
+            position: (
+                x: 1163,
+                y: 1402,
+                w: 161,
+                h: 238,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [148]
+        (
+            name: "planks_S",
+            position: (
+                x: 94,
+                y: 2,
+                w: 256,
+                h: 132,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [149]
+        (
+            name: "stoneWallTop_S",
+            position: (
+                x: 1569,
+                y: 2048,
+                w: 161,
+                h: 151,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 93,
+                y: 312,
+                w: 256,
+                h: 512,
+            ),
+        ),// [150]
+        (
+            name: "stoneWallGateBars_N",
+            position: (
+                x: 3253,
+                y: 966,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [151]
+        (
+            name: "woodenPile_N",
+            position: (
+                x: 2689,
+                y: 1421,
+                w: 152,
+                h: 106,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 34,
+                y: 372,
+                w: 256,
+                h: 512,
+            ),
+        ),// [152]
+        (
+            name: "bridge_E",
+            position: (
+                x: 3425,
+                y: 793,
+                w: 190,
+                h: 102,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 400,
+                w: 256,
+                h: 512,
+            ),
+        ),// [153]
+        (
+            name: "woodenCrates_E",
+            position: (
+                x: 3382,
+                y: 1351,
+                w: 113,
+                h: 94,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 61,
+                y: 372,
+                w: 256,
+                h: 512,
+            ),
+        ),// [154]
+        (
+            name: "tableRound_W",
+            position: (
+                x: 2945,
+                y: 1795,
+                w: 94,
+                h: 78,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 72,
+                y: 386,
+                w: 256,
+                h: 512,
+            ),
+        ),// [155]
+        (
+            name: "stoneStep_N",
+            position: (
+                x: 1198,
+                y: 1261,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [156]
+        (
+            name: "planks_N",
+            position: (
+                x: 1075,
+                y: 2249,
+                w: 256,
+                h: 132,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [157]
+        (
+            name: "stoneWallAgedLeft_N",
+            position: (
+                x: 2737,
+                y: 286,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [158]
+        (
+            name: "stoneSide_E",
+            position: (
+                x: 3384,
+                y: 2,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [159]
+        (
+            name: "stoneWallColumnIn_E",
+            position: (
+                x: 1100,
+                y: 486,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [160]
+        (
+            name: "woodenSupportsBeam_W",
+            position: (
+                x: 2900,
+                y: 391,
+                w: 141,
+                h: 224,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 115,
+                y: 288,
+                w: 256,
+                h: 512,
+            ),
+        ),// [161]
+        (
+            name: "stoneRight_N",
+            position: (
+                x: 423,
+                y: 720,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [162]
+        (
+            name: "stone_S",
+            position: (
+                x: 2613,
+                y: 2184,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [163]
+        (
+            name: "stoneWallBrokenLeft_S",
+            position: (
+                x: 2420,
+                y: 2229,
+                w: 161,
+                h: 187,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 277,
+                w: 256,
+                h: 512,
+            ),
+        ),// [164]
+        (
+            name: "dirt_E",
+            position: (
+                x: 2871,
+                y: 2293,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [165]
+        (
+            name: "stoneWallDoor_W",
+            position: (
+                x: 2678,
+                y: 525,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [166]
+        (
+            name: "stoneWallDoorClosed_N",
+            position: (
+                x: 3617,
+                y: 827,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [167]
+        (
+            name: "stoneWallHalf_N",
+            position: (
+                x: 1805,
+                y: 209,
+                w: 161,
+                h: 158,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 354,
+                w: 256,
+                h: 512,
+            ),
+        ),// [168]
+        (
+            name: "stoneWallRoundBroken_E",
+            position: (
+                x: 3533,
+                y: 1831,
+                w: 256,
+                h: 200,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 265,
+                w: 256,
+                h: 512,
+            ),
+        ),// [169]
+        (
+            name: "stoneWallHalf_E",
+            position: (
+                x: 2927,
+                y: 771,
+                w: 161,
+                h: 158,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 306,
+                w: 256,
+                h: 512,
+            ),
+        ),// [170]
+        (
+            name: "stoneStep_W",
+            position: (
+                x: 1571,
+                y: 1907,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [171]
+        (
+            name: "stoneWallColumn_N",
+            position: (
+                x: 1646,
+                y: 907,
+                w: 66,
+                h: 187,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 325,
+                w: 256,
+                h: 512,
+            ),
+        ),// [172]
+        (
+            name: "stoneMissingTiles_S",
+            position: (
+                x: 260,
+                y: 1022,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [173]
+        (
+            name: "stoneColumn_W",
+            position: (
+                x: 1250,
+                y: 1783,
+                w: 64,
+                h: 188,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 96,
+                y: 276,
+                w: 256,
+                h: 512,
+            ),
+        ),// [174]
+        (
+            name: "stoneTile_N",
+            position: (
+                x: 591,
+                y: 361,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [175]
+        (
+            name: "stoneUneven_S",
+            position: (
+                x: 1968,
+                y: 532,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [176]
+        (
+            name: "stoneWallAged_N",
+            position: (
+                x: 2257,
+                y: 2134,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [177]
+        (
+            name: "planksHole_N",
+            position: (
+                x: 2,
+                y: 968,
+                w: 256,
+                h: 132,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [178]
+        (
+            name: "barrelsStacked_E",
+            position: (
+                x: 1572,
+                y: 1759,
+                w: 179,
+                h: 146,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 32,
+                y: 336,
+                w: 256,
+                h: 512,
+            ),
+        ),// [179]
+        (
+            name: "stoneWallArchway_S",
+            position: (
+                x: 2726,
+                y: 1182,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [180]
+        (
+            name: "woodenCrates_N",
+            position: (
+                x: 2,
+                y: 2,
+                w: 90,
+                h: 100,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 75,
+                y: 375,
+                w: 256,
+                h: 512,
+            ),
+        ),// [181]
+        (
+            name: "stoneRight_E",
+            position: (
+                x: 1326,
+                y: 1486,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [182]
+        (
+            name: "woodenSupportsBlock_W",
+            position: (
+                x: 3826,
+                y: 1066,
+                w: 256,
+                h: 282,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [183]
+        (
+            name: "stoneMissingTiles_E",
+            position: (
+                x: 336,
+                y: 1600,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [184]
+        (
+            name: "stoneWallColumn_W",
+            position: (
+                x: 3720,
+                y: 2033,
+                w: 64,
+                h: 187,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 192,
+                y: 277,
+                w: 256,
+                h: 512,
+            ),
+        ),// [185]
+        (
+            name: "woodenCrate_W",
+            position: (
+                x: 2231,
+                y: 1525,
+                w: 87,
+                h: 78,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 76,
+                y: 388,
+                w: 256,
+                h: 512,
+            ),
+        ),// [186]
+        (
+            name: "stoneWallRound_W",
+            position: (
+                x: 2,
+                y: 2131,
+                w: 256,
+                h: 200,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [187]
+        (
+            name: "bridge_W",
+            position: (
+                x: 1834,
+                y: 2,
+                w: 190,
+                h: 100,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 402,
+                w: 256,
+                h: 512,
+            ),
+        ),// [188]
+        (
+            name: "chestOpen_W",
+            position: (
+                x: 3988,
+                y: 1350,
+                w: 87,
+                h: 78,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 82,
+                y: 387,
+                w: 256,
+                h: 512,
+            ),
+        ),// [189]
+        (
+            name: "chestClosed_N",
+            position: (
+                x: 1489,
+                y: 1636,
+                w: 81,
+                h: 68,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 81,
+                y: 397,
+                w: 256,
+                h: 512,
+            ),
+        ),// [190]
+        (
+            name: "stoneSideUneven_S",
+            position: (
+                x: 1992,
+                y: 2233,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [191]
+        (
+            name: "woodenSupportsBeam_S",
+            position: (
+                x: 824,
+                y: 522,
+                w: 141,
+                h: 225,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 115,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [192]
+        (
+            name: "stoneWallDoorBars_W",
+            position: (
+                x: 3099,
+                y: 630,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [193]
+        (
+            name: "stoneWallDoorBars_N",
+            position: (
+                x: 2363,
+                y: 1192,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [194]
+        (
+            name: "woodenPile_E",
+            position: (
+                x: 3968,
+                y: 191,
+                w: 128,
+                h: 104,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 64,
+                y: 370,
+                w: 256,
+                h: 512,
+            ),
+        ),// [195]
+        (
+            name: "stairsAged_E",
+            position: (
+                x: 1107,
+                y: 286,
+                w: 256,
+                h: 198,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 314,
+                w: 256,
+                h: 512,
+            ),
+        ),// [196]
+        (
+            name: "planksBroken_W",
+            position: (
+                x: 2158,
+                y: 2383,
+                w: 256,
+                h: 132,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [197]
+        (
+            name: "stoneLeft_N",
+            position: (
+                x: 3738,
+                y: 686,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [198]
+        (
+            name: "stoneWall_E",
+            position: (
+                x: 594,
+                y: 1735,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [199]
+        (
+            name: "stoneWallWindowBars_S",
+            position: (
+                x: 2526,
+                y: 1242,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [200]
+        (
+            name: "stoneWall_W",
+            position: (
+                x: 1384,
+                y: 107,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [201]
+        (
+            name: "stairsSpiral_W",
+            position: (
+                x: 2726,
+                y: 1010,
+                w: 167,
+                h: 170,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 46,
+                y: 281,
+                w: 256,
+                h: 512,
+            ),
+        ),// [202]
+        (
+            name: "dirt_W",
+            position: (
+                x: 1521,
+                y: 686,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [203]
+        (
+            name: "dirtTiles_S",
+            position: (
+                x: 141,
+                y: 827,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [204]
+        (
+            name: "stoneWallDoor_E",
+            position: (
+                x: 681,
+                y: 1097,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [205]
+        (
+            name: "stoneWallWindow_E",
+            position: (
+                x: 3568,
+                y: 1484,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [206]
+        (
+            name: "stoneWallWindowBars_W",
+            position: (
+                x: 2782,
+                y: 1795,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [207]
+        (
+            name: "stoneWallGateOpen_N",
+            position: (
+                x: 3250,
+                y: 2100,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [208]
+        (
+            name: "chair_E",
+            position: (
+                x: 1714,
+                y: 907,
+                w: 62,
+                h: 74,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 86,
+                y: 384,
+                w: 256,
+                h: 512,
+            ),
+        ),// [209]
+        (
+            name: "stoneWallDoorOpen_E",
+            position: (
+                x: 1836,
+                y: 1907,
+                w: 161,
+                h: 244,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [210]
+        (
+            name: "tableShortChairs_S",
+            position: (
+                x: 2208,
+                y: 802,
+                w: 123,
+                h: 105,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 57,
+                y: 369,
+                w: 256,
+                h: 512,
+            ),
+        ),// [211]
+        (
+            name: "stoneWallWindow_N",
+            position: (
+                x: 181,
+                y: 1172,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [212]
+        (
+            name: "stoneColumn_S",
+            position: (
+                x: 3316,
+                y: 1205,
+                w: 64,
+                h: 188,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 96,
+                y: 276,
+                w: 256,
+                h: 512,
+            ),
+        ),// [213]
+        (
+            name: "woodenSupportsBlock_N",
+            position: (
+                x: 3568,
+                y: 1066,
+                w: 256,
+                h: 282,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [214]
+        (
+            name: "stoneWallGateClosed_N",
+            position: (
+                x: 681,
+                y: 858,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [215]
+        (
+            name: "tableRoundChairs_E",
+            position: (
+                x: 812,
+                y: 749,
+                w: 127,
+                h: 107,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 57,
+                y: 368,
+                w: 256,
+                h: 512,
+            ),
+        ),// [216]
+        (
+            name: "stoneWallDoorBars_E",
+            position: (
+                x: 2,
+                y: 286,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [217]
+        (
+            name: "planksBroken_N",
+            position: (
+                x: 3559,
+                y: 1350,
+                w: 256,
+                h: 132,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [218]
+        (
+            name: "tableChairsBroken_W",
+            position: (
+                x: 507,
+                y: 1261,
+                w: 136,
+                h: 96,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 50,
+                y: 378,
+                w: 256,
+                h: 512,
+            ),
+        ),// [219]
+        (
+            name: "barrelsStacked_S",
+            position: (
+                x: 2,
+                y: 1102,
+                w: 177,
+                h: 146,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 336,
+                w: 256,
+                h: 512,
+            ),
+        ),// [220]
+        (
+            name: "stoneWall_N",
+            position: (
+                x: 586,
+                y: 1974,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [221]
+        (
+            name: "woodenSupportBeams_N",
+            position: (
+                x: 1333,
+                y: 2225,
+                w: 141,
+                h: 224,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 288,
+                w: 256,
+                h: 512,
+            ),
+        ),// [222]
+        (
+            name: "planksHole_E",
+            position: (
+                x: 2,
+                y: 2333,
+                w: 256,
+                h: 132,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [223]
+        (
+            name: "stoneWallStructure_W",
+            position: (
+                x: 1199,
+                y: 977,
+                w: 256,
+                h: 282,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [224]
+        (
+            name: "chestClosed_S",
+            position: (
+                x: 3968,
+                y: 405,
+                w: 81,
+                h: 68,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 81,
+                y: 397,
+                w: 256,
+                h: 512,
+            ),
+        ),// [225]
+        (
+            name: "planks_E",
+            position: (
+                x: 2783,
+                y: 1661,
+                w: 256,
+                h: 132,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [226]
+        (
+            name: "chestClosed_E",
+            position: (
+                x: 1753,
+                y: 1759,
+                w: 81,
+                h: 68,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 81,
+                y: 397,
+                w: 256,
+                h: 512,
+            ),
+        ),// [227]
+        (
+            name: "tableShortChairs_W",
+            position: (
+                x: 3484,
+                y: 391,
+                w: 121,
+                h: 104,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 57,
+                y: 369,
+                w: 256,
+                h: 512,
+            ),
+        ),// [228]
+        (
+            name: "stoneWallDoorOpen_S",
+            position: (
+                x: 3731,
+                y: 1589,
+                w: 174,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 82,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [229]
+        (
+            name: "woodenCrate_S",
+            position: (
+                x: 1646,
+                y: 827,
+                w: 87,
+                h: 78,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 76,
+                y: 388,
+                w: 256,
+                h: 512,
+            ),
+        ),// [230]
+        (
+            name: "stoneWallColumnIn_W",
+            position: (
+                x: 2350,
+                y: 1670,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [231]
+        (
+            name: "stoneSideUneven_N",
+            position: (
+                x: 2945,
+                y: 1913,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [232]
+        (
+            name: "stoneWallCorner_W",
+            position: (
+                x: 344,
+                y: 1172,
+                w: 161,
+                h: 285,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [233]
+        (
+            name: "tableRoundItemsChairs_W",
+            position: (
+                x: 3129,
+                y: 2339,
+                w: 135,
+                h: 107,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 51,
+                y: 368,
+                w: 256,
+                h: 512,
+            ),
+        ),// [234]
+        (
+            name: "woodenSupportBeams_E",
+            position: (
+                x: 1043,
+                y: 1783,
+                w: 141,
+                h: 225,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [235]
+        (
+            name: "stoneCorner_W",
+            position: (
+                x: 1547,
+                y: 156,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [236]
+        (
+            name: "woodenPile_S",
+            position: (
+                x: 3101,
+                y: 1599,
+                w: 155,
+                h: 103,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 52,
+                y: 378,
+                w: 256,
+                h: 512,
+            ),
+        ),// [237]
+        (
+            name: "barrels_E",
+            position: (
+                x: 2,
+                y: 1819,
+                w: 151,
+                h: 109,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 37,
+                y: 363,
+                w: 256,
+                h: 512,
+            ),
+        ),// [238]
+        (
+            name: "stone_N",
+            position: (
+                x: 1547,
+                y: 297,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [239]
+        (
+            name: "stoneColumnWood_S",
+            position: (
+                x: 2231,
+                y: 1335,
+                w: 64,
+                h: 188,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 96,
+                y: 276,
+                w: 256,
+                h: 512,
+            ),
+        ),// [240]
+        (
+            name: "tableRoundChairs_W",
+            position: (
+                x: 3568,
+                y: 1723,
+                w: 126,
+                h: 106,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 50,
+                y: 368,
+                w: 256,
+                h: 512,
+            ),
+        ),// [241]
+        (
+            name: "stoneWallGate_E",
+            position: (
+                x: 2284,
+                y: 2,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [242]
+        (
+            name: "stoneWallColumn_E",
+            position: (
+                x: 3997,
+                y: 2,
+                w: 64,
+                h: 187,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 277,
+                w: 256,
+                h: 512,
+            ),
+        ),// [243]
+        (
+            name: "stoneWallAgedRight_E",
+            position: (
+                x: 3642,
+                y: 2,
+                w: 161,
+                h: 215,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 249,
+                w: 256,
+                h: 512,
+            ),
+        ),// [244]
+        (
+            name: "barrels_S",
+            position: (
+                x: 2,
+                y: 764,
+                w: 137,
+                h: 117,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 53,
+                y: 357,
+                w: 256,
+                h: 512,
+            ),
+        ),// [245]
+        (
+            name: "stoneWallBroken_W",
+            position: (
+                x: 3817,
+                y: 1350,
+                w: 169,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 87,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [246]
+        (
+            name: "chestOpen_N",
+            position: (
+                x: 3434,
+                y: 1771,
+                w: 97,
+                h: 78,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 65,
+                y: 387,
+                w: 256,
+                h: 512,
+            ),
+        ),// [247]
+        (
+            name: "stoneWallCorner_N",
+            position: (
+                x: 3384,
+                y: 152,
+                w: 256,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [248]
+        (
+            name: "tableRoundChairs_S",
+            position: (
+                x: 3968,
+                y: 297,
+                w: 125,
+                h: 106,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 54,
+                y: 370,
+                w: 256,
+                h: 512,
+            ),
+        ),// [249]
+        (
+            name: "stoneWallHole_W",
+            position: (
+                x: 3607,
+                y: 404,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [250]
+        (
+            name: "woodenSupportsBeam_E",
+            position: (
+                x: 423,
+                y: 489,
+                w: 141,
+                h: 225,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [251]
+        (
+            name: "stoneSteps_W",
+            position: (
+                x: 2895,
+                y: 1170,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [252]
+        (
+            name: "tableRoundItemsChairs_S",
+            position: (
+                x: 900,
+                y: 1613,
+                w: 125,
+                h: 111,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 55,
+                y: 365,
+                w: 256,
+                h: 512,
+            ),
+        ),// [253]
+        (
+            name: "stoneWallHalf_S",
+            position: (
+                x: 2450,
+                y: 2069,
+                w: 161,
+                h: 158,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 306,
+                w: 256,
+                h: 512,
+            ),
+        ),// [254]
+        (
+            name: "stoneWallDoorClosed_S",
+            position: (
+                x: 1483,
+                y: 827,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [255]
+        (
+            name: "woodenSupportsBlock_E",
+            position: (
+                x: 165,
+                y: 382,
+                w: 256,
+                h: 282,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [256]
+        (
+            name: "stoneWallBroken_S",
+            position: (
+                x: 423,
+                y: 143,
+                w: 166,
+                h: 242,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 90,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [257]
+        (
+            name: "stoneWallWindow_W",
+            position: (
+                x: 3907,
+                y: 1620,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [258]
+        (
+            name: "stoneWallRound_E",
+            position: (
+                x: 1476,
+                y: 2351,
+                w: 256,
+                h: 199,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 265,
+                w: 256,
+                h: 512,
+            ),
+        ),// [259]
+        (
+            name: "woodenSupports_E",
+            position: (
+                x: 3416,
+                y: 1124,
+                w: 141,
+                h: 225,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 230,
+                w: 256,
+                h: 512,
+            ),
+        ),// [260]
+        (
+            name: "planksHole_S",
+            position: (
+                x: 2737,
+                y: 152,
+                w: 256,
+                h: 132,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [261]
+        (
+            name: "dirtTiles_N",
+            position: (
+                x: 2841,
+                y: 630,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [262]
+        (
+            name: "stairs_W",
+            position: (
+                x: 165,
+                y: 666,
+                w: 256,
+                h: 159,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 353,
+                w: 256,
+                h: 512,
+            ),
+        ),// [263]
+        (
+            name: "stairsAged_N",
+            position: (
+                x: 1584,
+                y: 1601,
+                w: 256,
+                h: 156,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 356,
+                w: 256,
+                h: 512,
+            ),
+        ),// [264]
+        (
+            name: "stoneCorner_S",
+            position: (
+                x: 941,
+                y: 875,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [265]
+        (
+            name: "stoneWallAgedRight_N",
+            position: (
+                x: 1316,
+                y: 2012,
+                w: 161,
+                h: 211,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 301,
+                w: 256,
+                h: 512,
+            ),
+        ),// [266]
+        (
+            name: "stoneSide_N",
+            position: (
+                x: 3720,
+                y: 2310,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [267]
+        (
+            name: "stoneLeft_W",
+            position: (
+                x: 2257,
+                y: 260,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),// [268]
+        (
+            name: "stoneWallArchway_N",
+            position: (
+                x: 518,
+                y: 1022,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [269]
+        (
+            name: "stoneWallBrokenRight_E",
+            position: (
+                x: 2513,
+                y: 1880,
+                w: 161,
+                h: 187,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 277,
+                w: 256,
+                h: 512,
+            ),
+        ),// [270]
+        (
+            name: "tableChairsBroken_S",
+            position: (
+                x: 3299,
+                y: 1771,
+                w: 133,
+                h: 88,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 49,
+                y: 391,
+                w: 256,
+                h: 512,
+            ),
+        ),// [271]
+        (
+            name: "stoneWallAged_S",
+            position: (
+                x: 1779,
+                y: 805,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [272]
+        (
+            name: "stoneWallArchway_E",
+            position: (
+                x: 912,
+                y: 2182,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [273]
+        (
+            name: "woodenCrates_W",
+            position: (
+                x: 3967,
+                y: 1950,
+                w: 112,
+                h: 91,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 70,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [274]
+        (
+            name: "bridgeBroken_E",
+            position: (
+                x: 3770,
+                y: 582,
+                w: 190,
+                h: 102,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 33,
+                y: 400,
+                w: 256,
+                h: 512,
+            ),
+        ),// [275]
+        (
+            name: "tableRound_N",
+            position: (
+                x: 967,
+                y: 589,
+                w: 93,
+                h: 77,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 75,
+                y: 387,
+                w: 256,
+                h: 512,
+            ),
+        ),// [276]
+        (
+            name: "tableRoundItemsChairs_E",
+            position: (
+                x: 2226,
+                y: 401,
+                w: 136,
+                h: 106,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 48,
+                y: 368,
+                w: 256,
+                h: 512,
+            ),
+        ),// [277]
+        (
+            name: "stoneWallGateOpen_E",
+            position: (
+                x: 2995,
+                y: 152,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [278]
+        (
+            name: "stoneWallBroken_E",
+            position: (
+                x: 165,
+                y: 1411,
+                w: 169,
+                h: 240,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [279]
+        (
+            name: "stoneWallHole_E",
+            position: (
+                x: 1075,
+                y: 2383,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [280]
+        (
+            name: "woodenSupportsBeam_N",
+            position: (
+                x: 900,
+                y: 1726,
+                w: 141,
+                h: 224,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 288,
+                w: 256,
+                h: 512,
+            ),
+        ),// [281]
+        (
+            name: "planksBroken_E",
+            position: (
+                x: 2105,
+                y: 909,
+                w: 256,
+                h: 133,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 377,
+                w: 256,
+                h: 512,
+            ),
+        ),// [282]
+        (
+            name: "stoneWallBroken_N",
+            position: (
+                x: 2759,
+                y: 771,
+                w: 166,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 275,
+                w: 256,
+                h: 512,
+            ),
+        ),// [283]
+        (
+            name: "stoneWallHole_S",
+            position: (
+                x: 2,
+                y: 1341,
+                w: 161,
+                h: 237,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 95,
+                y: 227,
+                w: 256,
+                h: 512,
+            ),
+        ),// [284]
+        (
+            name: "stairsCorner_W",
+            position: (
+                x: 967,
+                y: 725,
+                w: 256,
+                h: 148,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 364,
+                w: 256,
+                h: 512,
+            ),
+        ),// [285]
+        (
+            name: "stoneWallTop_N",
+            position: (
+                x: 1829,
+                y: 2153,
+                w: 161,
+                h: 137,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 2,
+                y: 374,
+                w: 256,
+                h: 512,
+            ),
+        ),// [286]
+        (
+            name: "stoneRight_W",
+            position: (
+                x: 336,
+                y: 1459,
+                w: 256,
+                h: 139,
+            ),
+            trimmed: true,
+            orginal: (
+                x: 0,
+                y: 373,
+                w: 256,
+                h: 512,
+            ),
+        ),
+    ],
+)

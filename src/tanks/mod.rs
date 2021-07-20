@@ -24,7 +24,7 @@ impl FromWorld for TanksData {
             .expect("ResMut<Assets<ColorMaterial>> not found.");
 
         TanksData {
-            clear_color: Color::WHITE,
+            clear_color: Color::BLACK,
             board_material: materials.add(Color::BLACK.into()),
         }
     }
@@ -73,8 +73,15 @@ fn startup(
 ) {
     clear_color.0 = data.clear_color;
 
+    let mut camera = OrthographicCameraBundle::new_2d();
+    camera.transform.translation = Vec3::new(0.0, 0.0, -100.0);
     commands.spawn_bundle(OrthographicCameraBundle::new_2d())
         .insert(TankCleanup);
+
+    commands
+        .spawn_bundle(UiCameraBundle::default())
+        .insert(TankCleanup);
+
 }
 
 

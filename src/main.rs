@@ -10,7 +10,6 @@ mod tanks;
 mod window_config;
 
 use actions::ActionsPlugin;
-use bevy_asset_ron::RonAssetPlugin;
 use bevy_ecs_tilemap::TilemapPlugin;
 use bevy_egui::EguiPlugin;
 use std::env::var;
@@ -92,11 +91,10 @@ fn main() {
         .add_plugin(EguiPlugin)
         .add_plugin(AudioPlugin)
         .add_plugin(DefaultPickingPlugins)
-        // Add support for our own sprite generator
-        .add_plugin(RonAssetPlugin::<sprite_sheet::SpriteSheet>::new(&["gen.ron"]))
+
         // Add States
         .add_state(GameState::Loading)
-        // Should send us to Menu once everything is loaded, been having issues with this, maybe media related
+        // Load Assets, and once Load start
         .add_plugin(LoadingPlugin)
         // Add our plugins
         .add_plugin(EditorPlugin)

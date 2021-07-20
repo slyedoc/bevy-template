@@ -1,4 +1,4 @@
-use crate::loading::AudioAssets;
+use crate::loading::MusicAssets;
 use crate::GameState;
 use bevy::app::AppExit;
 use bevy::prelude::*;
@@ -52,8 +52,8 @@ struct MenuAudio {
     background: AudioChannel,
 }
 
-fn start_audio(audio: Res<Audio>, audio_assets: Res<AudioAssets>, menu: Res<MenuAudio>) {
-    audio.play_looped_in_channel(audio_assets.background_music.clone(), &menu.background);
+fn start_audio(audio: Res<Audio>, audio_assets: Res<MusicAssets>, menu: Res<MenuAudio>) {
+    audio.play_looped_in_channel(audio_assets.creativeminds.clone(), &menu.background);
 }
 
 fn stop_audio(audio: Res<Audio>, menu: Res<MenuAudio>) {

@@ -140,12 +140,10 @@ fn setup(
 ) {
     // TODO: Editor really should remove this cameras, but works, leaving for now
     commands
-        .spawn()
-        .insert_bundle(OrthographicCameraBundle::new_2d())
+        .spawn_bundle(OrthographicCameraBundle::new_2d())
         .insert(Pong);
     commands
-        .spawn()
-        .insert_bundle(UiCameraBundle::default())
+        .spawn_bundle(UiCameraBundle::default())
         .insert(Pong);
 
     ball::spawn_ball(
