@@ -42,7 +42,6 @@ pub struct PongData {
 
 impl FromWorld for PongData {
     fn from_world(world: &mut World) -> Self {
-        let world = world.cell();
 
         let mut materials = world
             .get_resource_mut::<Assets<ColorMaterial>>()

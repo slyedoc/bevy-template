@@ -3,7 +3,7 @@ use std::fmt;
 use bevy::prelude::*;
 use bevy_egui::*;
 use bevy_input_actionmap::*;
-use crate::{editor::{EditorAction, EditorCameraAction}, pong::PongAction, state::StateAction};
+use crate::{editor::{EditorAction, EditorCameraAction}, pong::PongAction, state::StateAction, tanks::camera::CameraActions};
 
 // Since I am using action maps I wanted a to display what actions are currently possible
 pub struct ActionsPlugin;
@@ -32,6 +32,7 @@ pub fn draw_actions(
     pong_map: Res<InputMap<PongAction>>,
     editor_map: Res<InputMap<EditorAction>>,
     editor_camera_map: Res<InputMap<EditorCameraAction>>,
+    camera_map: Res<InputMap<CameraActions>>,
     mut window: ResMut<ActionsWindow>
 ) {
     egui::Window::new("Key Bindings")
@@ -41,6 +42,7 @@ pub fn draw_actions(
          dispaly_input_map::<PongAction>(&pong_map, ui);
          dispaly_input_map::<EditorAction>(&editor_map, ui);
          dispaly_input_map::<EditorCameraAction>(&editor_camera_map, ui);
+         dispaly_input_map::<CameraActions>(&camera_map, ui);
     });
 }
 

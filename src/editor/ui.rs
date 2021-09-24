@@ -9,7 +9,7 @@ use bevy_egui::{
 };
 use bevy_inspector_egui::{WorldInspectorParams, plugin::InspectorWindows};
 
-use crate::{GameStages, GameState, loading::DungeonPackAtlas, pong::PongData, tanks::TanksData};
+use crate::{GameStages, GameState, pong::PongData, tanks::TanksData};
 use bevy_inspector_egui::{Inspectable, InspectorPlugin};
 
 use super::{grid::GridData, EditorCamera, EditorState};
@@ -40,7 +40,6 @@ pub struct UIData {
 
 struct UIWindow {
     enabled: bool,
-    position: Vec2,
 }
 
 impl Default for UIData {
@@ -50,11 +49,9 @@ impl Default for UIData {
             camera: EditorCamera::Perspective,
             egui_settings: UIWindow {
                 enabled: false,
-                position: Vec2::new(0.0, 0.0),
             },
             egui_inspection: UIWindow {
                 enabled: false,
-                position: Vec2::new(0.0, 0.0) ,
             },
             fps: false,
         }
@@ -119,7 +116,6 @@ fn draw_editor_topbar(
                 });
 
                 menu::menu(ui, "Resources", |ui| {
-                    draw_menu_item::<DungeonPackAtlas>(&mut inspector_windows, ui);
                     draw_menu_item::<TanksData>(&mut inspector_windows, ui);
                     draw_menu_item::<PongData>(&mut inspector_windows, ui);
                     draw_menu_item::<UIData>(&mut inspector_windows, ui);

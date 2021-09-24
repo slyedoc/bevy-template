@@ -55,10 +55,6 @@ pub enum EditorCamera {
 /// Spawn a camera like this
 #[allow(dead_code)]
 pub fn spawn_cameras(mut commands: Commands, mut input_map: ResMut<InputMap<EditorCameraAction>>) {
-    commands
-        .spawn_bundle(UiCameraBundle::default())
-        .insert(EditorCamera::UI);
-
 
     let location = Vec3::new(100.0, 100.0, 600.0);
     let radius = location.length();
@@ -78,7 +74,7 @@ pub fn spawn_cameras(mut commands: Commands, mut input_map: ResMut<InputMap<Edit
         })
         .insert_bundle(PickingCameraBundle::default())
         .insert(EditorCamera::Perspective)
-        .insert(Name::new("EditorCamera"));
+        .insert(Name::new("Editor 3d Camera"));
 
         input_map
             .bind(EditorCameraAction::Orbit, MouseButton::Right)

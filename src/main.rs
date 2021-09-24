@@ -10,8 +10,8 @@ mod tanks;
 mod window_config;
 
 use actions::ActionsPlugin;
-use bevy_ecs_tilemap::TilemapPlugin;
 use bevy_egui::EguiPlugin;
+use bevy_prototype_debug_lines::DebugLinesPlugin;
 use std::env::var;
 use std::fmt;
 
@@ -32,7 +32,6 @@ use state::StatePlugin;
 use strum::EnumIter;
 use tanks::TanksPlugin;
 use window_config::WindowConfigPlugin;
-use spritesheet_generator::sprite_sheet;
 
 // See https://bevy-cheatbook.github.io/ for about everything
 
@@ -87,7 +86,7 @@ fn main() {
         // Load 3rd party plugins
         .add_plugins(DefaultPlugins)
         .add_plugin(FrameTimeDiagnosticsPlugin::default())
-        .add_plugin(TilemapPlugin)
+        .add_plugin(DebugLinesPlugin)
         .add_plugin(EguiPlugin)
         .add_plugin(AudioPlugin)
         .add_plugin(DefaultPickingPlugins)

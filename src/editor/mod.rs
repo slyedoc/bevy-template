@@ -10,7 +10,7 @@ pub use camera::*;
 pub use grid::*;
 pub use ui::*;
 
-use crate::GameStages;
+use crate::{GameStages, actions::ActionsWindow};
 
 #[derive(Clone, Eq, PartialEq, Debug, Hash)]
 pub enum EditorState {
@@ -50,30 +50,34 @@ impl Plugin for EditorPlugin {
 
 #[derive(Debug, Hash, PartialEq, Eq, Clone)]
 pub enum EditorAction {
-    EditorToggle,
+    Editor,
     World,
+    Keys,
 }
 
 impl fmt::Display for EditorAction {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            EditorAction::EditorToggle => write!(f, "Toggle Editor"),
+            EditorAction::Editor => write!(f, "Toggle Editor"),
             EditorAction::World => write!(f, "Open World Inspector"),
+            EditorAction::Keys => write!(f, "Toggle Key Mappings"),
         }
     }
 }
 
 fn setup(mut input_map: ResMut<InputMap<EditorAction>>) {
-    input_map.bind(EditorAction::EditorToggle, KeyCode::F12);
+    input_map.bind(EditorAction::Editor, KeyCode::F12);
     input_map.bind(EditorAction::World, KeyCode::F11);
+    input_map.bind(EditorAction::Keys, KeyCode::F10);
 }
 
 fn run_actions(
     input_map: Res<InputMap<EditorAction>>,
-     mut state: ResMut<State<EditorState>>, 
+     mut state: ResMut<State<EditorState>>,
      mut world_inspection: ResMut<WorldInspectorParams>,
+     mut action_window: ResMut<ActionsWindow>,
     ) {
-    if input_map.just_active(EditorAction::EditorToggle) {
+    if input_map.just_active(EditorAction::Editor) {
         let result = match state.current() {
             // could only happen if loading takes a while for frist frame, but go ahead and disable editor if so
             EditorState::Loading => EditorState::Disabled,
@@ -85,6 +89,10 @@ fn run_actions(
 
     if input_map.just_active(EditorAction::World) {
         world_inspection.enabled = !world_inspection.enabled;
+    }
+
+    if input_map.just_active(EditorAction::Keys) {
+        action_window.enabled = !action_window.enabled;
     }
 }
 
