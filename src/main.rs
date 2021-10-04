@@ -11,9 +11,10 @@ mod window_config;
 
 use actions::ActionsPlugin;
 use bevy_egui::EguiPlugin;
-use bevy_prototype_debug_lines::DebugLinesPlugin;
+
 use std::env::var;
 use std::fmt;
+use bevy_prototype_debug_lines::DebugLinesPlugin;
 
 use bevy_kira_audio::AudioPlugin;
 use editor::EditorPlugin;
@@ -61,9 +62,6 @@ pub enum GameStages {
     Editor, // only used for ui currently
 }
 
-pub struct ConfigPath {
-    pub path: String,
-}
 
 fn main() {
     let name = "Bevy Slyedoc Template".to_string();
